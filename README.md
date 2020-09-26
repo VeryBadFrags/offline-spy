@@ -1,0 +1,9 @@
+# Offline Spy
+
+A game inspired by [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
+
+## Instructions
+
+* All players need to input the same seed, iteration number and total number of players.
+* Each player needs to pick a unique player ID.
+* Start the game and confirm that all players have the same signature.

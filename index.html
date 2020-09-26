@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <title>Offline Spy 🕵️</title>
+    <style>
+        body {}
+
+        #game-window {
+            display: none;
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        #start-form {
+            padding: 5px;
+        }
+
+        #locations-list {
+            list-style-type: none;
+        }
+    </style>
+    <script type="text/javascript">
+        rooms = ["\uD83C\uDFE6 Bank",
+            "\uD83D\uDEF3 Cruise Ship",
+            "\uD83C\uDFE5 Hospital",
+            "\uD83C\uDFE8 Hotel",
+            "\uD83C\uDF7F Movie Theater",
+            "\uD83C\uDFDB Museum",
+            "\uD83C\uDFDF Football Stadium",
+            "\uD83C\uDFB8 Rock Concert",
+            "🎓 University"];
+
+        validations = ["😀",
+            "⭐️",
+            "🍪",
+            "🍕",
+            "🍓",
+            "🥐",
+            "🍩",
+            "🍦",
+            "⚽️",
+            "🎷",
+            "🧩",
+            "🔑",
+            "🐶",
+            "🦜",
+            "🐵",
+            "🐬"]
+
+        function startGame() {
+            // Get the Game params
+            var seed = document.getElementById("seed").value.toUpperCase();
+            var iterationField = document.getElementById("iteration");
+            var player = document.getElementById("player").value;
+            var totalPlayers = document.getElementById("total-players").value;
+
+            // Validate the params
+            while (seed.length < 4) {
+                seed += "A";
+            }
+
+            // Generate randomness
+            var randomNumber = getRNG(seed, iterationField.value, totalPlayers);
+            var signature = getValidation(randomNumber);
+            var isSpy = isPsy(randomNumber, player, totalPlayers);
+
+            var room = "???";
+            if (!isSpy) {
+                room = getRoom(randomNumber);
+                document.getElementById("spy-block").style.display = "none";
+                document.getElementById("not-spy-block").style.display = "block";
+            } else {
+                document.getElementById("spy-block").style.display = "block";
+                document.getElementById("not-spy-block").style.display = "none";
+            }
+
+
+            // Setup the Game Window
+            document.getElementById("signature").innerHTML = signature;
+            document.getElementById("playerid").innerHTML = player;
+            document.getElementById("room").innerHTML = room;
+            document.getElementById("game-window").style.display = "block";
+            iterationField.value = iterationField.value * 1 + 1;
+
+        }
+
+        function getRNG(seed, iteration, totalPlayers) {
+            var startDate = 0;
+            for (let i = 0; i < seed.length; i++) {
+                var charCode = seed.charCodeAt(i) + iteration + totalPlayers;
+                startDate += charCode * (3 ** i);
+            }
+
+            var modulo = 65536;
+            startDate %= modulo;
+            var lfsr = startDate;
+            var period = 0;
+
+            do {
+                lfsr ^= lfsr >> 7;
+                lfsr ^= lfsr << 9;
+                lfsr ^= lfsr >> 13;
+                ++period;
+
+                if (period > 1000000000) {
+                    break;
+                }
+            }
+            while ((lfsr % modulo) != startDate);
+
+            return period;
+        }
+
+        function getValidation(seed) {
+            var seed1 = seed;
+            var seed2 = seed ^ (seed1 >> 1);
+            var seed3 = seed ^ (seed2 >> 1);
+            return validations[seed1 % validations.length] + validations[seed2 % validations.length] + validations[seed3 % validations.length];
+        }
+
+        function getRoom(seedNumber) {
+            return rooms[seedNumber % rooms.length];
+        }
+
+        function isPsy(seedNumber, playerId, totalPlayers) {
+            var spy = (seedNumber % totalPlayers) + 1;
+            return playerId == spy;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h1>🕵️ Offline Spy</h1>
+
+    <div id="game-window">
+        <div>
+            Signature: <span id="signature"></span>
+        </div>
+        <br>
+        <div>
+            Player <strong>#<span id="playerid"></span></strong>
+        </div>
+        <br>
+        <div id="spy-block">
+            You <strong>are</strong> the spy
+        </div>
+        <div id="not-spy-block">
+            You are <strong>not</strong> the spy
+        </div>
+        <div>
+            Room: <span id="room"></span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="start-form">
+        <label>🎲 Seed</label>&nbsp;<input id="seed" value="ABCD"><br>
+        <label>🔢 Iteration</label>&nbsp;<input type="number" id="iteration" value="1" min="1"><br>
+        <label>👥 Number of players</label>&nbsp;<input type="number" id="total-players" value="3" min="3"><br>
+        <br>
+        <label>👤 Player #</label>&nbsp;<input type="number" id="player" value="1" min="1"><br>
+        <button onclick="startGame();">🏁 Start New Game</button>
+    </div>
+
+    <hr>
+
+    <div>
+        <span>Locations</span>
+        <ul id="locations-list">
+        </ul>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+    <script>
+        // Init seed
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var charactersLength = characters.length;
+        var newSeed = "";
+        for (var i = 0; i < 4; i++) {
+            newSeed += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        document.getElementById("seed").value = newSeed;
+
+        // Show the list of Locations
+        var locationsList = document.getElementById("locations-list");
+        for (var i = 0; i < rooms.length; i++) {
+            var room = rooms[i];
+            var li = document.createElement("li");
+            li.innerHTML = room;
+            locationsList.appendChild(li);
+        }
+    </script>
+
+</body>
+
+</html>
