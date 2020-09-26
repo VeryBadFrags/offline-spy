@@ -36,3 +36,4 @@ make
 ## Resources
 
 * Colors: https://www.materialui.co/colors
+* Emoji as Favicon: https://css-tricks.com/emojis-as-favicons/
