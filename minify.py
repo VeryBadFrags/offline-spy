@@ -7,7 +7,6 @@ output_folder = "release"
 output_path = output_folder + "/" + input_path
 
 input_size = os.stat(input_path).st_size
-print("Input size: " + str(input_size) + "B")
 
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
@@ -25,6 +24,7 @@ html_file.close()
 
 print("Minified " + input_path + " to " + output_path)
 
+print("Input size: " + str(input_size) + "B")
 output_size = os.stat(output_path).st_size
 print("Output size: " + str(output_size) + "B")
 compression_ratio = round((input_size - output_size) / input_size * 100, 1);

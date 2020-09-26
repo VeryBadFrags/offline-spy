@@ -25,9 +25,10 @@ These steps are only needed if you want to minify the page.
 
 Get [htmlmin](https://pypi.org/project/htmlmin/)
 ```shell
-pip install htmlmin
+pip3 install htmlmin
 ```
 
+Minify the page
 ```shell
 make
 ```
