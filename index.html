@@ -5,18 +5,43 @@
 <head>
     <title>Offline Spy</title>
     <style>
-        #gameWindow {
-            display: none;
-            border: 1px solid black;
-            padding: 5px;
+        .card {
+            border: 1px solid #B2EBF2;
+            border-radius: 5px;
+            box-shadow: 1px 1px 4px #cccccc;
+            display: inline-block;
+            min-width: 300px;
+            margin-bottom: 20px;
+            padding: 10px;
         }
 
-        #startForm {
-            padding: 5px;
-        }
-
-        #locationsList {
+        .list {
             list-style-type: none;
+        }
+
+        .alert {
+            border: 1px solid red;
+            padding: 5px;
+            color: red;
+        }
+
+        .button {
+            border: none;
+            color: black;
+            background-color: #80CBC4;
+            box-shadow: 1px 1px 4px #9E9E9E;
+            width: 100%;
+            margin-top: 10px;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background-color: #4DB6AC;
+            box-shadow: 1px 1px 5px #757575;
         }
     </style>
     <script type="text/javascript">
@@ -54,6 +79,8 @@
             "🐬"]
 
         function startGame() {
+            resetErrors();
+
             /* Get the Game params */
             var seed = document.getElementById("seed").value.toUpperCase();
             var iterationField = document.getElementById("iteration");
@@ -63,6 +90,12 @@
             /* Validate the params */
             while (seed.length < 4) {
                 seed += "A";
+            }
+            if (player > totalPlayers) {
+                var errorBox = document.getElementById("error");
+                errorBox.innerHTML = "👤 > 👥 - Player # greater than total number of players"
+                errorBox.style.display = "block";
+                return;
             }
 
             /* Generate randomness */
@@ -90,7 +123,13 @@
             iterationField.value = iterationField.value * 1 + 1;
 
             document.getElementById("secretBlock").style.display = "block"
-            document.getElementById("gameWindow").style.display = "block";
+            document.getElementById("gameWindow").style.display = "inline-block";
+        }
+
+        function resetErrors() {
+            var errorBox = document.getElementById("error");
+            errorBox.style.display = "none";
+            errorBox.innerHTML = "";
         }
 
         function getRNG(seed, iteration, totalPlayers) {
@@ -156,9 +195,11 @@
 
     <h1>Offline Spy</h1>
 
-    <div id="gameWindow">
+    <div id="error" class="alert" style="display: none;"></div>
+
+    <div id="gameWindow" class="card" style="display: none;">
         <div>
-            Signature: <span id="signature"></span>
+            Signature <span id="signature"></span>
         </div>
         <br>
         <div>
@@ -170,7 +211,7 @@
         </div>
         <br>
         <div>
-            <button onclick="showHide('secretBlock');">👓 Show/Hide</button>
+            <button class="button" onclick="showHide('secretBlock');">👓 Show/Hide</button>
         </div>
         <div id="secretBlock">
             <div id="spyBlock">
@@ -185,22 +226,27 @@
         </div>
     </div>
 
-    <hr>
+    <br>
 
-    <div id="startForm">
-        <label>🎲 Seed</label>&nbsp;<input id="seed" value="ABCD"><br>
-        <label>🔢 Iteration</label>&nbsp;<input type="number" id="iteration" value="1" min="1"><br>
-        <label>👥 Number of players</label>&nbsp;<input type="number" id="total-players" value="3" min="3"><br>
+    <div id="settings" class="card">
+        <div><strong>⚙️ Settings</strong></div>
         <br>
-        <label>👤 Player #</label>&nbsp;<input type="number" id="player" value="1" min="1"><br>
-        <button onclick="startGame();">🏁 Start New Game</button>
+        <label>🎲 Seed</label>&nbsp;<input id="seed" value="ABCD"><br>
+        <label>🔢 Iteration</label>&nbsp;<input type="number" id="iteration" value="1" min="1">
+        <br>
+        <label>👥 Total players</label>&nbsp;<input type="number" id="total-players" value="3" min="3">
+        <br>
+        <br>
+        <label>👤 Player #</label>&nbsp;<input type="number" id="player" value="1" min="1">
+        <br>
+        <button onclick="startGame();" class="button">🏁 Start New Game</button>
     </div>
 
-    <hr>
+    <br>
 
-    <div>
-        <span>Locations</span>
-        <ul id="locationsList">
+    <div class="card">
+        <strong>Locations</strong>
+        <ul id="locationsList" class="list">
         </ul>
     </div>
 
