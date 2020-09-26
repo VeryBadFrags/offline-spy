@@ -1,8 +1,5 @@
-output/index.html: index.html release/
-	cp index.html release/index.html
-
-release/:
-	mkdir -p release
+release/index.html: index.html minify.py
+	python3 minify.py
 
 .PHONY: clean
 

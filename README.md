@@ -18,3 +18,20 @@ There are emojis to help non-english speakers.
 * At the end of the game, the players vote to designate the spy.
     * If the players have voted for the spy, the spy has one chance to guess the location and win the game.
     * If the players have voted for an innocent, the spy wins.
+
+## Build
+
+These steps are only needed if you want to minify the page.
+
+Get [htmlmin](https://pypi.org/project/htmlmin/)
+```shell
+pip install htmlmin
+```
+
+```shell
+make
+```
+
+## Resources
+
+* Colors: https://www.materialui.co/colors
