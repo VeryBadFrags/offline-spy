@@ -1,6 +1,6 @@
 # Offline Spy
 
-A game inspired by [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
+An offline, standalone version of [Spyfall](https://hwint.ru/portfolio-item/spyfall/).
 
 ## Instructions
 

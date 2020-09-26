@@ -22,15 +22,20 @@
         }
     </style>
     <script type="text/javascript">
-        rooms = ["\uD83C\uDFE6 Bank",
-            "\uD83D\uDEF3 Cruise Ship",
-            "\uD83C\uDFE5 Hospital",
-            "\uD83C\uDFE8 Hotel",
-            "\uD83C\uDF7F Movie Theater",
-            "\uD83C\uDFDB Museum",
-            "\uD83C\uDFDF Football Stadium",
-            "\uD83C\uDFB8 Rock Concert",
-            "🎓 University"];
+        rooms = ["🛫💺 Airplane",
+            "🏦💰 Bank",
+            "🛳🌊 Cruise Ship",
+            "⚽️🏟 Football Stadium",
+            "🏪🛒 Grocery Store",
+            "🏥🧑‍⚕️ Hospital",
+            "🏨🛏 Hotel",
+            "🎞🍿 Movie Theater",
+            "🏛🖼 Museum",
+            "🏤📮 Post Office",
+            "🏟🎸 Rock Concert",
+            "🚄🛤 Train",
+            "🏫🎓 University",
+        ];
 
         validations = ["😀",
             "⭐️",
@@ -66,7 +71,7 @@
             var signature = getValidation(randomNumber);
             var isSpy = isPsy(randomNumber, player, totalPlayers);
 
-            var room = "???";
+            var room = "❓??";
             if (!isSpy) {
                 room = getRoom(randomNumber);
                 document.getElementById("spy-block").style.display = "none";
@@ -175,8 +180,10 @@
         </ul>
     </div>
 
-    <div class="footer">
+    <hr>
 
+    <div class="footer">
+        Version: 1.0.1
     </div>
 
     <script>
