@@ -3,21 +3,19 @@
 <meta charset="UTF-8">
 
 <head>
-    <title>Offline Spy 🕵️</title>
+    <title>Offline Spy</title>
     <style>
-        body {}
-
-        #game-window {
+        #gameWindow {
             display: none;
             border: 1px solid black;
             padding: 5px;
         }
 
-        #start-form {
+        #startForm {
             padding: 5px;
         }
 
-        #locations-list {
+        #locationsList {
             list-style-type: none;
         }
     </style>
@@ -71,15 +69,16 @@
             var randomNumber = getRNG(seed, iterationField.value, totalPlayers);
             var signature = getValidation(randomNumber);
             var isSpy = isPsy(randomNumber, player, totalPlayers);
+            var firstPlayer = getFirstPlayer(randomNumber, player, totalPlayers);
 
             var room = "❓";
             if (!isSpy) {
                 room = getRoom(randomNumber);
-                document.getElementById("spy-block").style.display = "none";
-                document.getElementById("not-spy-block").style.display = "block";
+                document.getElementById("spyBlock").style.display = "none";
+                document.getElementById("innocentBlock").style.display = "block";
             } else {
-                document.getElementById("spy-block").style.display = "block";
-                document.getElementById("not-spy-block").style.display = "none";
+                document.getElementById("spyBlock").style.display = "block";
+                document.getElementById("innocentBlock").style.display = "none";
             }
 
 
@@ -87,9 +86,11 @@
             document.getElementById("signature").innerHTML = signature;
             document.getElementById("playerid").innerHTML = player;
             document.getElementById("room").innerHTML = room;
-            document.getElementById("game-window").style.display = "block";
+            document.getElementById("firstPlayer").innerHTML = '#' + firstPlayer;
             iterationField.value = iterationField.value * 1 + 1;
 
+            document.getElementById("secretBlock").style.display = "block"
+            document.getElementById("gameWindow").style.display = "block";
         }
 
         function getRNG(seed, iteration, totalPlayers) {
@@ -135,9 +136,13 @@
             return playerId == spy;
         }
 
+        function getFirstPlayer(seedNumber, playerId, totalPlayers) {
+            return ((seedNumber >> 1) % totalPlayers) + 1;
+        }
+
         function showHide(elementId) {
             var elem = document.getElementById(elementId);
-            if(elem.style.display === 'none') {
+            if (elem.style.display === 'none') {
                 elem.style.display = 'block';
             } else {
                 elem.style.display = 'none';
@@ -151,7 +156,7 @@
 
     <h1>Offline Spy</h1>
 
-    <div id="game-window">
+    <div id="gameWindow">
         <div>
             Signature: <span id="signature"></span>
         </div>
@@ -160,25 +165,29 @@
             👤 Player <strong>#<span id="playerid"></span></strong>
         </div>
         <br>
-        <div id="secret-block">
-            <div id="spy-block">
-                🕵 You <strong>are</strong> the spy
+        <div>
+            🔍 First question: <strong id="firstPlayer"></strong>
+        </div>
+        <br>
+        <div>
+            <button onclick="showHide('secretBlock');">👓 Show/Hide</button>
+        </div>
+        <div id="secretBlock">
+            <div id="spyBlock">
+                You <strong>are</strong> the spy 🕵
             </div>
-            <div id="not-spy-block">
-                😇 You are <strong>not</strong> the spy
+            <div id="innocentBlock">
+                You are <strong>not</strong> the spy 😇
             </div>
             <div>
                 Room: <span id="room"></span>
             </div>
         </div>
-        <div>
-            <button onclick="showHide('secret-block');">👓 Show/Hide</button>
-        </div>
     </div>
 
     <hr>
 
-    <div id="start-form">
+    <div id="startForm">
         <label>🎲 Seed</label>&nbsp;<input id="seed" value="ABCD"><br>
         <label>🔢 Iteration</label>&nbsp;<input type="number" id="iteration" value="1" min="1"><br>
         <label>👥 Number of players</label>&nbsp;<input type="number" id="total-players" value="3" min="3"><br>
@@ -191,7 +200,7 @@
 
     <div>
         <span>Locations</span>
-        <ul id="locations-list">
+        <ul id="locationsList">
         </ul>
     </div>
 
@@ -214,7 +223,7 @@
         document.getElementById("seed").value = newSeed;
 
         /* Show the list of Locations */
-        var locationsList = document.getElementById("locations-list");
+        var locationsList = document.getElementById("locationsList");
         for (var i = 0; i < rooms.length; i++) {
             var room = rooms[i];
             var li = document.createElement("li");
