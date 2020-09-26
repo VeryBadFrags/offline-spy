@@ -1,6 +1,7 @@
 # Offline Spy
 
-An offline, standalone version of [Spyfall](https://hwint.ru/portfolio-item/spyfall/).
+An offline, standalone version of [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
+There are emojis to help non-english speakers.
 
 ## Instructions
 

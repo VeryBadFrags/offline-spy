@@ -72,7 +72,7 @@
             var signature = getValidation(randomNumber);
             var isSpy = isPsy(randomNumber, player, totalPlayers);
 
-            var room = "❓??";
+            var room = "❓";
             if (!isSpy) {
                 room = getRoom(randomNumber);
                 document.getElementById("spy-block").style.display = "none";
@@ -135,12 +135,21 @@
             return playerId == spy;
         }
 
+        function showHide(elementId) {
+            var elem = document.getElementById(elementId);
+            if(elem.style.display === 'none') {
+                elem.style.display = 'block';
+            } else {
+                elem.style.display = 'none';
+            }
+        }
+
     </script>
 </head>
 
 <body>
 
-    <h1>🕵️ Offline Spy</h1>
+    <h1>Offline Spy</h1>
 
     <div id="game-window">
         <div>
@@ -148,17 +157,22 @@
         </div>
         <br>
         <div>
-            Player <strong>#<span id="playerid"></span></strong>
+            👤 Player <strong>#<span id="playerid"></span></strong>
         </div>
         <br>
-        <div id="spy-block">
-            You <strong>are</strong> the spy
-        </div>
-        <div id="not-spy-block">
-            You are <strong>not</strong> the spy
+        <div id="secret-block">
+            <div id="spy-block">
+                🕵 You <strong>are</strong> the spy
+            </div>
+            <div id="not-spy-block">
+                😇 You are <strong>not</strong> the spy
+            </div>
+            <div>
+                Room: <span id="room"></span>
+            </div>
         </div>
         <div>
-            Room: <span id="room"></span>
+            <button onclick="showHide('secret-block');">👓 Show/Hide</button>
         </div>
     </div>
 
@@ -184,7 +198,8 @@
     <hr>
 
     <div class="footer">
-        <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">Source code</a></div>
+        <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">Source
+                code</a></div>
         <div>Version: 0.1.1</div>
     </div>
 
