@@ -20,7 +20,7 @@
         }
     </style>
     <script type="text/javascript">
-        rooms = ["🛫💺 Airplane",
+        locationsList = ["🛫💺 Airplane",
             "🏦💰 Bank",
             "🛳🌊 Cruise Ship",
             "⚽️🏟 Football Stadium",
@@ -71,9 +71,9 @@
             var isSpy = isPsy(randomNumber, player, totalPlayers);
             var firstPlayer = getFirstPlayer(randomNumber, player, totalPlayers);
 
-            var room = "❓";
+            var locationName = "❓";
             if (!isSpy) {
-                room = getRoom(randomNumber);
+                locationName = getLocation(randomNumber);
                 document.getElementById("spyBlock").style.display = "none";
                 document.getElementById("innocentBlock").style.display = "block";
             } else {
@@ -85,7 +85,7 @@
             /* Setup the Game Window */
             document.getElementById("signature").innerHTML = signature;
             document.getElementById("playerid").innerHTML = player;
-            document.getElementById("room").innerHTML = room;
+            document.getElementById("location").innerHTML = locationName;
             document.getElementById("firstPlayer").innerHTML = '#' + firstPlayer;
             iterationField.value = iterationField.value * 1 + 1;
 
@@ -127,8 +127,8 @@
             return validations[seed1 % validations.length] + validations[seed2 % validations.length] + validations[seed3 % validations.length];
         }
 
-        function getRoom(seedNumber) {
-            return rooms[seedNumber % rooms.length];
+        function getLocation(seedNumber) {
+            return locationsList[seedNumber % locationsList.length];
         }
 
         function isPsy(seedNumber, playerId, totalPlayers) {
@@ -180,7 +180,7 @@
                 You are <strong>not</strong> the spy 😇
             </div>
             <div>
-                Room: <span id="room"></span>
+                Location: <span id="location"></span>
             </div>
         </div>
     </div>
@@ -223,12 +223,12 @@
         document.getElementById("seed").value = newSeed;
 
         /* Show the list of Locations */
-        var locationsList = document.getElementById("locationsList");
-        for (var i = 0; i < rooms.length; i++) {
-            var room = rooms[i];
+        var locationsListElement = document.getElementById("locationsList");
+        for (var i = 0; i < locationsList.length; i++) {
+            var locationName = locationsList[i];
             var li = document.createElement("li");
-            li.innerHTML = room;
-            locationsList.appendChild(li);
+            li.innerHTML = locationName;
+            locationsListElement.appendChild(li);
         }
     </script>
 
