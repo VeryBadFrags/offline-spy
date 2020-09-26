@@ -151,7 +151,6 @@
                 document.getElementById("innocentBlock").style.display = "none";
             }
 
-
             /* Setup the Game Window */
             document.getElementById("fingerprint").innerHTML = signature;
             document.getElementById("playerid").innerHTML = player;
@@ -161,6 +160,7 @@
 
             document.getElementById("secretBlock").style.display = "block"
             document.getElementById("gameWindow").style.display = "inline-block";
+            window.scrollTo(0, 0);
         }
 
         function resetErrors() {
