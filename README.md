@@ -9,4 +9,4 @@ There are emojis to help non-english speakers.
 
 * All players need to input the same seed, iteration number and total number of players.
 * Each player needs to pick a unique player ID.
-* Start the game and confirm that all players have the same signature.
+* Start the game and confirm that all players have the same fingerprint.
