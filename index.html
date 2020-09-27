@@ -27,7 +27,7 @@
             border-radius: 5px;
             box-shadow: 1px 1px 4px #E0E0E0;
             display: inline-block;
-            min-width: 400px;
+            min-width: 380px;
             margin: 12px 12px;
             padding: 16px;
             text-align: left;
@@ -126,7 +126,8 @@
             "🐶",
             "🦜",
             "🐵",
-            "🐬"];
+            "🐬",
+            "🐢"];
 
         players = [
             "🧑‍🚀 Astronaut",
@@ -226,9 +227,9 @@
 
         /* Generate a 3-emoji signature to confirm that players are on the same game */
         function getFingerprint(seedNumber) {
-            var seed1 = seedNumber + 7;
-            var seed2 = 11 ^ seed1;
-            var seed3 = seed1 ^ seed2 >> 2;
+            var seed1 = seedNumber + 1;
+            var seed2 = Math.floor(seedNumber / 10);
+            var seed3 = seedNumber ^ seedNumber >> 2;
             return validations[seed1 % validations.length] + validations[seed2 % validations.length] + validations[seed3 % validations.length];
         }
 
@@ -333,18 +334,15 @@
 
     <div class="footer">
         <div>Download this page and play anywhere</div>
+        <br>
         <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">Source
                 code & instructions</a></div>
         <br>
         <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
                 project?</a>
-            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-                data-name="bmc-button" data-slug="verybadfrags" data-color="#79D6B5" data-emoji="" data-font="Cookie"
-                data-text="Buy me a coffee" data-outline-color="#000" data-font-color="#fff"
-                data-coffee-color="#fd0"></script>
         </div>
         <br>
-        <div>Version: 0.3.0</div>
+        <div>Version: 0.4.0</div>
     </div>
 
     <script>
