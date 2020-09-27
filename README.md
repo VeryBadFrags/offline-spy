@@ -8,9 +8,9 @@ There are emojis to help non-english speakers.
 ## How to play
 
 Setup:
-* All players need to input the same *Code*, *Round* number and total number of players
-* Each player needs to pick a unique player ID
-* Start the game and confirm that all players have the same fingerprint
+* All players must input the same *Code*, *Round* and total number of players
+* Each player needs to pick a unique *Avatar*
+* Start the game and confirm that all players have the same *Fingerprint*
 * Start a 5 min timer
 
 During the game:

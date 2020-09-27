@@ -209,7 +209,7 @@
             var startDate = 0;
             for (let i = 0; i < seed.length; i++) {
                 var charCode = seed.charCodeAt(i) + iteration + totalPlayers;
-                startDate += charCode * (i+1);
+                startDate += charCode * (i + 1);
             }
 
             var modulo = 65536;
@@ -324,18 +324,16 @@
             <h3>⚙️ Settings</h3>
         </div>
         <label for="seed">🎲 Code</label>
-        <input type="text" id="seed" value="ABCD" autocomplete="off"><br>
+        <input type="text" id="seed" name="code" value="ABCD" autocomplete="off">
         <label for="iteration">🔢 Round</label>
-        <input type="number" id="iteration" value="1" min="1" autocomplete="off">
-        <br>
+        <input type="number" id="iteration" name="round" value="1" min="1" autocomplete="off">
         <label for="total-players">👥 Total players</label>
-        <input type="number" id="total-players" value="3" min="3"
-            max="10" oninput="setPlayersList();" autocomplete="off">
+        <input type="number" id="total-players" name="totalPlayers" value="3" min="3" max="10"
+            oninput="setPlayersList();">
         <br>
-        <label for="player">👤 Player (must be unique)</label>
+        <label for="player">👤 Avatar (must be unique)</label>
         <div class="custom-select">
-            <select name="player" id="player">
-            </select>
+            <select name="player" id="player"></select>
         </div>
         <button onclick="startGame();" class="button">🏁 Start New Game</button>
     </div>
@@ -343,16 +341,16 @@
     <hr>
 
     <div class="footer">
-        <div>Download this page and play anywhere</div>
+        <div>Download this page and play anywhere!</div>
         <br>
         <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">Source
-                code & instructions</a></div>
+                code & instructions on GitHub</a></div>
         <br>
         <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
                 project?</a>
         </div>
         <br>
-        <div>Version: 0.4.0</div>
+        <div>Version: 0.4.1</div>
         <br>
         <img src="qr.png" alt="https://spy.verybadfrags.com" class="qrcode">
     </div>
