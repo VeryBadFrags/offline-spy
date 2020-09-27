@@ -30,15 +30,17 @@ At the end of the timer:
 
 These steps are only needed if you want to minify the code.
 
-Get [htmlmin](https://pypi.org/project/htmlmin/)
-```shell
-pip3 install htmlmin
-```
+* Get [htmlmin](https://pypi.org/project/htmlmin/)
+    ```shell
+    pip3 install htmlmin
+    ```
 
-Build the page.
-```shell
-make
-```
+* Get [qrencode](https://fukuchi.org/works/qrencode/index.html.en)
+
+* Build the minified version
+    ```shell
+    make
+    ```
 
 ## Resources
 
