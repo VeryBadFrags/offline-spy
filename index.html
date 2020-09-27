@@ -27,7 +27,7 @@
             border-radius: 5px;
             box-shadow: 1px 1px 4px #E0E0E0;
             display: inline-block;
-            min-width: 300px;
+            min-width: 400px;
             margin: 12px 12px;
             padding: 16px;
             text-align: left;
@@ -66,7 +66,7 @@
         }
 
         .larger-text {
-            font-size: 1.3em;
+            font-size: 1.4em;
         }
 
         input,
@@ -201,7 +201,7 @@
             var startDate = 0;
             for (let i = 0; i < seed.length; i++) {
                 var charCode = seed.charCodeAt(i) + iteration + totalPlayers;
-                startDate += charCode * (3 ** i);
+                startDate += charCode * (i+1);
             }
 
             var modulo = 65536;
@@ -226,9 +226,9 @@
 
         /* Generate a 3-emoji signature to confirm that players are on the same game */
         function getFingerprint(seedNumber) {
-            var seed1 = seedNumber;
-            var seed2 = seedNumber ^ (seed1 >> 1);
-            var seed3 = seedNumber ^ (seed2 >> 1);
+            var seed1 = seedNumber + 7;
+            var seed2 = 11 ^ seed1;
+            var seed3 = seed1 ^ seed2 >> 2;
             return validations[seed1 % validations.length] + validations[seed2 % validations.length] + validations[seed3 % validations.length];
         }
 
@@ -276,7 +276,7 @@
     <!-- Game Window -->
     <div id="gameWindow" class="card" style="display: none;">
         <div>
-            Fingerprint <span id="fingerprint" class="larger-text"></span>
+            Game Fingerprint <span id="fingerprint" class="larger-text"></span>
         </div>
         <br>
         <div>
