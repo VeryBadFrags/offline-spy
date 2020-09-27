@@ -8,7 +8,7 @@ There are emojis to help non-english speakers.
 ## How to play
 
 Setup:
-* All players need to input the same seed, iteration number and total number of players
+* All players need to input the same *Code*, *Round* number and total number of players
 * Each player needs to pick a unique player ID
 * Start the game and confirm that all players have the same fingerprint
 * Start a 5 min timer
@@ -16,7 +16,8 @@ Setup:
 During the game:
 * The spy has to guess what the current location is
 * The innocent players have to guess who the spy is
-* Players take turns asking questions to other players to try to guess who the spy is
+* Players take turns asking questions to other players to identify the spy
+* The player who just answered a question asks the next question
 
 At the end of the timer:
 * The players vote to designate the spy
@@ -27,14 +28,14 @@ At the end of the timer:
 
 ## Build
 
-These steps are only needed if you want to minify the page.
+These steps are only needed if you want to minify the code.
 
 Get [htmlmin](https://pypi.org/project/htmlmin/)
 ```shell
 pip3 install htmlmin
 ```
 
-Minify the page
+Build the page.
 ```shell
 make
 ```
