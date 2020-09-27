@@ -1,5 +1,5 @@
-release/index.html: release/ minify.py index.html release/qr.png
-	python3 minify.py
+release/index.html: src/* release/ release/qr.png bundle.py
+	python3 bundle.py
 
 release/:
 	mkdir -p release

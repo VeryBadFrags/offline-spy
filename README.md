@@ -28,16 +28,16 @@ At the end of the timer:
 
 ## Build
 
-These steps are only needed if you want to minify the code.
+Minify and bundle the css and js into a standalone HTML page.
 
-* Get [htmlmin](https://pypi.org/project/htmlmin/)
+* Get dependencies
     ```shell
-    pip3 install htmlmin
+    pip install htmlmin
     ```
 
 * Get [qrencode](https://fukuchi.org/works/qrencode/index.html.en)
 
-* Build the minified version
+* Bundle and minify
     ```shell
     make
     ```

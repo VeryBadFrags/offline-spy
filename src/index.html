@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free offline social deduction game">
+    <meta name="keywords" content="Serverless, Spy game, Open source">
+    <meta name="author" content="VeryBadFrags">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Offline Spy</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
+    <link rel=stylesheet href=style.css>
+
+    <script src=headScript.js></script>
+</head>
+
+<body>
+
+    <h1>Offline Spy</h1>
+
+    <div id="error" class="card alert" style="display: none;"></div>
+
+    <!-- Game Window -->
+    <div id="gameWindow" class="card" style="display: none;">
+        <div>
+            Game Fingerprint <span id="fingerprint" class="larger-text"></span>
+        </div>
+        <br>
+        <div>
+            <strong id="playerid"></strong>
+        </div>
+        <br>
+        <div>
+            🔍 First question: <span id="firstPlayer"></span>
+        </div>
+        <br>
+        <div>
+            <button class="button" onclick="showHide('secretBlock');">👓 Show/Hide</button>
+        </div>
+        <div id="secretBlock">
+            <div id="spyBlock">
+                You <strong>are</strong> the spy 🕵
+            </div>
+            <div id="innocentBlock">
+                You are <strong>not</strong> the spy 😇
+            </div>
+            <div>
+                Location: <span id="location"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- List of Locations -->
+    <div class="card">
+        <h3>Locations</h3>
+        <ul id="locationsList" class="list">
+        </ul>
+    </div>
+
+    <!-- Game Settings -->
+    <div id="settings" class="card">
+        <div>
+            <h3>⚙️ Settings</h3>
+        </div>
+        <label for="seed">🎲 Code</label>
+        <input type="text" id="seed" name="code" value="ABCD" autocomplete="off">
+        <label for="iteration">🔢 Round</label>
+        <input type="number" id="iteration" name="round" value="1" min="1" autocomplete="off">
+        <label for="total-players">👥 Total players</label>
+        <input type="number" id="total-players" name="totalPlayers" value="3" min="3" max="10"
+            oninput="setPlayersList();">
+        <br>
+        <label for="player">👤 Avatar (must be unique)</label>
+        <div class="custom-select">
+            <select name="player" id="player"></select>
+        </div>
+        <button onclick="startGame();" class="button">🏁 Start New Game</button>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+        <div>Download this page and play anywhere!</div>
+        <br>
+        <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">Source
+                code & instructions on GitHub</a></div>
+        <br>
+        <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
+                project?</a>
+        </div>
+        <br>
+        <div>Version: 0.4.2</div>
+        <br>
+        <img src="qr.png" alt="https://spy.verybadfrags.com" class="qrcode">
+    </div>
+
+    <script>
+        /* Init seed */
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var charactersLength = characters.length;
+        var newSeed = "";
+        for (var i = 0; i < 4; i++) {
+            newSeed += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        document.getElementById("seed").value = newSeed;
+
+        /* Show the list of Locations */
+        var locationsListElement = document.getElementById("locationsList");
+        for (var i = 0; i < locationsList.length; i++) {
+            var locationName = locationsList[i];
+            var li = document.createElement("li");
+            li.innerHTML = locationName;
+            locationsListElement.appendChild(li);
+        }
+
+        /* Set the list of available Avatars */
+        playerListElement = document.getElementById("player");
+        function setPlayersList() {
+            removeOptions(playerListElement);
+            var totalPlayers = getTotalNumberOfPlayers();
+            for (var i = 0; i < players.length && i < totalPlayers; i++) {
+                var opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = players[i];
+                playerListElement.appendChild(opt);
+            }
+        }
+
+        setPlayersList();
+    </script>
+
+</body>
+
+</html>
