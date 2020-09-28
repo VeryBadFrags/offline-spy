@@ -21,7 +21,7 @@ function startGame() {
 
     /* Generate randomness */
     var randomNumber = getRNG(seed, iterationField.value, totalPlayers);
-    var signature = getFingerprint(randomNumber);
+    let fingerprint = getFingerprint(randomNumber);
     var isSpy = isPsy(randomNumber, player, totalPlayers);
     var firstPlayer = getFirstPlayer(randomNumber, player, totalPlayers);
 
@@ -36,7 +36,7 @@ function startGame() {
     }
 
     /* Setup the Game Window */
-    document.getElementById("fingerprint").innerHTML = signature;
+    document.getElementById("fingerprint").innerHTML = fingerprint;
     document.getElementById("playerid").innerHTML = players[player];
     document.getElementById("location").innerHTML = locationName;
     document.getElementById("firstPlayer").innerHTML = players[firstPlayer];
@@ -81,7 +81,7 @@ function getRNG(seed, iteration, totalPlayers) {
     return period;
 }
 
-/* Generate a 3-emoji signature to confirm that players are on the same game */
+/* Generate a 3-emoji fingerprint to confirm that players are on the same game */
 function getFingerprint(seedNumber) {
     var seed1 = seedNumber + 1;
     var seed2 = Math.floor(seedNumber / 10);

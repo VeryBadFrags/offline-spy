@@ -37,7 +37,7 @@ Minify and bundle the css and js into a standalone HTML page.
 
 * Get [qrencode](https://fukuchi.org/works/qrencode/index.html.en)
 
-* Bundle and minify
+* Build
     ```shell
     make
     ```

@@ -7,7 +7,7 @@ source_folder = "src/"
 input_html = source_folder + "index.html"
 input_css = source_folder + "style.css"
 
-constants_input_js = source_folder + "constants.js"
+constants_js = source_folder + "constants.js"
 header_js = source_folder + "header.js"
 footer_js = source_folder + "footer.js"
 
@@ -31,16 +31,18 @@ content = htmlmin.minify(content, remove_comments=True, remove_empty_space=True)
 clean_css = subprocess.check_output(['yuicompressor', input_css])
 
 css_link = "<link rel=stylesheet href=style.css>"
-content = content.replace(css_link, "\n<style>" + clean_css.decode('utf-8') + "</style>")
+content = content.replace(css_link, "<style>" + clean_css.decode('utf-8') + "</style>")
 
 # Inject JS
 
+script_open = "<script>"
+
 ## Constants
 
-constants_file = open(constants_input_js, "r")
+constants_file = open(constants_js, "r")
 
 js_link = "<script src=constants.js></script>"
-content = content.replace(js_link, "\n<script>" + constants_file.read() + "</script>")
+content = content.replace(js_link, script_open + constants_file.read() + "</script>")
 
 constants_file.close()
 
@@ -49,13 +51,13 @@ constants_file.close()
 clean_js = subprocess.check_output(['yuicompressor', header_js])
 
 js_link = "<script src=header.js></script>"
-content = content.replace(js_link, "\n<script>" + clean_js.decode('utf-8') + "</script>\n")
+content = content.replace(js_link, script_open + clean_js.decode('utf-8') + "</script>\n")
 
 ## Footer script
 
 clean_js = subprocess.check_output(['yuicompressor', footer_js])
 js_link = "<script src=footer.js></script>"
-content = content.replace(js_link, "\n<script>" + clean_js.decode('utf-8') + "</script>\n")
+content = content.replace(js_link, script_open + clean_js.decode('utf-8') + "</script>\n")
 
 # Output content
 
@@ -66,10 +68,14 @@ output_file.close()
 
 print("Bundled " + source_folder + " into " + output_path)
 
-input_html = os.stat(input_html).st_size
-input_css = os.stat(input_css).st_size
-header_js = os.stat(header_js).st_size
-input_size = input_html + input_css + header_js
+html_size = os.stat(input_html).st_size
+css_size = os.stat(input_css).st_size
+constants_size = os.stat(constants_js).st_size
+header_size = os.stat(header_js).st_size
+footer_size = os.stat(footer_js).st_size
+
+
+input_size = html_size + css_size + constants_size + header_size + footer_size
 print("Input size: " + str(input_size) + "B")
 output_size = os.stat(output_path).st_size
 print("Output size: " + str(output_size) + "B")
