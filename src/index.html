@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Free offline social deduction game">
-    <meta name="keywords" content="Serverless, Spy game, Open source">
+    <meta name="description" content="Play Spyfall anywhere with your friends, even without an internet connection.">
+    <meta name="keywords" content="Social decuction, Spy game, Open Source, Offline">
     <meta name="author" content="VeryBadFrags">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <title>Offline Spy</title>
+    <title>Offline Spyfall</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
-    
+
     <link rel=stylesheet href=style.css>
     <script src=constants.js></script>
     <script src=header.js></script>
@@ -18,7 +18,7 @@
 
 <body>
 
-    <h1>Offline Spy</h1>
+    <h1>Offline Spyfall</h1>
 
     <div id="error" class="card alert" style="display: none;"></div>
 
@@ -69,13 +69,56 @@
         <label for="iteration">🔢 Round</label>
         <input type="number" id="iteration" name="round" value="1" min="1" autocomplete="off">
         <label for="total-players">👥 Total players</label>
-        <input type="number" id="total-players" name="totalPlayers" value="3" min="3" oninput="setPlayersList();" autocomplete="off">
+        <input type="number" id="total-players" name="totalPlayers" value="3" min="3" oninput="setPlayersList();"
+            autocomplete="off">
         <br>
         <label for="player">👤 Avatar (must be unique)</label>
         <div class="custom-select">
             <select name="player" id="player"></select>
         </div>
         <button id="startButton" class="button" onclick="startGame();">🏁 Start New Game</button>
+    </div>
+
+    <hr>
+
+    <div class="card">
+        <h3>How to play</h3>
+        <div>
+            <strong>Setup</strong>
+            <ul>
+                <li>All players must input the same <em>Code</em>, *Round* and total number of players</li>
+                <li>Each player needs to pick a unique *Avatar*</li>
+                <li>Start the game and confirm that all players have the same *Fingerprint*</li>
+                <li>Start a 6 min timer</li>
+            </ul>
+        </div>
+        <div>
+            <strong>During the game</strong>
+            <ul>
+                <li>The spy has to guess what the current location is</li>
+                <li>The other players have to guess who the spy is</li>
+                <li>Players take turns asking questions to other players to identify the spy</li>
+                <li>The player who just answered a question asks the next question</li>
+            </ul>
+            <strong>At any time</strong>
+            <ul>
+                <li>The players can vote out a spy if they have a majority</li>
+                <li>The spy can guess the location. He wins the game if he guessed correctly, and loses otherwise</li>
+            </ul>
+        </div>
+        <div>
+            <strong>At the end of the timer, or if there was a vote</strong>
+            <ul>
+                <li>The players vote to designate the spy
+                    <ul>
+                        <li>If the players have voted for the spy, the spy has one chance to guess the location and win
+                            the game
+                        </li>
+                        <li>If the players have voted for an innocent, the spy wins</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <hr>
@@ -93,6 +136,10 @@
         <div>Version: 0.4.5</div>
         <br>
         <img src="qr.png" alt="https://spy.verybadfrags.com" class="qrcode">
+        <br>
+        <div class="small">
+            Spyfall is a game designed by Alexandr Ushan and published by <a href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby World</a>. This project is not affiliated with Alexandr Ushan or Hobby World.
+        </div>
     </div>
 
     <script src="footer.js"></script>
