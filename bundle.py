@@ -36,28 +36,26 @@ content = content.replace(css_link, "<style>" + clean_css.decode('utf-8') + "</s
 # Inject JS
 
 script_open = "<script>"
+script_close = "</script>"
 
 ## Constants
 
 constants_file = open(constants_js, "r")
-
 js_link = "<script src=constants.js></script>"
-content = content.replace(js_link, script_open + constants_file.read() + "</script>")
-
+content = content.replace(js_link, script_open + constants_file.read() + script_close)
 constants_file.close()
 
 ## Header script
 
 clean_js = subprocess.check_output(['yuicompressor', header_js])
-
 js_link = "<script src=header.js></script>"
-content = content.replace(js_link, script_open + clean_js.decode('utf-8') + "</script>\n")
+content = content.replace(js_link, script_open + clean_js.decode('utf-8') + script_close)
 
 ## Footer script
 
 clean_js = subprocess.check_output(['yuicompressor', footer_js])
 js_link = "<script src=footer.js></script>"
-content = content.replace(js_link, script_open + clean_js.decode('utf-8') + "</script>\n")
+content = content.replace(js_link, script_open + clean_js.decode('utf-8') + script_close)
 
 # Output content
 
