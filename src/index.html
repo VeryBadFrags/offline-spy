@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Play Spyfall anywhere with your friends, even without an internet connection.">
-    <meta name="keywords" content="Social decuction, Spy game, Open Source, Offline">
+    <meta name="keywords" content="Social deduction, Spy game, Open source, Offline">
     <meta name="author" content="VeryBadFrags">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>Offline Spyfall</title>
@@ -62,7 +62,7 @@
     <!-- Game Settings -->
     <div id="settings" class="card">
         <div>
-            <h3>⚙️ Settings</h3>
+            <h3>⚙️ Game Settings</h3>
         </div>
         <label for="seed">🎲 Code</label>
         <input type="text" id="seed" name="code" value="ABCD" autocomplete="off">
@@ -84,40 +84,49 @@
     <div class="card">
         <h3>How to play</h3>
         <div>
-            <strong>Setup</strong>
-            <ul>
-                <li>All players must input the same 🎲 <em>Code</em>, 🔢 <em>Round</em> and total number of players</li>
-                <li>Each player picks a unique 👤 <em>Avatar</em></li>
-                <li>Start the game and confirm that all players have the same <em>Fingerprint</em></li>
-                <li>Start a 6 min timer</li>
-            </ul>
+            <button class="button" onclick="showHide('instructions');">👓 Show/Hide</button>
         </div>
-        <div>
-            <strong>During the game</strong>
-            <ul>
-                <li>The spy has to guess what the current location is</li>
-                <li>The other players have to guess who the spy is</li>
-                <li>Players take turns asking questions to other players to identify the spy</li>
-                <li>The player who just answered a question asks the next question</li>
-            </ul>
-            <strong>At any time</strong>
-            <ul>
-                <li>The players can vote out a spy if they have a majority</li>
-                <li>The spy can guess the location. He wins the game if he guessed correctly, and loses otherwise</li>
-            </ul>
-        </div>
-        <div>
-            <strong>At the end of the timer, or if there was a vote</strong>
-            <ul>
-                <li>The players vote to designate the spy
-                    <ul>
-                        <li>If the players have voted for the spy, the spy has one chance to guess the location and win
-                            the game
-                        </li>
-                        <li>If the players have voted for an innocent, the spy wins</li>
-                    </ul>
-                </li>
-            </ul>
+        <div id="instructions" style="display: none;">
+            <div>
+                <strong>Setup</strong>
+                <ul>
+                    <li>3-10 Players</li>
+                    <li>Players must input the same 🎲 <em>Code</em>, 🔢 <em>Round</em> and 👥 <em>Total players</em>
+                        number</li>
+                    <li>Players pick a unique 👤 <em>Avatar</em></li>
+                    <li>Start the game - Confirm that all players have the same <em>Fingerprint</em></li>
+                    <li>Start a 6 min timer</li>
+                </ul>
+            </div>
+            <div>
+                <strong>During the game</strong>
+                <ul>
+                    <li>The spy has to guess what the current location is</li>
+                    <li>The other players have to guess who the spy is</li>
+                    <li>Players take turns asking questions to other players to identify the spy</li>
+                    <li>The player who just answered a question asks the next question</li>
+                </ul>
+                <strong>At any time</strong>
+                <ul>
+                    <li>The players can vote out a spy if they have a majority</li>
+                    <li>The spy can guess the location. He wins the game if he guessed correctly, and loses otherwise
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <strong>At the end of the timer, or if there was a vote</strong>
+                <ul>
+                    <li>The players vote to designate the spy
+                        <ul>
+                            <li>If the players have voted for the spy, the spy has one chance to guess the location and
+                                win
+                                the game
+                            </li>
+                            <li>If the players have voted for an innocent, the spy wins</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -138,7 +147,9 @@
         <img src="qr.png" alt="https://spy.verybadfrags.com" class="qrcode">
         <br>
         <div class="small">
-            Spyfall is a game designed by Alexandr Ushan and published by <a href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby World</a>. This project is not affiliated with Alexandr Ushan or Hobby World.
+            Spyfall is a game designed by Alexandr Ushan and published by <a
+                href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby
+                World</a>. This project is not affiliated with Alexandr Ushan or Hobby World.
         </div>
     </div>
 
