@@ -40,4 +40,5 @@ function setPlayersList() {
     }
 }
 
+document.getElementById("total-players").max = players.length;
 setPlayersList();
