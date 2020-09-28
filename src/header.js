@@ -55,7 +55,8 @@ function startGame() {
     }
 
     {
-        document.getElementById("secretBlock").style.display = "block"
+        document.getElementById("startButton").innerHTML = "🏁 Start Next Round";
+        document.getElementById("secretBlock").style.display = "block";
         document.getElementById("gameWindow").style.display = "inline-block";
         window.scrollTo(0, 0);
     }
