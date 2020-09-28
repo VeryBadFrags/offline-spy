@@ -1,56 +1,3 @@
-const locationsList = ["✈️💺 Airplane",
-    "🏦💰 Bank",
-    "🎰💵 Casino",
-    "🦸🦹 Cosplay Convention",
-    "🛳🌊 Cruise Ship",
-    "🚒🧑‍🚒 Fire Station",
-    "⚽️🏟 Football Stadium",
-    "🌳🏕 Forest Camp",
-    "🏪🛒 Grocery Store",
-    "🏥🧑‍⚕️ Hospital",
-    "🏨🛏 Hotel",
-    "🎞🍿 Cinema",
-    "🏛🖼 Museum",
-    "⛰🥾 Mountain Hike",
-    "🏤📮 Post Office",
-    "🚔👮‍♂️ Police Station",
-    "🍽👩‍🍳 Restaurant",
-    "🏟🎸 Rock Concert",
-    "🚄🛤 High-speed Train",
-    "🏫🎓 University",
-];
-
-const validations = ["😀",
-    "⭐️",
-    "🍪",
-    "🍕",
-    "🍓",
-    "🥐",
-    "🍩",
-    "🍦",
-    "⚽️",
-    "🎷",
-    "🧩",
-    "🔑",
-    "🐶",
-    "🦜",
-    "🐵",
-    "🐬",
-    "🐢"];
-
-const players = [
-    "🧑‍🚀 Astronaut",
-    "🧑‍🌾 Farmer",
-    "💂 Guard",
-    "🧑‍⚖️ Judge",
-    "🧑‍🔧 Mechanic",
-    "🧑‍🔬 Scientist",
-    "🧑‍🎤 Singer",
-    "🧑‍🎓 Student",
-    "🧑‍🏫 Teacher",
-    "👷 Worker",
-];
-
 function startGame() {
     resetErrors();
 
@@ -152,7 +99,7 @@ function isPsy(seedNumber, playerId, totalPlayers) {
 }
 
 function getFirstPlayer(seedNumber, playerId, totalPlayers) {
-    return ((seedNumber >> 1) % totalPlayers);
+    return (Math.floor(seedNumber / 10) % totalPlayers);
 }
 
 function showHide(elementId) {

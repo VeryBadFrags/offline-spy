@@ -10,9 +10,10 @@
     <title>Offline Spy</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
+    
     <link rel=stylesheet href=style.css>
-
-    <script src=headScript.js></script>
+    <script src=constants.js></script>
+    <script src=header.js></script>
 </head>
 
 <body>
@@ -90,45 +91,12 @@
                 project?</a>
         </div>
         <br>
-        <div>Version: 0.4.2</div>
+        <div>Version: 0.4.3</div>
         <br>
         <img src="qr.png" alt="https://spy.verybadfrags.com" class="qrcode">
     </div>
 
-    <script>
-        /* Init seed */
-        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var charactersLength = characters.length;
-        var newSeed = "";
-        for (var i = 0; i < 4; i++) {
-            newSeed += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        document.getElementById("seed").value = newSeed;
-
-        /* Show the list of Locations */
-        var locationsListElement = document.getElementById("locationsList");
-        for (var i = 0; i < locationsList.length; i++) {
-            var locationName = locationsList[i];
-            var li = document.createElement("li");
-            li.innerHTML = locationName;
-            locationsListElement.appendChild(li);
-        }
-
-        /* Set the list of available Avatars */
-        playerListElement = document.getElementById("player");
-        function setPlayersList() {
-            removeOptions(playerListElement);
-            var totalPlayers = getTotalNumberOfPlayers();
-            for (var i = 0; i < players.length && i < totalPlayers; i++) {
-                var opt = document.createElement('option');
-                opt.value = i;
-                opt.innerHTML = players[i];
-                playerListElement.appendChild(opt);
-            }
-        }
-
-        setPlayersList();
-    </script>
+    <script src="footer.js"></script>
 
 </body>
 

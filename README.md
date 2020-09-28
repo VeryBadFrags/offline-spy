@@ -32,7 +32,7 @@ Minify and bundle the css and js into a standalone HTML page.
 
 * Get dependencies
     ```shell
-    pip install htmlmin
+    pip install htmlmin yuicompressor
     ```
 
 * Get [qrencode](https://fukuchi.org/works/qrencode/index.html.en)
