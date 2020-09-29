@@ -8,7 +8,6 @@ input_html = source_folder + "index.html"
 input_css = source_folder + "style.css"
 
 constants_js = source_folder + "constants.js"
-header_js = source_folder + "header.js"
 footer_js = source_folder + "footer.js"
 
 output_folder = "release/"
@@ -45,12 +44,6 @@ js_link = "<script src=constants.js></script>"
 content = content.replace(js_link, script_open + constants_file.read() + script_close)
 constants_file.close()
 
-## Header script
-
-clean_js = subprocess.check_output(['yuicompressor', header_js])
-js_link = "<script src=header.js></script>"
-content = content.replace(js_link, script_open + clean_js.decode('utf-8') + script_close)
-
 ## Footer script
 
 clean_js = subprocess.check_output(['yuicompressor', footer_js])
@@ -69,11 +62,10 @@ print("Bundled " + source_folder + " into " + output_path)
 html_size = os.stat(input_html).st_size
 css_size = os.stat(input_css).st_size
 constants_size = os.stat(constants_js).st_size
-header_size = os.stat(header_js).st_size
 footer_size = os.stat(footer_js).st_size
 
 
-input_size = html_size + css_size + constants_size + header_size + footer_size
+input_size = html_size + css_size + constants_size + footer_size
 print("Input size: " + str(input_size) + "B")
 output_size = os.stat(output_path).st_size
 print("Output size: " + str(output_size) + "B")

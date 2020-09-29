@@ -11,16 +11,22 @@ h3 {
     margin-top: 0;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .card {
     border: 1px solid #90A4AE;
     border-radius: .25rem;
-    box-shadow: 1px 1px 0.25rem #E0E0E0;
-    display: inline-block;
-    min-width: 15.625rem;
-    margin: 0.75rem 0.75rem;
+    box-shadow: 1px 1px 0.25rem #BDBDBD;
+    margin: 0.75rem 1rem;
     padding: 1rem;
+    max-width: 40em;
     text-align: left;
     vertical-align: top;
+    flex-grow: 1;
 }
 
 .list {
@@ -72,7 +78,6 @@ input,
 select {
     display: block;
     width: 100%;
-    max-width: 18.75rem;
     border: 2px solid #B2EBF2;
     border-radius: .25rem;
     box-shadow: 0 0 1px #9E9E9E;
