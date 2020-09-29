@@ -80,58 +80,61 @@
             </div>
             <button id="startButton" class="button" onclick="startGame();">🏁 Start New Game</button>
         </div>
+
     </div>
+    <div class="flex">
 
-    <hr>
+        <div class="card">
+            <h3>How to play</h3>
+            <div>
+                <button class="button" onclick="showHide('instructions');">👓 Show/Hide</button>
+            </div>
+            <div id="instructions" style="display: none;">
+                <div>
+                    <strong>Setup</strong>
+                    <ul>
+                        <li>3-10 Players</li>
+                        <li>All players must input the same 🎲 <em>Code</em>, 🔢 <em>Round</em> and 👥 <em>Total
+                                players</em>
+                            number</li>
+                        <li>Each player picks a unique 👤 <em>Avatar</em></li>
+                        <li>Start the game - Confirm that all players have the same <em>Fingerprint</em></li>
+                        <li>Start a 6 min timer</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>During the game</strong>
+                    <ul>
+                        <li>The spy has to guess the current location</li>
+                        <li>The other players have to guess who the spy is</li>
+                        <li>Players take turns asking questions about the location to identify the spy</li>
+                        <li>The player who just answered a question asks the next question</li>
+                    </ul>
+                    <strong>At any time</strong>
+                    <ul>
+                        <li>The players can vote for a spy if they have a majority</li>
+                        <li>The spy can guess the location. The spy wins the game if he guessed correctly, or loses
+                            otherwise
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>When the timer ends</strong>
+                    <ul>
+                        <li>Players vote to designate the spy
+                            <ul>
+                                <li>If the players have voted for the spy, the spy has one chance to guess the location
+                                    and
+                                    win the game
+                                </li>
+                                <li>If the players have voted for an innocent, the spy wins</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    <div class="card">
-        <h3>How to play</h3>
-        <div>
-            <button class="button" onclick="showHide('instructions');">👓 Show/Hide</button>
-        </div>
-        <div id="instructions" style="display: none;">
-            <div>
-                <strong>Setup</strong>
-                <ul>
-                    <li>3-10 Players</li>
-                    <li>All players must input the same 🎲 <em>Code</em>, 🔢 <em>Round</em> and 👥 <em>Total
-                            players</em>
-                        number</li>
-                    <li>Each player picks a unique 👤 <em>Avatar</em></li>
-                    <li>Start the game - Confirm that all players have the same <em>Fingerprint</em></li>
-                    <li>Start a 6 min timer</li>
-                </ul>
-            </div>
-            <div>
-                <strong>During the game</strong>
-                <ul>
-                    <li>The spy has to guess the current location</li>
-                    <li>The other players have to guess who the spy is</li>
-                    <li>Players take turns asking questions about the location to identify the spy</li>
-                    <li>The player who just answered a question asks the next question</li>
-                </ul>
-                <strong>At any time</strong>
-                <ul>
-                    <li>The players can vote for a spy if they have a majority</li>
-                    <li>The spy can guess the location. The spy wins the game if he guessed correctly, or loses
-                        otherwise
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <strong>When the timer ends</strong>
-                <ul>
-                    <li>Players vote to designate the spy
-                        <ul>
-                            <li>If the players have voted for the spy, the spy has one chance to guess the location and
-                                win the game
-                            </li>
-                            <li>If the players have voted for an innocent, the spy wins</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 
     <hr>
