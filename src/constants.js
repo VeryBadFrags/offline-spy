@@ -19,7 +19,7 @@ const locationsList = ["✈️💺 Airplane",
     "🍽👩‍🍳 Restaurant",
     "🏟🎸 Rock Concert",
     "🚄🛤 High-speed Train",
-    "🏫🎓 University",
+    "🏫🎓 University"
 ];
 
 const validations = ["😀",
@@ -50,5 +50,5 @@ const players = [
     "🐰 Rabbit",
     "🐯 Tiger",
     "🦖 T-Rex",
-    "🦉 Owl",
+    "🦉 Owl"
 ];
