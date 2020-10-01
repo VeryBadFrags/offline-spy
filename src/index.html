@@ -27,7 +27,7 @@
         <!-- Game Window -->
         <div id="gameWindow" class="card" style="display: none;">
             <div>
-                Game Fingerprint <span id="fingerprint" class="larger-text"></span>
+                Game Fingerprint <span id="fingerprint" class="large"></span>
             </div>
             <br>
             <div>
@@ -38,6 +38,7 @@
                 🔍 First question: <span id="firstPlayer"></span>
             </div>
             <br>
+            <div id="timer"></div>
             <div>
                 <button class="button" onclick="showHide('secretBlock');">👓 Show/Hide</button>
             </div>
@@ -49,7 +50,7 @@
                     You are <strong>not</strong> the spy 😇
                 </div>
                 <div>
-                    Location: <span id="location"></span>
+                    Location: <strong id="location"></strong>
                 </div>
             </div>
         </div>
@@ -99,7 +100,6 @@
                             number</li>
                         <li>Each player picks a unique 👤 <em>Avatar</em></li>
                         <li>Start the game - Confirm that all players have the same <em>Fingerprint</em></li>
-                        <li>Start a 6 min timer</li>
                     </ul>
                 </div>
                 <div>
@@ -149,7 +149,7 @@
                 game?</a>
         </div>
         <br>
-        <div>Version: 0.5.0</div>
+        <div>Version: 1.0.0</div>
         <br>
         <img src="qr.png" alt="https://spy.verybadfrags.com" class="qrcode">
         <br>

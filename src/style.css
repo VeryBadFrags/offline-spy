@@ -12,6 +12,10 @@ h3 {
     margin-top: 0;
 }
 
+hr {
+    margin: 1rem;
+}
+
 .flex {
     display: flex;
     flex-wrap: wrap;
@@ -20,15 +24,21 @@ h3 {
 }
 
 .card {
-    border: 1px solid #90A4AE;
+    border: 0.063rem solid #90A4AE;
     border-radius: .25rem;
-    box-shadow: 0.063rem 0.063rem 0.188rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0.063rem 0.063rem 0.188rem rgba(0, 0, 0, 0.2);
     margin: 0.75rem 0.75rem;
     padding: 0.75rem 1.25rem;
     max-width: 40em;
     text-align: left;
     vertical-align: top;
     flex-grow: 1;
+}
+
+.secret-card {
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+    padding: 2px 5px;
 }
 
 .list {
@@ -39,8 +49,9 @@ h3 {
 }
 
 .alert {
-    border: 1px solid red;
-    color: red;
+    border: 0.063rem solid #b71c1c;
+    border-radius: .25rem;
+    color: #b71c1c;
 }
 
 .qrcode {
@@ -48,33 +59,31 @@ h3 {
 }
 
 .button {
-    background-color: #E3F2FD;
+    background-color: #FAFAFA;
     border: 1px solid #0D47A1;
     border-radius: .25rem;
     color: black;
     width: 100%;
     margin-top: 0.938rem;
     margin-bottom: 0.625rem;
-    padding: 0.938rem 1.25rem;
+    padding: 0.875rem 1.25rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 1rem;
-    box-shadow: 0.063rem 0.063rem 0.188rem rgba(0, 0, 0, 0.3);
 }
 
 .button:hover {
-    background-color: #BBDEFB;
-    box-shadow: 0.063rem 0.063rem 0.063em rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    box-shadow: 0 0 0.125em rgba(0, 0, 0, 0.2);
 }
 
 .button:active {
-    
-    box-shadow: 0 0 0.063em rgba(0, 0, 0, 0.4),
-        inset 0.063rem 0.063rem 0.188rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0.063em rgba(0, 0, 0, 0.3),
+        inset 0 0 0.250em rgba(0, 0, 0, 0.2);
 }
 
-.larger-text {
+.large {
     font-size: 1.4rem;
 }
 
@@ -82,13 +91,16 @@ h3 {
     font-size: 0.75rem;
 }
 
+.centered {
+    text-align: center;
+}
+
 input,
 select {
     display: block;
     width: 100%;
-    border: 2px solid #B2EBF2;
+    border: 0.188rem solid #B2EBF2;
     border-radius: .25rem;
-    box-shadow: 0 0 1px #9E9E9E;
     padding: 0.625rem 0.75rem;
     margin: 0.5rem 0;
     margin-top: 0;
