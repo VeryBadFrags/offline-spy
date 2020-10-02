@@ -68,7 +68,8 @@
                 <h3>⚙️ Game Settings</h3>
             </div>
             <label for="seed">🎲 Code</label>
-            <input type="text" pattern="[A-Za-z]{4}" id="seed" name="code" value="ABCD" autocomplete="off">
+            <input type="text" pattern="[A-Za-z]{4}" id="seed" name="code" value="ABCD" maxlength="4"
+                autocomplete="off">
             <label for="iteration">🔢 Round</label>
             <input type="number" id="iteration" name="round" value="1" min="1" autocomplete="off">
             <label for="total-players">👥 Total players</label>
@@ -106,17 +107,12 @@
                 <div>
                     <strong>During the game</strong>
                     <ul>
+                        <li>All players are in the same location</li>
                         <li>The spy has to guess the current location</li>
                         <li>The other players have to guess who the spy is</li>
-                        <li>Players take turns asking questions about the location to identify the spy</li>
-                        <li>The player who just answered a question asks the next question</li>
-                    </ul>
-                    <strong>At any time</strong>
-                    <ul>
-                        <li>The players can vote for a spy if they have a majority</li>
-                        <li>The spy can guess the location. The spy wins the game if he guessed correctly, or loses
-                            otherwise
-                        </li>
+                        <li>The first player picks another person and asks them a question about the location (Do people
+                            wear a uniform? Is there a specific color in this place? ...)</li>
+                        <li>The player who just answered the question asks the next question to another person</li>
                     </ul>
                 </div>
                 <div>
@@ -130,6 +126,15 @@
                                 </li>
                                 <li>If the players have voted for an innocent, the spy wins</li>
                             </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>At any time</strong>
+                    <ul>
+                        <li>The players can vote for a spy if they have a majority</li>
+                        <li>The spy can guess the location. The spy wins the game if he guessed correctly, or loses
+                            otherwise
                         </li>
                     </ul>
                 </div>
