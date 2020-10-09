@@ -68,8 +68,8 @@
                 <h3>⚙️ Game Settings</h3>
             </div>
             <label for="seed">🎲 Code</label>
-            <input type="text" pattern="[A-Za-z]{4}" id="seed" name="code" value="ABCD" maxlength="4"
-                autocomplete="off">
+            <input type="text" id="seed" name="code" value="ABCD" pattern="[A-Za-z0-9]{4}" title="4 Characters Code"
+                maxlength="4" autocomplete="off">
             <label for="iteration">🔢 Round</label>
             <input type="number" id="iteration" name="round" value="1" min="1" autocomplete="off">
             <label for="total-players">👥 Total players</label>
@@ -160,7 +160,7 @@
                 game?</a>
         </div>
         <br>
-        <div>Version: 1.0.0</div>
+        <div>Version: 1.0.1</div>
         <br>
         <div class="small">
             Spyfall is a game designed by Alexandr Ushan and published by <a

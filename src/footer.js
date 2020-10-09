@@ -169,7 +169,7 @@ function setTimerDisplay(timer, display) {
 
 /* Init seed */
 {
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     const charactersLength = characters.length;
 
     let newSeed = "";
