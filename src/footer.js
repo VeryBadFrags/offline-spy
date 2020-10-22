@@ -14,7 +14,7 @@ function startGame() {
     }
     if (playerID > totalPlayers) {
         let errorBox = document.getElementById("error");
-        errorBox.innerHTML = "Error: 👤 > 👥 <br> Player # greater than total number of players"
+        errorBox.innerHTML = "Error: 👤 > 👥 <br> Player # greater than total number of players";
         errorBox.style.display = "block";
         return;
     }
