@@ -1,8 +1,11 @@
-release/index.html: src/* release/ release/qr.png bundle.py
+release/index.html: src/* release/ src/style.css release/qr.png bundle.py
 	python3 bundle.py
 
 release/:
 	mkdir -p release
+
+src/style.css: src/style.scss
+	sass --no-source-map src/style.scss src/style.css
 
 release/qr.png:
 	qrencode -s 4 -m 2 -o release/qr.png "https://spy.verybadfrags.com"
@@ -10,4 +13,4 @@ release/qr.png:
 .PHONY: clean
 
 clean:
-	rm -rf release/
+	rm -rf src/*.css src/*.css.map release/
