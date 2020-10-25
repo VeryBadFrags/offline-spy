@@ -1,3 +1,5 @@
+let intervalId;
+
 function startGame() {
     resetErrors();
 
@@ -143,9 +145,10 @@ function removeOptions(selectElement) {
 }
 
 function startTimer(duration, display) {
+    clearInterval(intervalId);
     var timer = duration;
     setTimerDisplay(timer, display);
-    var intervalId = setInterval(function () {
+    intervalId = setInterval(function () {
         timer--;
         setTimerDisplay(timer, display);
         if (timer < 0) {
