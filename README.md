@@ -21,3 +21,7 @@ Minify and bundle the css and js into a standalone HTML page.
 
 * Colors: https://www.materialui.co/colors
 * Emoji as Favicon: https://css-tricks.com/emojis-as-favicons/
+
+## License
+
+MIT
