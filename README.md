@@ -10,13 +10,7 @@ There are emojis to help non-english speakers.
 
 Minify and bundle the css and js into a standalone HTML page.
 
-* Get dependencies
-    ```shell
-    pip install htmlmin yuicompressor
-    ```
-
-* Get [Sass](https://sass-lang.com/install)
-* Get [qrencode](https://fukuchi.org/works/qrencode/index.html.en)
+* Get [Node](https://nodejs.org/)
 
 * Build
     ```shell

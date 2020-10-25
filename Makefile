@@ -1,16 +1,28 @@
-release/index.html: src/* release/ src/style.css release/qr.png bundle.py
+dist/index.html: build/index.html dist/ dist/qr.png package.json node_modules/
+	npm run html-minifier
+
+.PHONY: build-js clean
+
+build/index.html: build/ src/index.html build-js build/style.css bundle.py
 	python3 bundle.py
 
-release/:
-	mkdir -p release
+dist/:
+	mkdir -p dist
 
-src/style.css: src/style.scss
-	sass --no-source-map src/style.scss src/style.css
+node_modules/: package.json
+	npm install
 
-release/qr.png:
-	qrencode -s 4 -m 2 -o release/qr.png "https://spy.verybadfrags.com"
+build-js: build/ node_modules/ package.json src/*.js
+	npm run babel
 
-.PHONY: clean
+build/style.css: build/ src/*.scss node_modules/ package.json
+	npm run sass
+
+build/:
+	mkdir -p build
+
+dist/qr.png:  dist/ node_modules/ package.json
+	npm run qrcode
 
 clean:
-	rm -rf src/*.css src/*.css.map release/
+	rm -rf build/ dist/ node_modules/ src/*.css src/*.css.map
