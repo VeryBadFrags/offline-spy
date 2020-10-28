@@ -1,5 +1,8 @@
 # Offline Spy
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/VeryBadFrags/offline-spy)
+![GitHub](https://img.shields.io/badge/license-MIT-green)
+
 A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
 There are emojis to help non-english speakers.
 
