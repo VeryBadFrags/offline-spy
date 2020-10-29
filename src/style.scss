@@ -69,6 +69,7 @@ a:hover {
 
 .bg-dark {
   background-color: $bgDark;
+  color: $textLight;
 }
 
 .bg-dark a {
@@ -99,8 +100,6 @@ a:hover {
 }
 
 .footer {
-  background-color: $bgDark;
-  color: $textLight;
   border-top: 1px solid $secondaryBorder;
   margin-top: 4rem;
   padding: 16px 8px;
