@@ -18,6 +18,7 @@
     <meta name="keywords" content="Social deduction, Spy game, Open source, Offline">
     <meta name="author" content="VeryBadFrags">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="theme-color" content="#37474F">
 
     <title>Offline Spyfall</title>
 
@@ -25,119 +26,128 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>">
 
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src=constants.js></script>
+    <script src="constants.js"></script>
 </head>
 
-<body>
+<body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand">🕵️ Offline Spyfall</span>
+    </nav>
 
-    <h1>Offline Spyfall</h1>
+    <div class="container">
 
-    <div id="error" class="card alert" style="display: none;"></div>
+        <div id="error" class="card alert" style="display: none;"></div>
 
-    <div class="flex">
-        <!-- Game Window -->
-        <div id="gameWindow" class="card" style="display: none;">
-            <div>
-                Game Fingerprint <span id="fingerprint" class="large"></span>
-            </div>
-            <br>
-            <div>
-                <strong id="playerid"></strong>
-            </div>
-            <br>
-            <div>
-                🔍 First question: <span id="firstPlayer"></span>
-            </div>
-            <br>
-            <div id="timer"></div>
-            <div>
-                <button class="btn btn-outline" onclick="showHide('secretBlock');">👓 Show/Hide</button>
-            </div>
-            <div id="secretBlock" class="secret-card">
-                <div id="spyBlock">
-                    You <strong>are</strong> the spy 🕵
+        <div class="flex">
+            <!-- Game Window -->
+            <div id="gameWindow" class="card" style="display: none;">
+                <div>
+                    Game Fingerprint <span id="fingerprint" class="large"></span>
                 </div>
-                <div id="innocentBlock">
-                    You are <strong>not</strong> the spy 😇
+                <br>
+                <div>
+                    <strong id="playerid"></strong>
+                </div>
+                <br>
+                <div>
+                    🔍 First question: <span id="firstPlayer"></span>
+                </div>
+                <br>
+                <div id="timer"></div>
+                <div>
+                    <button class="btn btn-outline" onclick="showHide('secretBlock');">👓 Show/Hide</button>
+                </div>
+                <div id="secretBlock" class="secret-card">
+                    <div id="spyBlock">
+                        You <strong>are</strong> the spy 🕵
+                    </div>
+                    <div id="innocentBlock">
+                        You are <strong>not</strong> the spy 😇
+                    </div>
+                    <div>
+                        Location: <strong id="location"></strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- List of Locations -->
+            <div class="card">
+                <h3 class="card-title">Locations</h3>
+                <ul id="locationsList" class="list">
+                </ul>
+            </div>
+
+            <!-- Game Settings -->
+            <div id="settings" class="card">
+                <div>
+                    <h3 class="card-title">⚙️ Game Settings</h3>
                 </div>
                 <div>
-                    Location: <strong id="location"></strong>
+                    <label for="player">👤 Avatar (must be unique)</label>
+                    <div class="custom-select">
+                        <select name="player" id="player" class="form-control"></select>
+                    </div>
+                </div>
+                <div>
+                    <label for="seed">🎲 Code</label>
+                    <input type="text" id="seed" class="form-control" name="code" value="ABCD" pattern="[A-Za-z0-9]{4}"
+                        title="4 Characters Code" maxlength="4" autocomplete="off">
+                </div>
+                <div>
+                    <label for="iteration">🔢 Round</label>
+                    <input type="number" id="iteration" class="form-control" name="round" value="1" min="1"
+                        autocomplete="off">
+                </div>
+                <div>
+                    <label for="total-players">👥 Total players</label>
+                    <input type="number" id="total-players" class="form-control" name="totalPlayers" value="3" min="3"
+                        oninput="setPlayersList();" autocomplete="off">
+                </div>
+                <button id="startButton" class="btn btn-primary" onclick="startGame();">🏁 Start New Game</button>
+            </div>
+
+        </div>
+        <div class="flex">
+
+            <!-- Rules -->
+            <div class="card">
+                <h3 class="card-title">📖 Rules</h3>
+                <button class="btn btn-outline" onclick="showHide('instructions');">👓 Show/Hide</button>
+                <div id="instructions" style="display: none;">
+                    <!-- rules.html -->
                 </div>
             </div>
+
         </div>
 
-        <!-- List of Locations -->
-        <div class="card">
-            <h3 class="card-title">Locations</h3>
-            <ul id="locationsList" class="list">
-            </ul>
-        </div>
+        <hr>
 
-        <!-- Game Settings -->
-        <div id="settings" class="card">
+        <div class="footer">
+            <div>Download this page and play anywhere!</div>
+            <br>
             <div>
-                <h3 class="card-title">⚙️ Game Settings</h3>
+                <img src="qr.png" class="qrcode" alt="https://spy.verybadfrags.com">
             </div>
-            <div>
-                <label for="player">👤 Avatar (must be unique)</label>
-                <div class="custom-select">
-                    <select name="player" id="player" class="form-control"></select>
-                </div>
+            <br>
+            <div>Suggestions, Feedback? <a
+                    href="mailto:spy@verybadfrags.com?subject=Offline Spy Feedback">spy@verybadfrags.com</a></div>
+            <br>
+            <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">🐙
+                    Source
+                    code on GitHub</a></div>
+            <br>
+            <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
+                    game?</a>
             </div>
-            <div>
-                <label for="seed">🎲 Code</label>
-                <input type="text" id="seed" class="form-control" name="code" value="ABCD" pattern="[A-Za-z0-9]{4}" title="4 Characters Code"
-                    maxlength="4" autocomplete="off">
-            </div>
-            <div>
-                <label for="iteration">🔢 Round</label>
-                <input type="number" id="iteration" class="form-control" name="round" value="1" min="1" autocomplete="off">
-            </div>
-            <div>
-                <label for="total-players">👥 Total players</label>
-                <input type="number" id="total-players" class="form-control" name="totalPlayers" value="3" min="3"
-                    oninput="setPlayersList();" autocomplete="off">
-            </div>
-            <button id="startButton" class="btn btn-primary" onclick="startGame();">🏁 Start New Game</button>
+            <br>
+            <div><a href="https://wolf.verybadfrags.com" target="_blank">Play 🐺 Offline Werewolf</a></div>
+            <br>
+            <div>Version: 1.0.3</div>
         </div>
 
     </div>
-    <div class="flex">
 
-        <!-- Rules -->
-        <div class="card">
-            <h3 class="card-title">📖 Rules</h3>
-            <button class="btn btn-outline" onclick="showHide('instructions');">👓 Show/Hide</button>
-            <div id="instructions" style="display: none;">
-                <!-- rules.html -->
-            </div>
-        </div>
-
-    </div>
-
-    <hr>
-
-    <div class="footer">
-        <div>Download this page and play anywhere!</div>
-        <br>
-        <div>
-            <img src="qr.png" class="qrcode" alt="https://spy.verybadfrags.com">
-        </div>
-        <br>
-        <div>Suggestions, Feedback? <a
-                href="mailto:spy@verybadfrags.com?subject=Offline Spy Feedback">spy@verybadfrags.com</a></div>
-        <br>
-        <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">🐙 Source
-                code on GitHub</a></div>
-        <br>
-        <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
-                game?</a>
-        </div>
-        <br>
-        <div><a href="https://wolf.verybadfrags.com" target="_blank">Play 🐺 Offline Werewolf</a></div>
-        <br>
-        <div>Version: 1.0.3</div>
-        <br>
+    <div class="navbar">
         <div class="small">
             Spyfall is a game designed by Alexandr Ushan and published by <a
                 href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby
@@ -145,7 +155,7 @@
         </div>
     </div>
 
-    <script src=footer.js></script>
+    <script src="footer.js"></script>
 </body>
 
 </html>
