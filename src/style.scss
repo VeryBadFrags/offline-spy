@@ -1,5 +1,14 @@
-$bgLight: #eceff1;
-$bgDark: #37474F;
+$bgBody: #CFD8DC;
+$bgLight: #FAFAFA;
+$bgDark: #1A237E;
+
+$textLight: invert($bgDark, 100%);
+$textDark: invert($bgLight, 100%);
+
+$linkColor: #29B6F6;
+$linkColorActive: #0277BD;
+$linkColorDark: complement($linkColor);
+$linkColorActiveDark: complement($linkColorActive);
 
 $transparentBlack: rgba(black, 0.3);
 $transparentBlack8: rgba(black, 0.8);
@@ -13,6 +22,7 @@ $primary4: #e1f5fe;
 $primaryBorder: #124d77;
 
 $secondary1: #90a4ae;
+$secondaryBorder: #546E7A;
 
 $danger: #b71c1c;
 
@@ -24,40 +34,10 @@ $borderRadius: 4px;
 }
 
 body {
+  background-color: $bgBody;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   margin: 0;
-}
-
-.container {
-  margin: 8px;
-}
-
-.bg-light {
-  background-color: $bgLight;
-}
-
-.bg-dark {
-  background-color: $bgDark;
-}
-
-.navbar {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 16px;
-}
-
-.navbar-dark {
-  color: white;
-}
-
-.navbar-brand {
-  padding: 5px 0px;
-  font-size: 1.25rem;
-  text-shadow: 2px 2px 2px $transparentBlack;
 }
 
 hr {
@@ -68,11 +48,62 @@ hr {
 }
 
 a {
+  color: $linkColor;
   text-decoration: none;
+  text-shadow: 1px 1px 2px $transparentBlack;
 }
 
 a:hover {
+  color: $linkColorActive;
   text-decoration: underline;
+}
+
+.container {
+  margin: 8px;
+}
+
+.bg-light {
+  background-color: $bgLight;
+  color: $textDark;
+}
+
+.bg-dark {
+  background-color: $bgDark;
+}
+
+.bg-dark a {
+  color: $linkColorDark;
+}
+
+.bg-dark a:hover {
+  color: $linkColorActiveDark;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 8px 16px;
+  position: relative;
+}
+
+.navbar-dark {
+  color: $textLight;
+}
+
+.navbar-brand {
+  padding: 5px 0px;
+  font-size: 1.25rem;
+  text-shadow: 2px 2px 1px $transparentBlack8;
+}
+
+.footer {
+  background-color: $bgDark;
+  color: $textLight;
+  border-top: 1px solid $secondaryBorder;
+  margin-top: 4rem;
+  padding: 16px 8px;
 }
 
 .flex {
@@ -83,11 +114,10 @@ a:hover {
 }
 
 .card {
-  background-color: white;
-  border: 1px solid $secondary1;
+  border: 1px solid $secondaryBorder;
   border-radius: $borderRadius;
   box-shadow: $shadow1;
-  margin: 12px 12px;
+  margin: 16px 12px;
   padding: 16px 20px;
   max-width: 640px;
   text-align: left;

@@ -18,7 +18,7 @@
     <meta name="keywords" content="Social deduction, Spy game, Open source, Offline">
     <meta name="author" content="VeryBadFrags">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <meta name="theme-color" content="#37474F">
+    <meta name="theme-color" content="#1A237E">
 
     <title>Offline Spyfall</title>
 
@@ -29,7 +29,8 @@
     <script src="constants.js"></script>
 </head>
 
-<body class="bg-light">
+<body>
+
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand">🕵️ Offline Spyfall</span>
     </nav>
@@ -40,7 +41,7 @@
 
         <div class="flex">
             <!-- Game Window -->
-            <div id="gameWindow" class="card" style="display: none;">
+            <div id="gameWindow" class="card bg-light" style="display: none;">
                 <div>
                     Game Fingerprint <span id="fingerprint" class="large"></span>
                 </div>
@@ -71,14 +72,14 @@
             </div>
 
             <!-- List of Locations -->
-            <div class="card">
+            <div class="card bg-light">
                 <h3 class="card-title">Locations</h3>
                 <ul id="locationsList" class="list">
                 </ul>
             </div>
 
             <!-- Game Settings -->
-            <div id="settings" class="card">
+            <div id="settings" class="card bg-light">
                 <div>
                     <h3 class="card-title">⚙️ Game Settings</h3>
                 </div>
@@ -107,47 +108,42 @@
             </div>
 
         </div>
-        <div class="flex">
 
-            <!-- Rules -->
-            <div class="card">
-                <h3 class="card-title">📖 Rules</h3>
-                <button class="btn btn-outline" onclick="showHide('instructions');">👓 Show/Hide</button>
-                <div id="instructions" style="display: none;">
-                    <!-- rules.html -->
-                </div>
+        <!-- Rules -->
+        <div class="card bg-light">
+            <h3 class="card-title">📖 Rules</h3>
+            <button class="btn btn-outline" onclick="showHide('instructions');">👓 Show/Hide</button>
+            <div id="instructions" style="display: none;">
+                <!-- rules.html -->
             </div>
-
         </div>
 
-        <hr>
-
-        <div class="footer">
-            <div>Download this page and play anywhere!</div>
-            <br>
-            <div>
-                <img src="qr.png" class="qrcode" alt="https://spy.verybadfrags.com">
-            </div>
-            <br>
-            <div>Suggestions, Feedback? <a
-                    href="mailto:spy@verybadfrags.com?subject=Offline Spy Feedback">spy@verybadfrags.com</a></div>
-            <br>
-            <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">🐙
-                    Source
-                    code on GitHub</a></div>
-            <br>
-            <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
-                    game?</a>
-            </div>
-            <br>
-            <div><a href="https://wolf.verybadfrags.com" target="_blank">Play 🐺 Offline Werewolf</a></div>
-            <br>
-            <div>Version: 1.0.3</div>
-        </div>
 
     </div>
+    <!-- End Container -->
 
-    <div class="navbar">
+    <div class="footer bg-dark">
+        <div>Download this page and play anywhere!</div>
+        <br>
+        <div>
+            <img src="qr.png" class="qrcode" alt="https://spy.verybadfrags.com">
+        </div>
+        <br>
+        <div>Suggestions, Feedback? <a
+                href="mailto:spy@verybadfrags.com?subject=Offline Spy Feedback">spy@verybadfrags.com</a></div>
+        <br>
+        <div><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">🐙
+                Source
+                code on GitHub</a></div>
+        <br>
+        <div><a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this
+                game?</a>
+        </div>
+        <br>
+        <div><a href="https://wolf.verybadfrags.com" target="_blank">Play 🐺 Offline Werewolf</a></div>
+        <br>
+        <div>Version: 1.0.3</div>
+        <br>
         <div class="small">
             Spyfall is a game designed by Alexandr Ushan and published by <a
                 href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby
