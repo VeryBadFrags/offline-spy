@@ -5,6 +5,7 @@ build_folder = "build/"
 input_css = build_folder + "style.css"
 constants_js = build_folder + "constants.js"
 footer_js = build_folder + "footer.js"
+rules_path = build_folder + "rules.html"
 
 output_path = build_folder + "index.html"
 
@@ -12,6 +13,11 @@ output_path = build_folder + "index.html"
 html_file = open(input_html, "r")
 content = html_file.read()
 html_file.close()
+
+# Inject Rules
+rules_file = open(rules_path, "r")
+content = content.replace("<!-- rules.html -->", rules_file.read())
+rules_file.close()
 
 # Inject CSS
 css_file = open(input_css, "r")

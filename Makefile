@@ -1,7 +1,7 @@
 dist/index.html: build/index.html dist/ dist/qr.png package.json node_modules/
 	npm run html-minifier
 
-build/index.html: build/ src/index.html build/constants.js build/footer.js build/style.css bundle.py
+build/index.html: build/ src/index.html build/rules.html build/constants.js build/footer.js build/style.css bundle.py
 	python3 bundle.py
 
 dist/:
@@ -9,6 +9,9 @@ dist/:
 
 node_modules/:
 	npm install
+
+build/rules.html: src/rules.md package.json node_modules/
+	npm run marked
 
 build/constants.js: build/ src/constants.js package.json node_modules/
 	npm run babel
