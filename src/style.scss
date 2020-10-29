@@ -5,7 +5,7 @@ $bgDark: #1A237E;
 $textLight: invert($bgDark, 100%);
 $textDark: invert($bgLight, 100%);
 
-$linkColor: #29B6F6;
+$linkColor: #03A9F4;
 $linkColorActive: #0277BD;
 $linkColorDark: complement($linkColor);
 $linkColorActiveDark: complement($linkColorActive);
@@ -50,7 +50,6 @@ hr {
 a {
   color: $linkColor;
   text-decoration: none;
-  text-shadow: 1px 1px 2px $transparentBlack;
 }
 
 a:hover {
@@ -60,6 +59,7 @@ a:hover {
 
 .container {
   margin: 8px;
+  padding-bottom: 5rem;
 }
 
 .bg-light {
@@ -74,6 +74,7 @@ a:hover {
 
 .bg-dark a {
   color: $linkColorDark;
+  text-shadow: 1px 1px 2px $transparentBlack;
 }
 
 .bg-dark a:hover {
@@ -96,12 +97,11 @@ a:hover {
 .navbar-brand {
   padding: 5px 0px;
   font-size: 1.25rem;
-  text-shadow: 2px 2px 1px $transparentBlack8;
+  text-shadow: 2px 2px 1px $transparentBlack;
 }
 
 .footer {
   border-top: 1px solid $secondaryBorder;
-  margin-top: 4rem;
   padding: 16px 8px;
 }
 
