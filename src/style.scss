@@ -83,6 +83,7 @@ a:hover {
 
 .navbar {
   align-items: center;
+  box-shadow: 0px 1px 3px $transparentBlack;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

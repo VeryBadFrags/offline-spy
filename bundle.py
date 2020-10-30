@@ -6,6 +6,7 @@ input_css = build_folder + "style.css"
 constants_js = build_folder + "constants.js"
 footer_js = build_folder + "footer.js"
 rules_path = build_folder + "rules.html"
+footer_html_path = build_folder + "footer.html"
 
 output_path = build_folder + "index.html"
 
@@ -18,6 +19,11 @@ html_file.close()
 rules_file = open(rules_path, "r")
 content = content.replace("<!-- rules.html -->", rules_file.read())
 rules_file.close()
+
+# Inject Footer HTML
+footer_file = open(footer_html_path, "r")
+content = content.replace("<!-- footer.html -->", footer_file.read())
+footer_file.close()
 
 # Inject CSS
 css_file = open(input_css, "r")
