@@ -12,4 +12,6 @@ Suggestions, Feedback? <spy@verybadfrags.com>
 
 Version: 1.1.0
 
-<div class="small">Spyfall is a game designed by Alexandr Ushan and published by <a href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby World</a>. This project is not affiliated with Alexandr Ushan or Hobby World.</div>
+<small>Spyfall is a game designed by Alexandr Ushan and published by <a href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby World</a>. This project is not affiliated with Alexandr Ushan or Hobby World.</small>
+
+<small>Favicon by <a href="https://uxwing.com/" target="_blank" rel="noopener noreferrer">UXWing</a></small>
