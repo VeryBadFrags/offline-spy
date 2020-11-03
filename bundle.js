@@ -6,9 +6,9 @@ const inputCss = 'build/style.css';
 const inputConstantsJs = 'build/constants.js';
 const inputFooterJs = 'build/footer.js';
 
-const outputHtmlFile = "build/index.html";
+const outputHtmlFile = "build/bundled.html";
 
-let mainHtmlFile = fs.readFileSync('src/index.html');
+let mainHtmlFile = fs.readFileSync('build/index.html');
 let mainHtml = mainHtmlFile.toString();
 
 // Inject HTML Pages
