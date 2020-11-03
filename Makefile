@@ -32,7 +32,7 @@ build/style.css: src/*.scss package.json node_modules/
 dist/qr.svg: dist/ package.json node_modules/
 	npm run qrcode
 
-build/faviconData.json: faviconDescription.json assets/unknown-person.svg package.json
+build/faviconData.json: faviconDescription.json assets/privacy-private.svg package.json
 	npm run favicon-generate
 
 build/:
