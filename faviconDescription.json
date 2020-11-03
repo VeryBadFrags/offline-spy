@@ -15,7 +15,7 @@
 		},
 		"desktopBrowser": {
 			"design": "background",
-			"backgroundColor": "#ffffff",
+			"backgroundColor": "#e8eaf6",
 			"backgroundRadius": 1,
 			"imageScale": 0.8
 		},
