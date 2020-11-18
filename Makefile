@@ -1,7 +1,7 @@
 # Generate all the output files
 .PHONY: generate
 generate: dist/index.html dist/qr.svg
-	@echo 'Built site to: dist/'
+	@echo 'Generated site into: dist/'
 
 # Minify final HTML
 dist/index.html: node_modules/ dist/ build/bundled.html package.json
@@ -15,7 +15,7 @@ build/bundled.html: bundle.js build/ build/index.html build/rules.html build/foo
 build/index.html: node_modules/ src/index.html package.json build/faviconData.json
 	npm run favicon-inject
 
-# Setup real-favicon
+# Generate favicons
 build/faviconData.json: node_modules/ faviconDescription.json assets/privacy-private.svg package.json
 	npm run favicon-generate
 
