@@ -162,10 +162,10 @@ function setTimerDisplay(timer, display) {
     let minutes = parseInt(timer / 60, 10);
     let seconds = parseInt(timer % 60, 10);
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    minutes = minutes < 10 ? ("0" + minutes) : minutes;
+    seconds = seconds < 10 ? ("0" + seconds) : seconds;
 
-    display.textContent = "⏱ " + minutes + ":" + seconds;
+    display.textContent = `⏱ ${minutes}:${seconds}`;
 }
 
 /* onload */
@@ -185,12 +185,11 @@ function setTimerDisplay(timer, display) {
 /* Show the list of Locations */
 {
     let locationsListElement = document.getElementById("locationsList");
-    for (let i = 0; i < locationsList.length; i++) {
-        let locationName = locationsList[i];
+    locationsList.forEach(locationName => {
         let li = document.createElement("li");
         li.innerHTML = locationName;
         locationsListElement.appendChild(li);
-    }
+    });
 }
 
 /* Set the list of available Avatars */
