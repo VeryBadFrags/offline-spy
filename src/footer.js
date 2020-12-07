@@ -1,31 +1,35 @@
 let intervalId;
 
 function startGame() {
+    window.scrollTo(0, 0);
     resetErrors();
 
-    /* Get the Game params */
+    // Get the Game params
     let seed = document.getElementById("seed").value.toUpperCase();
     let iterationField = document.getElementById("iteration");
     let playerSelect = document.getElementById("player");
     let playerID = Number(playerSelect.options[playerSelect.selectedIndex].value);
     let totalPlayers = getTotalNumberOfPlayers();
 
-    /* Validate the params */
+    if (playerID == -1) {
+        printError(`Please select an 👤 Avatar`);
+        return;
+    }
+
+    // Validate the params
     while (seed.length < 4) {
         seed += "A";
     }
     if (playerID > totalPlayers) {
-        let errorBox = document.getElementById("error");
-        errorBox.innerHTML = "Error: 👤 > 👥 <br> Player # greater than total number of players";
-        errorBox.style.display = "block";
+        printError("Error: 👤 > 👥 <br> Player # greater than total number of players");
         return;
     }
 
-    /* Generate randomness and setup the game window */
+    // Generate randomness and setup the game window
     {
         let randomNumber = getRNG(seed, iterationField.value, totalPlayers);
 
-        /* Set Location */
+        // Set Location
         {
             let locationName = "❓";
             let isSpy = isPsy(randomNumber, playerID, totalPlayers);
@@ -65,8 +69,14 @@ function startGame() {
         startTimer(60 * 5, timer);
 
         document.getElementById("gameWindow").style.display = "inline-block";
-        window.scrollTo(0, 0);
     }
+}
+
+// Print an error box at the top of the page
+function printError(content) {
+    let errorBox = document.getElementById("error");
+    errorBox.innerText = content;
+    errorBox.style.display = "block";
 }
 
 function resetErrors() {
@@ -77,11 +87,7 @@ function resetErrors() {
 
 /* Pseudo-LFSR, it just needs to be fast and unpredictable */
 function getRNG(seed, iteration, totalPlayers) {
-    let startDate = 0;
-    for (let i = 0; i < seed.length; i++) {
-        let charCode = seed.charCodeAt(i) + iteration + totalPlayers;
-        startDate += charCode * (i + 1);
-    }
+    let startDate = [...seed].reduce((acc, _, i) => acc + (seed.charCodeAt(i) + iteration + totalPlayers) * (i + 1), 0);
 
     const modulo = 65536;
     startDate %= modulo;
@@ -176,9 +182,7 @@ function setTimerDisplay(timer, display) {
     const charactersLength = characters.length;
 
     let newSeed = "";
-    for (let i = 0; i < 4; i++) {
-        newSeed += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
+    [...Array(4).keys()].forEach(i => newSeed += characters.charAt(Math.floor(Math.random() * charactersLength)));
     document.getElementById("seed").value = newSeed;
 }
 
@@ -188,7 +192,7 @@ function setTimerDisplay(timer, display) {
     locationsList.forEach(locationName => {
         let li = document.createElement("li");
         li.innerHTML = locationName;
-        locationsListElement.appendChild(li);
+        locationsListElement.append(li);
     });
 }
 
@@ -197,12 +201,17 @@ const playerListElement = document.getElementById("player");
 function setPlayersList() {
     removeOptions(playerListElement);
     let totalPlayers = getTotalNumberOfPlayers();
-    for (let i = 0; i < players.length && i < totalPlayers; i++) {
+
+    let emptyOpt = document.createElement('option');
+    emptyOpt.value = -1;
+    playerListElement.append(emptyOpt);
+
+    [...Array(Math.min(players.length, totalPlayers)).keys()].map(i => {
         let opt = document.createElement('option');
         opt.value = i;
         opt.innerHTML = players[i];
-        playerListElement.appendChild(opt);
-    }
+        return opt;
+    }).forEach(node => playerListElement.append(node));
 }
 
 document.getElementById("total-players").max = players.length;
