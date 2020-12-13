@@ -16,7 +16,7 @@ build/index.html: node_modules/ src/index.html package.json build/faviconData.js
 	npm run favicon-inject
 
 # Generate favicons
-build/faviconData.json: node_modules/ faviconDescription.json assets/privacy-private.svg package.json
+build/faviconData.json: node_modules/ faviconDescription.json assets/privacy-private.svg package.json build/
 	npm run favicon-generate
 
 # Transpile Rules
