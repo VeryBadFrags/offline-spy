@@ -1,62 +1,65 @@
-src = src
-build = build
-dist = dist
-node = package.json node_modules/
+ASSETS = assets
+SRC = src
+
+BUILD = build
+DIST = dist
+
+NODE_DEPS = package.json node_modules/
 
 # Generate all the output files
 .PHONY: generate
-generate: ${dist}/index.html ${dist}/qr.svg
-	@echo 'Generated site into: ${dist}/'
+generate: ${DIST}/index.html ${DIST}/qr.svg
+	@echo 'Generated site into: ${DIST}/'
 
 # Minify final HTML
-${dist}/index.html: ${dist} ${build}/bundled.html ${node}
+${DIST}/index.html: ${DIST} ${BUILD}/bundled.html ${NODE_DEPS}
 	npm run html-minifier
 
 # Bundle JS and CSS
-${build}/bundled.html: bundle.js ${build}/ ${build}/index.html ${build}/rules.html ${build}/footer.html ${build}/constants.js ${build}/footer.js ${build}/style.css
+${BUILD}/bundled.html: bundle.js ${BUILD}/ ${BUILD}/index.html ${BUILD}/rules.html ${BUILD}/footer.html ${BUILD}/constants.js ${BUILD}/footer.js ${BUILD}/style.css
 	node bundle.js
 
-# Inject favicons into ${build}/index.html
-${build}/index.html: ${src}/index.html ${build}/faviconData.json ${node}
+# Inject favicons into ${BUILD}/index.html
+${BUILD}/index.html: ${SRC}/index.html ${BUILD}/faviconData.json ${NODE_DEPS}
 	npm run favicon-inject
 
 # Generate favicons
-${build}/faviconData.json: faviconDescription.json assets/privacy-private.svg ${build} ${node}
+${BUILD}/faviconData.json: faviconDescription.json ${ASSETS}/privacy-private.svg ${BUILD} ${NODE_DEPS}
 	npm run favicon-generate
 
 # Transpile Rules
-${build}/rules.html: ${build} ${src}/rules.md ${node}
+${BUILD}/rules.html: ${BUILD} ${SRC}/rules.md ${NODE_DEPS}
 	npm run marked
 
 # Transpile Footer
-${build}/footer.html: ${build} ${src}/footer.md ${node}
+${BUILD}/footer.html: ${BUILD} ${SRC}/footer.md ${NODE_DEPS}
 	npm run marked
 
 # Run constants.js through Babel
-${build}/constants.js: ${src}/constants.js ${node}
+${BUILD}/constants.js: ${SRC}/constants.js ${NODE_DEPS}
 	npm run babel
 
 # Run footer.js through Babel
-${build}/footer.js: ${src}/footer.js ${node}
+${BUILD}/footer.js: ${SRC}/footer.js ${NODE_DEPS}
 	npm run babel
 
 # Generate CSS from Sass
-${build}/style.css: ${src}/*.scss ${node}
+${BUILD}/style.css: ${SRC}/*.scss ${NODE_DEPS}
 	npm run sass
 
 # Generate QR Code
-${dist}/qr.svg: ${dist} ${node}
+${DIST}/qr.svg: ${DIST} ${NODE_DEPS}
 	npm run qrcode
 
-${build}:
-	mkdir -p ${build}
+${BUILD}:
+	mkdir -p ${BUILD}
 
-${dist}:
-	mkdir -p ${dist}
+${DIST}:
+	mkdir -p ${DIST}
 
 node_modules/:
 	npm install
 
 .PHONY: clean
 clean:
-	rm -rf ${build}/ ${dist}/ node_modules/ ${src}/*.css ${src}/*.css.map
+	rm -rf ${BUILD}/ ${DIST}/ node_modules/ ${SRC}/*.css ${SRC}/*.css.map
