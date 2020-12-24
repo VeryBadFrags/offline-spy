@@ -3,6 +3,7 @@
   "description": "A standalone social deduction game.",
   "private": true,
   "scripts": {
+    "watch": "watch 'make' src",
     "babel": "babel src -d build",
     "favicon-generate": "real-favicon generate faviconDescription.json build/faviconData.json dist",
     "favicon-inject": "real-favicon inject build/faviconData.json build src/index.html",
@@ -23,5 +24,8 @@
     "marked": "^1.2.2",
     "node-sass": "^4.14.1",
     "qrcode": "^1.4.4"
+  },
+  "devDependencies": {
+    "watch": "^1.0.2"
   }
 }

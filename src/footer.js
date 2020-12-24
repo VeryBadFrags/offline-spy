@@ -143,7 +143,7 @@ function getTotalNumberOfPlayers() {
     return document.getElementById("total-players").value;
 }
 
-/* Remove the Options from a Select */
+// Remove the Options from a Select
 function removeOptions(selectElement) {
     for (let i = selectElement.options.length - 1; i >= 0; i--) {
         selectElement.remove(i);
@@ -216,3 +216,12 @@ function setPlayersList() {
 
 document.getElementById("total-players").max = players.length;
 setPlayersList();
+
+document.getElementById('start-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    startGame();
+});
+
+document.getElementById('secret-block-button').addEventListener('click', () => showHide('secretBlock'));
+
+document.getElementById('rules-button').addEventListener('click', () => showHide('instructions'));

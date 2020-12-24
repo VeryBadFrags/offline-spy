@@ -46,7 +46,7 @@
                 <br>
                 <div id="timer"></div>
                 <div>
-                    <button class="btn btn-outline" onclick="showHide('secretBlock');">👓 Show/Hide</button>
+                    <button id="secret-block-button" class="btn btn-outline">👓 Show/Hide</button>
                 </div>
                 <div id="secretBlock" class="secret-card">
                     <div id="spyBlock">
@@ -73,28 +73,30 @@
                 <div>
                     <h3 class="card-title">⚙️ Game Settings</h3>
                 </div>
-                <div>
-                    <label for="total-players">👥 Total players</label>
-                    <input type="number" id="total-players" class="form-control" name="totalPlayers" value="3" min="3"
-                        oninput="setPlayersList();" autocomplete="off">
-                </div>
-                <div>
-                    <label for="player">👤 Avatar (must be unique)</label>
-                    <div class="custom-select">
-                        <select name="player" id="player" class="form-control"></select>
+                <form id="start-form">
+                    <div>
+                        <label for="total-players">👥 Total players</label>
+                        <input type="number" id="total-players" class="form-control" name="totalPlayers" value="3"
+                            min="3" oninput="setPlayersList();" autocomplete="off">
                     </div>
-                </div>
-                <div>
-                    <label for="seed">🎲 Code</label>
-                    <input type="text" id="seed" class="form-control" name="code" value="ABCD" pattern="[A-Za-z0-9]{4}"
-                        title="4 Characters Code" maxlength="4" autocomplete="off">
-                </div>
-                <div>
-                    <label for="iteration">🔢 Round</label>
-                    <input type="number" id="iteration" class="form-control" name="round" value="1" min="1"
-                        autocomplete="off">
-                </div>
-                <button id="startButton" class="btn btn-primary" onclick="startGame();">🏁 Start New Game</button>
+                    <div>
+                        <label for="player">👤 Avatar (must be unique)</label>
+                        <div class="custom-select">
+                            <select name="player" id="player" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="seed">🎲 Code</label>
+                        <input type="text" id="seed" class="form-control" name="code" value="ABCD"
+                            pattern="[A-Za-z0-9]{4}" title="4 Characters Code" maxlength="4" autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="iteration">🔢 Round</label>
+                        <input type="number" id="iteration" class="form-control" name="round" value="1" min="1"
+                            autocomplete="off">
+                    </div>
+                    <button id="startButton" class="btn btn-primary">🏁 Start New Game</button>
+                </form>
             </div>
 
         </div>
@@ -103,7 +105,7 @@
             <!-- Rules -->
             <div class="card bg-light">
                 <h3 class="card-title">📖 Rules</h3>
-                <button class="btn btn-outline" onclick="showHide('instructions');">👓 Show/Hide</button>
+                <button id="rules-button" class="btn btn-outline">👓 Show/Hide</button>
                 <div id="instructions" style="display: none;">
                     <!-- rules.html -->
                 </div>
