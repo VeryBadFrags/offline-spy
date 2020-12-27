@@ -1,6 +1,6 @@
 Download this page and play anywhere!
 
-<img src="https://spy.verybadfrags.com/qr.svg" alt="QR Code to this site" width="200"/>
+<img src="https://offline-spy.verybadfrags.com/qr.svg" alt="QR Code to this site" width="200"/>
 
 Suggestions, Feedback? <spy@verybadfrags.com>
 

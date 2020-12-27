@@ -188,7 +188,7 @@ function setTimerDisplay(timer, display) {
 
 /* Show the list of Locations */
 {
-    let locationsListElement = document.getElementById("locationsList");
+    let locationsListElement = document.getElementById('locations-list');
     locationsList.forEach(locationName => {
         let li = document.createElement("li");
         li.innerHTML = locationName;

@@ -7,7 +7,7 @@
 A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
 There are emojis to help non-english speakers.
 
-* [Play the game](https://spy.verybadfrags.com)
+* [Play the game](https://offline-spy.verybadfrags.com)
 * [Download the standalone HTML page](https://github.com/VeryBadFrags/offline-spy/releases)
 
 ## Build
