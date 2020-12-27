@@ -24,7 +24,7 @@ ${BUILD}/index.html: ${SRC}/index.html ${BUILD}/faviconData.json ${NODE_DEPS}
 	npm run favicon-inject
 
 # Generate favicons
-${BUILD}/faviconData.json: faviconDescription.json ${ASSETS}/privacy-private.svg ${BUILD}
+${BUILD}/faviconData.json: faviconDescription.json ${ASSETS}/privacy-private.svg ${BUILD} ${NODE_DEPS}
 	npm run favicon-generate
 
 # Transpile Rules
@@ -51,9 +51,11 @@ ${BUILD}/style.css: ${SRC}/*.scss ${NODE_DEPS}
 ${DIST}/qr.svg: ${DIST} ${NODE_DEPS}
 	npm run qrcode
 
+# Temporary work folder
 ${BUILD}:
 	mkdir -p ${BUILD}
 
+# Final output folder
 ${DIST}:
 	mkdir -p ${DIST}
 
@@ -62,4 +64,4 @@ node_modules/:
 
 .PHONY: clean
 clean:
-	rm -rf ${BUILD}/ ${DIST}/ node_modules/ ${SRC}/*.css ${SRC}/*.css.map
+	rm -rf ${BUILD}/ ${DIST}/ node_modules/
