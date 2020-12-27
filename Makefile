@@ -24,7 +24,7 @@ ${BUILD}/index.html: ${SRC}/index.html ${BUILD}/faviconData.json ${NODE_DEPS}
 	npm run favicon-inject
 
 # Generate favicons
-${BUILD}/faviconData.json: faviconDescription.json ${ASSETS}/privacy-private.svg ${BUILD} ${NODE_DEPS}
+${BUILD}/faviconData.json: faviconDescription.json ${ASSETS}/privacy-private.svg ${BUILD}
 	npm run favicon-generate
 
 # Transpile Rules
