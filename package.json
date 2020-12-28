@@ -11,7 +11,7 @@
     "html-minifier": "html-minifier build/bundled.html -o dist/index.html --collapse-whitespace --remove-comments --use-short-doctype --minify-css true --minify-js true",
     "marked": "marked -o build/rules.html -i src/rules.md && marked -o build/footer.html -i src/footer.md --mangle",
     "qrcode": "qrcode -o dist/qr.svg https://offline-spy.verybadfrags.com",
-    "sass": "node-sass --no-source-map src/style.scss build/style.css --output-style compressed",
+    "sass": "sass src/style.scss:build/style.css -s compressed --no-source-map",
     "test": "npm run favicon-check"
   },
   "author": "VeryBadFrags",
@@ -22,8 +22,8 @@
     "cli-real-favicon": "0.0.8",
     "html-minifier": "^4.0.0",
     "marked": "^1.2.2",
-    "node-sass": "^4.14.1",
-    "qrcode": "^1.4.4"
+    "qrcode": "^1.4.4",
+    "sass": "^1.30.0"
   },
   "devDependencies": {
     "watch": "^1.0.2"
