@@ -16,7 +16,7 @@ ${DIST}/index.html: ${DIST} ${BUILD}/bundled.html ${NODE_DEPS}
 	npm run html-minifier
 
 # Bundle JS and CSS
-${BUILD}/bundled.html: bundle.js ${BUILD}/ ${BUILD}/index.html ${BUILD}/rules.html ${BUILD}/footer.html ${BUILD}/constants.js ${BUILD}/footer.js ${BUILD}/style.css
+${BUILD}/bundled.html: bundle.js ${BUILD} ${BUILD}/index.html ${BUILD}/rules.html ${BUILD}/footer.html ${BUILD}/constants.js ${BUILD}/footer.js ${BUILD}/style.css
 	node bundle.js
 
 # Inject favicons into ${BUILD}/index.html
