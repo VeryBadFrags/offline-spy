@@ -8,7 +8,7 @@ NODE_DEPS = package.json node_modules/
 
 # Generate all the output files
 .PHONY: generate
-generate: ${DIST}/qr.svg ${DIST}/index.html
+generate: ${DIST}/qr.svg ${DIST}/index.html ${DIST}/favicon.svg
 	@echo 'Generated site into: ${DIST}/'
 
 # Bundle JS and CSS
@@ -21,6 +21,9 @@ ${BUILD}/index.html: snowpack.config.js ${SRC}/* ${NODE_DEPS}
 # Generate QR Code - run in background because of missing exit value
 ${DIST}/qr.svg: ${DIST} ${NODE_DEPS}
 	npm run qrcode&
+
+${DIST}/favicon.svg: ${DIST} assets/privacy-private.svg
+	cp assets/privacy-private.svg ${DIST}/favicon.svg
 
 # Final output folder
 ${DIST}:
