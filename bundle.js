@@ -6,7 +6,7 @@ const inputCss = 'build/style.css';
 const inputConstantsJs = 'build/constants.js';
 const inputFooterJs = 'build/footer.js';
 
-const outputHtmlFile = "build/bundled.html";
+const outputHtmlFile = "dist/index.html";
 
 let mainHtmlFile = fs.readFileSync('build/index.html');
 let mainHtml = mainHtmlFile.toString();
@@ -19,7 +19,7 @@ mainHtml = mainHtml.replace("<!-- footer.html -->", footerHtml.toString());
 
 // Inject CSS
 let css = fs.readFileSync(inputCss);
-mainHtml = mainHtml.replace('<link rel="stylesheet" type="text/css" href="style.css">', "<style>" + css.toString() + "</style>");
+mainHtml = mainHtml.replace('<link href="style.css" rel="stylesheet" type="text/css">', "<style>" + css.toString() + "</style>");
 
 // Inject JS
 let scriptOpen = "<script>";

@@ -2,11 +2,11 @@ Download this page and play anywhere!
 
 <img src="https://offline-spy.verybadfrags.com/qr.svg" alt="QR Code to this site" width="200"/>
 
-Suggestions, Feedback? <spy@verybadfrags.com>
+Suggestions, Feedback? <offlinespy@verybadfrags.com>
 
 <a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">🐙 Source code on GitHub</a>
 
-<a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Like this game?</a>
+Like this game? <a href="https://www.buymeacoffee.com/verybadfrags" target="_blank" rel="noopener noreferrer">Support VeryBadFrags</a>
 
 [Play 🐺 Offline Werewolf](https://wolf.verybadfrags.com)
 
