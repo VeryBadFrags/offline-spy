@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "snowpack dev",
     "build": "snowpack build",
-    "test": "npm run favicon-check",
     "qrcode": "qrcode -o dist/qr.svg https://offline-spy.verybadfrags.com"
   },
   "author": "VeryBadFrags",

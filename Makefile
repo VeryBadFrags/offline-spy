@@ -30,7 +30,7 @@ ${DIST}:
 	mkdir -p ${DIST}
 
 node_modules/:
-	npm ci
+	npm ci --only=prod --no-optional
 
 .PHONY: clean
 clean:
