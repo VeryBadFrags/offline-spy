@@ -3,10 +3,10 @@ SRC = src
 BUILD = build
 DIST = dist
 
-${DIST}/standalone.html: bundle.js ${BUILD}/* ${DIST}
+${DIST}/standalone.html: bundle.js ${BUILD}/index.html ${DIST}
 	node bundle.js
 
-${BUILD}/*: snowpack.config.js ${SRC}/* package.json node_modules/
+${BUILD}/index.html: snowpack.config.js ${SRC}/* package.json node_modules/
 	npm run build
 
 # Final output folder
