@@ -6,7 +6,7 @@ const inputCss = 'build/style.css';
 const inputConstantsJs = 'build/constants.js';
 const inputFooterJs = 'build/footer.js';
 
-const outputHtmlFile = "dist/index.html";
+const outputHtmlFile = "dist/standalone.html";
 
 let mainHtmlFile = fs.readFileSync('build/index.html');
 let mainHtml = mainHtmlFile.toString();

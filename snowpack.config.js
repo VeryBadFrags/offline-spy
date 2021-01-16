@@ -1,24 +1,19 @@
 module.exports = {
+    mount: {
+        "src": { url: "/" },
+        "assets": { url: "/", static: true }
+    },
     plugins: [
         ['snowpack-plugin-markdown-html'],
         ['@snowpack/plugin-sass', {
-            style: 'compressed',
+            style: "compressed",
             sourceMap: false,
         }],
-        ["@snowpack/plugin-babel", {
+        ['@snowpack/plugin-babel', {
             transformOptions: {
-                "presets": ["@babel/preset-env"]
+                presets: ['@babel/preset-env']
             }
         }],
-        ['snowpack-plugin-minify-html', {
-            htmlMinifierOptions: {
-                sortAttributes: true,
-                removeComments: false,
-                collapseWhitespace: true,
-            },
-        }],
+        ["@snowpack/plugin-optimize"],
     ],
-    "mount": {
-        "src": { url: "/" },
-    }
 };
