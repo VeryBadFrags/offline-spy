@@ -4,7 +4,6 @@ module.exports = {
         "assets": { url: "/", static: true }
     },
     plugins: [
-        ['snowpack-plugin-markdown-html'],
         ['@snowpack/plugin-sass', {
             style: "compressed",
             sourceMap: false,

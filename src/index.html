@@ -84,7 +84,7 @@
                     <div>
                         <label for="player">👤 Avatar (must be unique)</label>
                         <div class="custom-select">
-                            <select name="player" id="player" class="form-control"></select>
+                            <select name="player" id="player" class="form-control" required></select>
                         </div>
                     </div>
                     <div>
@@ -109,7 +109,46 @@
                 <h3 class="card-title">📖 Rules</h3>
                 <button id="rules-button" class="btn btn-outline">👓 Show/Hide</button>
                 <div id="instructions" style="display: none;">
-                    <!-- rules.html -->
+                    <ul>
+                        <li>👥 3-10 Players</li>
+                        <li>⏱ 5 Minutes Rounds</li>
+                        <li>📱 1 Device per player</li>
+                    </ul>
+                    <h4><a id="setup" class="anchor" aria-hidden="true" href="#setup"></a>Setup</h4>
+                    <ul>
+                        <li>Players must input the same 🎲&nbsp;Game Code, 🔢&nbsp;Round Number, and 👥&nbsp;Total
+                            players count</li>
+                        <li>Players must pick a <em>unique</em> 👤&nbsp;Avatar</li>
+                        <li>When the game starts, players must confirm that they have the same Night Fingerprint
+                            (the game is void otherwise)</li>
+                    </ul>
+                    <h4><a id="during-the-game" class="anchor" aria-hidden="true" href="#during-the-game"></a>During
+                        the game</h4>
+                    <ul>
+                        <li>All players are in the same location</li>
+                        <li>The spy has to guess the current location</li>
+                        <li>The other players have to guess who the spy is</li>
+                        <li>The first player picks another person and asks them a question about the location (Do
+                            people wear a uniform? Is there a specific color in this place? ...)</li>
+                        <li>The player who just answered the question asks the next question to another person</li>
+                    </ul>
+                    <h4><a id="when-the-timer-ends" class="anchor" aria-hidden="true"
+                            href="#when-the-timer-ends"></a>When the timer ends</h4>
+                    <ul>
+                        <li>Players vote to designate the spy<ul>
+                                <li>If the players have voted for the spy, the spy has one chance to guess the
+                                    location and win the game</li>
+                                <li>If the players have voted for an innocent, the spy wins</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h4><a id="at-any-time" class="anchor" aria-hidden="true" href="#at-any-time"></a>At any time
+                    </h4>
+                    <ul>
+                        <li>The players can vote for a spy if they have a majority</li>
+                        <li>The spy can guess the location. The spy wins the game if he guessed correctly, or loses
+                            otherwise</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -119,7 +158,19 @@
     <!-- End Container -->
 
     <div class="footer bg-light">
-        <!-- footer.html -->
+        <p>Download this page and play anywhere!</p>
+        <img src="https://offline-spy.verybadfrags.com/qr.svg" alt="QR Code to this site" width="200" />
+        <p>Suggestions, Feedback? <a href="mailto:offlinespy@verybadfrags.com">offlinespy@verybadfrags.com</a></p>
+        <p><a href="https://github.com/VeryBadFrags/offline-spy" target="_blank" rel="noopener noreferrer">💾 Source
+                code on GitHub</a></p>
+        <p>Like this game? <a href="https://www.buymeacoffee.com/verybadfrags" target="_blank"
+                rel="noopener noreferrer">Support VeryBadFrags</a></p>
+        <p><a href="https://wolf.verybadfrags.com">Play 🐺 Offline Werewolf</a></p>
+        <p>Version: 1.1.0</p>
+        <p><small>Spyfall is a game designed by Alexandr Ushan and published by <a
+                    href="https://hwint.ru/portfolio-item/spyfall/" target="_blank" rel="noopener noreferrer">Hobby
+                    World</a>. This project is not affiliated with Alexandr Ushan or Hobby World.</small></p>
+        <p><small>Favicon by <a href="https://uxwing.com/" target="_blank" rel="noopener noreferrer">UXWing</a></small></p>
     </div>
 
     <script src="footer.js"></script>
