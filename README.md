@@ -1,7 +1,6 @@
 # Offline Spy
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/VeryBadFrags/offline-spy)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/VeryBadFrags/offline-spy.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/VeryBadFrags/offline-spy/context:javascript)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
