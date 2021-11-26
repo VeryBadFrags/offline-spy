@@ -15,7 +15,11 @@ There are emojis to help children and non-english speakers.
 Minify and bundle the css and js.
 The output is located in the `build/` folder.
 
-- Get [Node](https://nodejs.org/)
+- Get [Node](https://nodejs.org/), install dependencies
+
+  ```shell
+  npm i
+  ```
 
 - Build
 
