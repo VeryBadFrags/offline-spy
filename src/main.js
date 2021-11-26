@@ -1,8 +1,11 @@
+import * as Constants from "./constants.js";
+import * as Utils from "./utils.js";
+
 let intervalId;
 
 function startGame() {
   window.scrollTo(0, 0);
-  resetErrors();
+  Utils.resetErrors();
 
   // Get the Game params
   let seed = document.getElementById("seed").value.toUpperCase();
@@ -12,7 +15,7 @@ function startGame() {
   let totalPlayers = getTotalNumberOfPlayers();
 
   if (playerID == -1) {
-    printError(`Please select an 👤 Avatar`);
+    Utils.printError(`Please select an 👤 Avatar`);
     return;
   }
 
@@ -21,7 +24,7 @@ function startGame() {
     seed += "A";
   }
   if (playerID > totalPlayers) {
-    printError(
+    Utils.printError(
       "Error: 👤 > 👥 <br> Player # greater than total number of players"
     );
     return;
@@ -55,10 +58,10 @@ function startGame() {
     /* Set First Player */
     {
       let firstPlayer = getFirstPlayer(randomNumber, playerID, totalPlayers);
-      document.getElementById("firstPlayer").innerHTML = players[firstPlayer];
+      document.getElementById("firstPlayer").innerHTML = Constants.players[firstPlayer];
     }
 
-    document.getElementById("playerid").innerHTML = players[playerID];
+    document.getElementById("playerid").innerHTML = Constants.players[playerID];
     iterationField.value = iterationField.value * 1 + 1;
   }
 
@@ -72,19 +75,6 @@ function startGame() {
 
     document.getElementById("gameWindow").style.display = "inline-block";
   }
-}
-
-// Print an error box at the top of the page
-function printError(content) {
-  let errorBox = document.getElementById("error");
-  errorBox.innerText = content;
-  errorBox.style.display = "block";
-}
-
-function resetErrors() {
-  let errorBox = document.getElementById("error");
-  errorBox.style.display = "none";
-  errorBox.innerHTML = "";
 }
 
 /* Pseudo-LFSR, it just needs to be fast and unpredictable */
@@ -120,14 +110,14 @@ function getFingerprint(seedNumber) {
   let seed2 = Math.floor(seedNumber / 10);
   let seed3 = seedNumber ^ (seedNumber >> 2);
   return (
-    validations[seed1 % validations.length] +
-    validations[seed2 % validations.length] +
-    validations[seed3 % validations.length]
+    Constants.validations[seed1 % Constants.validations.length] +
+    Constants.validations[seed2 % Constants.validations.length] +
+    Constants.validations[seed3 % Constants.validations.length]
   );
 }
 
 function getLocation(seedNumber) {
-  return locationsList[seedNumber % locationsList.length];
+  return Constants.locationsList[seedNumber % Constants.locationsList.length];
 }
 
 function isPsy(seedNumber, playerId, totalPlayers) {
@@ -192,7 +182,7 @@ function setTimerDisplay(timer, display) {
 
   let newSeed = "";
   [...Array(4).keys()].forEach(
-    (i) =>
+    () =>
       (newSeed += characters.charAt(
         Math.floor(Math.random() * charactersLength)
       ))
@@ -203,7 +193,7 @@ function setTimerDisplay(timer, display) {
 /* Show the list of Locations */
 {
   let locationsListElement = document.getElementById("locations-list");
-  locationsList.forEach((locationName) => {
+  Constants.locationsList.forEach((locationName) => {
     let li = document.createElement("li");
     li.innerHTML = locationName;
     locationsListElement.append(li);
@@ -220,17 +210,17 @@ function setPlayersList() {
   emptyOpt.value = -1;
   playerListElement.append(emptyOpt);
 
-  [...Array(Math.min(players.length, totalPlayers)).keys()]
+  [...Array(Math.min(Constants.players.length, totalPlayers)).keys()]
     .map((i) => {
       let opt = document.createElement("option");
       opt.value = i;
-      opt.innerHTML = players[i];
+      opt.innerHTML = Constants.players[i];
       return opt;
     })
     .forEach((node) => playerListElement.append(node));
 }
 
-document.getElementById("total-players").max = players.length;
+document.getElementById("total-players").max = Constants.players.length;
 setPlayersList();
 
 document.getElementById("start-form").addEventListener("submit", (event) => {
