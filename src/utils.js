@@ -20,6 +20,6 @@ export function showHide(elementId) {
   }
 }
 
-export function getTotalNumberOfPlayers() {
+export function getPlayersCount() {
   return document.getElementById("total-players").value;
 }

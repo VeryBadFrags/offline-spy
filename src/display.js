@@ -1,17 +1,15 @@
 import * as Constants from "./constants.js";
 import * as Random from "./random.js";
-import * as Utils from "./utils.js";
 
-export function populatePlayersList() {
+export function populatePlayersList(playersCount) {
   const playerListElement = document.getElementById("player");
   removeOptions(playerListElement);
-  let totalPlayers = Utils.getTotalNumberOfPlayers();
 
   let emptyOpt = document.createElement("option");
   emptyOpt.value = -1;
   playerListElement.append(emptyOpt);
 
-  [...Array(Math.min(Constants.players.length, totalPlayers)).keys()]
+  [...Array(Math.min(Constants.players.length, playersCount)).keys()]
     .map((i) => {
       let opt = document.createElement("option");
       opt.value = i;
@@ -26,6 +24,15 @@ function removeOptions(selectElement) {
   for (let i = selectElement.options.length - 1; i >= 0; i--) {
     selectElement.remove(i);
   }
+}
+
+export function buildLocationsList() {
+  let locationsListElement = document.getElementById("locations-list");
+  Constants.locationsList.forEach((locationName) => {
+    let li = document.createElement("li");
+    li.innerHTML = locationName;
+    locationsListElement.append(li);
+  });
 }
 
 export function initSeed() {

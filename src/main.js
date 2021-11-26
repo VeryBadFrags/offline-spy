@@ -13,7 +13,7 @@ function startGame() {
   let iterationField = document.getElementById("iteration");
   let playerSelect = document.getElementById("player");
   let playerID = Number(playerSelect.options[playerSelect.selectedIndex].value);
-  let totalPlayers = Utils.getTotalNumberOfPlayers();
+  let totalPlayers = Utils.getPlayersCount();
 
   if (playerID == -1) {
     Utils.printError(`Please select an 👤 Avatar`);
@@ -46,19 +46,14 @@ function startGame() {
 /* onload */
 
 Display.initSeed();
+Display.buildLocationsList();
 
-/* Show the list of Locations */
-{
-  let locationsListElement = document.getElementById("locations-list");
-  Constants.locationsList.forEach((locationName) => {
-    let li = document.createElement("li");
-    li.innerHTML = locationName;
-    locationsListElement.append(li);
-  });
-}
-
-document.getElementById("total-players").max = Constants.players.length;
-Display.populatePlayersList();
+const totalPlayersElement = document.getElementById("total-players");
+totalPlayersElement.max = Constants.players.length;
+totalPlayersElement.addEventListener("input", (event) =>
+  Display.populatePlayersList(event.target.value)
+);
+Display.populatePlayersList(totalPlayersElement.value);
 
 document.getElementById("start-form").addEventListener("submit", (event) => {
   event.preventDefault();
