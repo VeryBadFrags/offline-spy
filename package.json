@@ -9,7 +9,7 @@
   },
   "author": "VeryBadFrags",
   "dependencies": {
-    "@snowpack/plugin-sass": "^1.3.0",
+    "@snowpack/plugin-sass": "^1.4.0",
     "snowpack": "^3.8.8"
   },
   "devDependencies": {
