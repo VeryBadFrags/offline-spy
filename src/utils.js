@@ -19,3 +19,7 @@ export function showHide(elementId) {
     elem.style.display = "none";
   }
 }
+
+export function getTotalNumberOfPlayers() {
+  return document.getElementById("total-players").value;
+}

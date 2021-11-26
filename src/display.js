@@ -1,5 +1,37 @@
 import * as Constants from "./constants.js";
 import * as Random from "./random.js";
+import * as Utils from "./utils.js";
+
+export function populatePlayersList() {
+  const playerListElement = document.getElementById("player");
+  removeOptions(playerListElement);
+  let totalPlayers = Utils.getTotalNumberOfPlayers();
+
+  let emptyOpt = document.createElement("option");
+  emptyOpt.value = -1;
+  playerListElement.append(emptyOpt);
+
+  [...Array(Math.min(Constants.players.length, totalPlayers)).keys()]
+    .map((i) => {
+      let opt = document.createElement("option");
+      opt.value = i;
+      opt.innerHTML = Constants.players[i];
+      return opt;
+    })
+    .forEach((node) => playerListElement.append(node));
+}
+
+// Remove the Options from a Select
+function removeOptions(selectElement) {
+  for (let i = selectElement.options.length - 1; i >= 0; i--) {
+    selectElement.remove(i);
+  }
+}
+
+export function initSeed() {
+  let newSeed = Random.generateNewSeed();
+  document.getElementById("seed").value = newSeed;
+}
 
 export function setupDisplayForRound(
   randomNumber,

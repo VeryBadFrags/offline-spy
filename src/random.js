@@ -1,5 +1,8 @@
 import * as Constants from "./constants.js";
 
+const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const charactersLength = characters.length;
+
 /* Pseudo-LFSR, it just needs to be fast and unpredictable */
 export function getRNG(seed, iteration, totalPlayers) {
   let startDate = [...seed].reduce(
@@ -52,7 +55,7 @@ export function getFirstPlayer(seedNumber, totalPlayers) {
   return Math.floor(seedNumber / 10) % totalPlayers;
 }
 
-export function generateNewSeed(characters, charactersLength) {
+export function generateNewSeed() {
   let newSeed = "";
   [...Array(4).keys()].forEach(
     () => (newSeed += characters.charAt(

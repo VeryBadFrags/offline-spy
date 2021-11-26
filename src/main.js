@@ -13,7 +13,7 @@ function startGame() {
   let iterationField = document.getElementById("iteration");
   let playerSelect = document.getElementById("player");
   let playerID = Number(playerSelect.options[playerSelect.selectedIndex].value);
-  let totalPlayers = getTotalNumberOfPlayers();
+  let totalPlayers = Utils.getTotalNumberOfPlayers();
 
   if (playerID == -1) {
     Utils.printError(`Please select an 👤 Avatar`);
@@ -32,33 +32,20 @@ function startGame() {
   }
 
   let randomNumber = Random.getRNG(seed, iterationField.value, totalPlayers);
-  Display.setupDisplayForRound(randomNumber, iterationField, totalPlayers, playerID);
+  Display.setupDisplayForRound(
+    randomNumber,
+    iterationField,
+    totalPlayers,
+    playerID
+  );
 
   let timer = document.getElementById("timer");
   Time.startTimer(60 * 5, timer);
 }
 
-function getTotalNumberOfPlayers() {
-  return document.getElementById("total-players").value;
-}
-
-// Remove the Options from a Select
-function removeOptions(selectElement) {
-  for (let i = selectElement.options.length - 1; i >= 0; i--) {
-    selectElement.remove(i);
-  }
-}
-
 /* onload */
 
-/* Init seed */
-{
-  const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  const charactersLength = characters.length;
-
-  let newSeed = Random.generateNewSeed(characters, charactersLength);
-  document.getElementById("seed").value = newSeed;
-}
+Display.initSeed();
 
 /* Show the list of Locations */
 {
@@ -70,29 +57,8 @@ function removeOptions(selectElement) {
   });
 }
 
-/* Set the list of available Avatars */
-const playerListElement = document.getElementById("player");
-
-function setPlayersList() {
-  removeOptions(playerListElement);
-  let totalPlayers = getTotalNumberOfPlayers();
-
-  let emptyOpt = document.createElement("option");
-  emptyOpt.value = -1;
-  playerListElement.append(emptyOpt);
-
-  [...Array(Math.min(Constants.players.length, totalPlayers)).keys()]
-    .map((i) => {
-      let opt = document.createElement("option");
-      opt.value = i;
-      opt.innerHTML = Constants.players[i];
-      return opt;
-    })
-    .forEach((node) => playerListElement.append(node));
-}
-
 document.getElementById("total-players").max = Constants.players.length;
-setPlayersList();
+Display.populatePlayersList();
 
 document.getElementById("start-form").addEventListener("submit", (event) => {
   event.preventDefault();
