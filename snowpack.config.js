@@ -2,6 +2,7 @@
 // See all supported options: https://www.snowpack.dev/reference/configuration
 
 /** @type {import("snowpack").SnowpackUserConfig } */
+// eslint-disable-next-line no-undef
 module.exports = {
   mount: {
     src: { url: "/" },
@@ -17,14 +18,10 @@ module.exports = {
         },
       },
     ],
-    [
-      "@snowpack/plugin-babel",
-      {
-        transformOptions: {
-          presets: ["@babel/preset-env"],
-        },
-      },
-    ],
-    ["@snowpack/plugin-optimize", { minifyCSS: false }],
   ],
+  optimize: {
+    bundle: true,
+    minify: false,
+    target: "es2019",
+  },
 };
