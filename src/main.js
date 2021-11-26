@@ -1,7 +1,7 @@
 import * as Constants from "./constants.js";
+import * as Random from "./random.js";
+import * as Time from "./time.js";
 import * as Utils from "./utils.js";
-
-let intervalId;
 
 function startGame() {
   window.scrollTo(0, 0);
@@ -32,34 +32,13 @@ function startGame() {
 
   // Generate randomness and setup the game window
   {
-    let randomNumber = getRNG(seed, iterationField.value, totalPlayers);
+    let randomNumber = Random.getRNG(seed, iterationField.value, totalPlayers);
 
-    // Set Location
-    {
-      let locationName = "❓";
-      let isSpy = isPsy(randomNumber, playerID, totalPlayers);
-      if (!isSpy) {
-        locationName = getLocation(randomNumber);
-        document.getElementById("spyBlock").style.display = "none";
-        document.getElementById("innocentBlock").style.display = "block";
-      } else {
-        document.getElementById("spyBlock").style.display = "block";
-        document.getElementById("innocentBlock").style.display = "none";
-      }
-      document.getElementById("location").innerHTML = locationName;
-    }
+    setLocationDisplay(randomNumber, playerID, totalPlayers);
 
-    /* Set Fingerprint */
-    {
-      let fingerprint = getFingerprint(randomNumber);
-      document.getElementById("fingerprint").innerHTML = fingerprint;
-    }
+    setFingerprintDisplay(randomNumber);
 
-    /* Set First Player */
-    {
-      let firstPlayer = getFirstPlayer(randomNumber, playerID, totalPlayers);
-      document.getElementById("firstPlayer").innerHTML = Constants.players[firstPlayer];
-    }
+    setFirstPlayerDisplay(randomNumber, playerID, totalPlayers);
 
     document.getElementById("playerid").innerHTML = Constants.players[playerID];
     iterationField.value = iterationField.value * 1 + 1;
@@ -69,73 +48,36 @@ function startGame() {
     document.getElementById("startButton").innerHTML = "🏁 Start Next Round";
     document.getElementById("secretBlock").style.display = "block";
 
-    /* Start timer */
     let timer = document.getElementById("timer");
-    startTimer(60 * 5, timer);
+    Time.startTimer(60 * 5, timer);
 
     document.getElementById("gameWindow").style.display = "inline-block";
   }
 }
 
-/* Pseudo-LFSR, it just needs to be fast and unpredictable */
-function getRNG(seed, iteration, totalPlayers) {
-  let startDate = [...seed].reduce(
-    (acc, _, i) =>
-      acc + (seed.charCodeAt(i) + iteration + totalPlayers) * (i + 1),
-    0
-  );
-
-  const modulo = 65536;
-  startDate %= modulo;
-  let lfsr = startDate;
-  let period = 0;
-
-  do {
-    lfsr ^= lfsr >> 7;
-    lfsr ^= lfsr << 9;
-    lfsr ^= lfsr >> 13;
-    ++period;
-
-    if (period > 1000000000) {
-      break;
-    }
-  } while (lfsr % modulo != startDate);
-
-  return period;
+function setFirstPlayerDisplay(randomNumber, playerID, totalPlayers) {
+  let firstPlayer = Random.getFirstPlayer(randomNumber, playerID, totalPlayers);
+  document.getElementById("firstPlayer").innerHTML =
+    Constants.players[firstPlayer];
 }
 
-/* Generate a 3-emoji fingerprint to confirm that players are on the same game */
-function getFingerprint(seedNumber) {
-  let seed1 = seedNumber + 1;
-  let seed2 = Math.floor(seedNumber / 10);
-  let seed3 = seedNumber ^ (seedNumber >> 2);
-  return (
-    Constants.validations[seed1 % Constants.validations.length] +
-    Constants.validations[seed2 % Constants.validations.length] +
-    Constants.validations[seed3 % Constants.validations.length]
-  );
-}
-
-function getLocation(seedNumber) {
-  return Constants.locationsList[seedNumber % Constants.locationsList.length];
-}
-
-function isPsy(seedNumber, playerId, totalPlayers) {
-  let spy = seedNumber % totalPlayers;
-  return playerId == spy;
-}
-
-function getFirstPlayer(seedNumber, playerId, totalPlayers) {
-  return Math.floor(seedNumber / 10) % totalPlayers;
-}
-
-function showHide(elementId) {
-  let elem = document.getElementById(elementId);
-  if (elem.style.display === "none") {
-    elem.style.display = "block";
+function setLocationDisplay(randomNumber, playerID, totalPlayers) {
+  let locationName = "❓";
+  let isSpy = Random.isPsy(randomNumber, playerID, totalPlayers);
+  if (!isSpy) {
+    locationName = Random.getLocation(randomNumber);
+    document.getElementById("spyBlock").style.display = "none";
+    document.getElementById("innocentBlock").style.display = "block";
   } else {
-    elem.style.display = "none";
+    document.getElementById("spyBlock").style.display = "block";
+    document.getElementById("innocentBlock").style.display = "none";
   }
+  document.getElementById("location").innerHTML = locationName;
+}
+
+function setFingerprintDisplay(randomNumber) {
+  let fingerprint = Random.getFingerprint(randomNumber);
+  document.getElementById("fingerprint").innerHTML = fingerprint;
 }
 
 function getTotalNumberOfPlayers() {
@@ -147,30 +89,6 @@ function removeOptions(selectElement) {
   for (let i = selectElement.options.length - 1; i >= 0; i--) {
     selectElement.remove(i);
   }
-}
-
-function startTimer(duration, display) {
-  clearInterval(intervalId);
-  var timer = duration;
-  setTimerDisplay(timer, display);
-  intervalId = setInterval(function () {
-    timer--;
-    setTimerDisplay(timer, display);
-    if (timer < 0) {
-      display.textContent = "🔔 Time's up! Who is the Spy?";
-      clearInterval(intervalId);
-    }
-  }, 1000);
-}
-
-function setTimerDisplay(timer, display) {
-  let minutes = parseInt(timer / 60, 10);
-  let seconds = parseInt(timer % 60, 10);
-
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-
-  display.textContent = `⏱ ${minutes}:${seconds}`;
 }
 
 /* onload */
@@ -230,8 +148,8 @@ document.getElementById("start-form").addEventListener("submit", (event) => {
 
 document
   .getElementById("secret-block-button")
-  .addEventListener("click", () => showHide("secretBlock"));
+  .addEventListener("click", () => Utils.showHide("secretBlock"));
 
 document
   .getElementById("rules-button")
-  .addEventListener("click", () => showHide("instructions"));
+  .addEventListener("click", () => Utils.showHide("instructions"));

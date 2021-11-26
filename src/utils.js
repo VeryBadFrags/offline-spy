@@ -10,3 +10,12 @@ export function resetErrors() {
   errorBox.style.display = "none";
   errorBox.innerHTML = "";
 }
+
+export function showHide(elementId) {
+  let elem = document.getElementById(elementId);
+  if (elem.style.display === "none") {
+    elem.style.display = "block";
+  } else {
+    elem.style.display = "none";
+  }
+}
