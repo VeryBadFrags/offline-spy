@@ -1,4 +1,5 @@
 import * as Constants from "./constants.js";
+import * as Display from "./display.js";
 import * as Random from "./random.js";
 import * as Time from "./time.js";
 import * as Utils from "./utils.js";
@@ -30,54 +31,11 @@ function startGame() {
     return;
   }
 
-  // Generate randomness and setup the game window
-  {
-    let randomNumber = Random.getRNG(seed, iterationField.value, totalPlayers);
+  let randomNumber = Random.getRNG(seed, iterationField.value, totalPlayers);
+  Display.setupDisplayForRound(randomNumber, iterationField, totalPlayers, playerID);
 
-    setLocationDisplay(randomNumber, playerID, totalPlayers);
-
-    setFingerprintDisplay(randomNumber);
-
-    setFirstPlayerDisplay(randomNumber, playerID, totalPlayers);
-
-    document.getElementById("playerid").innerHTML = Constants.players[playerID];
-    iterationField.value = iterationField.value * 1 + 1;
-  }
-
-  {
-    document.getElementById("startButton").innerHTML = "🏁 Start Next Round";
-    document.getElementById("secretBlock").style.display = "block";
-
-    let timer = document.getElementById("timer");
-    Time.startTimer(60 * 5, timer);
-
-    document.getElementById("gameWindow").style.display = "inline-block";
-  }
-}
-
-function setFirstPlayerDisplay(randomNumber, playerID, totalPlayers) {
-  let firstPlayer = Random.getFirstPlayer(randomNumber, playerID, totalPlayers);
-  document.getElementById("firstPlayer").innerHTML =
-    Constants.players[firstPlayer];
-}
-
-function setLocationDisplay(randomNumber, playerID, totalPlayers) {
-  let locationName = "❓";
-  let isSpy = Random.isPsy(randomNumber, playerID, totalPlayers);
-  if (!isSpy) {
-    locationName = Random.getLocation(randomNumber);
-    document.getElementById("spyBlock").style.display = "none";
-    document.getElementById("innocentBlock").style.display = "block";
-  } else {
-    document.getElementById("spyBlock").style.display = "block";
-    document.getElementById("innocentBlock").style.display = "none";
-  }
-  document.getElementById("location").innerHTML = locationName;
-}
-
-function setFingerprintDisplay(randomNumber) {
-  let fingerprint = Random.getFingerprint(randomNumber);
-  document.getElementById("fingerprint").innerHTML = fingerprint;
+  let timer = document.getElementById("timer");
+  Time.startTimer(60 * 5, timer);
 }
 
 function getTotalNumberOfPlayers() {
@@ -98,13 +56,7 @@ function removeOptions(selectElement) {
   const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const charactersLength = characters.length;
 
-  let newSeed = "";
-  [...Array(4).keys()].forEach(
-    () =>
-      (newSeed += characters.charAt(
-        Math.floor(Math.random() * charactersLength)
-      ))
-  );
+  let newSeed = Random.generateNewSeed(characters, charactersLength);
   document.getElementById("seed").value = newSeed;
 }
 
@@ -120,6 +72,7 @@ function removeOptions(selectElement) {
 
 /* Set the list of available Avatars */
 const playerListElement = document.getElementById("player");
+
 function setPlayersList() {
   removeOptions(playerListElement);
   let totalPlayers = getTotalNumberOfPlayers();

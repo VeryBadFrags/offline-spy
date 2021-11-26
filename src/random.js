@@ -48,6 +48,16 @@ export function isPsy(seedNumber, playerId, totalPlayers) {
   return playerId == spy;
 }
 
-export function getFirstPlayer(seedNumber, playerId, totalPlayers) {
+export function getFirstPlayer(seedNumber, totalPlayers) {
   return Math.floor(seedNumber / 10) % totalPlayers;
+}
+
+export function generateNewSeed(characters, charactersLength) {
+  let newSeed = "";
+  [...Array(4).keys()].forEach(
+    () => (newSeed += characters.charAt(
+      Math.floor(Math.random() * charactersLength)
+    ))
+  );
+  return newSeed;
 }
