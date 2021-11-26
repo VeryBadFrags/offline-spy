@@ -5,7 +5,6 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/VeryBadFrags/offline-spy/blob/master/LICENSE)
 
 A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-item/spyfall/) that can be played without an internet connection.
-There are emojis to help children and non-english speakers.
 
 - [▶️ Play the game](https://offline-spy.verybadfrags.com)
 - [📵 Download the game](https://github.com/VeryBadFrags/offline-spy/releases) to play offline
