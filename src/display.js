@@ -94,6 +94,6 @@ function setLocationDisplay(randomNumber, playerID, totalPlayers) {
 }
 
 function setFingerprintDisplay(randomNumber) {
-  let fingerprint = Random.getFingerprint(randomNumber);
+  let fingerprint = Random.getFingerprintString(randomNumber);
   document.getElementById("fingerprint").innerHTML = fingerprint;
 }
