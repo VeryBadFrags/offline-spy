@@ -28,11 +28,13 @@ function removeOptions(selectElement) {
 
 export function buildLocationsList() {
   let locationsListElement = document.getElementById("locations-list");
-  Constants.locationsList.forEach((locationName) => {
-    let li = document.createElement("li");
-    li.innerHTML = locationName;
-    locationsListElement.append(li);
-  });
+  Constants.locationsList
+    .map((locationName) => {
+      let li = document.createElement("li");
+      li.innerHTML = locationName;
+      return li;
+    })
+    .forEach((lineElement) => locationsListElement.append(lineElement));
 }
 
 export function initSeed() {
@@ -71,7 +73,6 @@ function initRoundSpecificUI(
   document.getElementById("playerid").innerHTML = Constants.players[playerID];
   iterationField.value = iterationField.value * 1 + 1;
 }
-
 
 function setFirstPlayerDisplay(randomNumber, playerID, totalPlayers) {
   let firstPlayer = Random.getFirstPlayer(randomNumber, totalPlayers);
