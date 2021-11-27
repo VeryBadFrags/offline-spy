@@ -31,7 +31,7 @@ export function getRNG(seed, iteration, totalPlayers) {
 }
 
 /* Generate a 3-emoji fingerprint to confirm that players are on the same game */
-export function getFingerprint(seedNumber) {
+export function getFingerprintString(seedNumber) {
   let seed1 = seedNumber + 1;
   let seed2 = Math.floor(seedNumber / 10);
   let seed3 = seedNumber ^ (seedNumber >> 2);
@@ -56,11 +56,7 @@ export function getFirstPlayer(seedNumber, totalPlayers) {
 }
 
 export function generateNewSeed() {
-  let newSeed = "";
-  [...Array(4).keys()].forEach(
-    () => (newSeed += characters.charAt(
-      Math.floor(Math.random() * charactersLength)
-    ))
-  );
-  return newSeed;
+  return [...Array(4).keys()]
+    .map(() => characters.charAt(Math.floor(Math.random() * charactersLength)))
+    .join("");
 }
