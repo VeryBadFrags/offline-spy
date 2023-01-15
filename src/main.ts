@@ -9,10 +9,14 @@ function startGame() {
   Utils.resetErrors();
 
   // Get the Game params
-  let seed = (document.getElementById("seed") as HTMLInputElement).value.toUpperCase();
+  let seed = (
+    document.getElementById("seed") as HTMLInputElement
+  ).value.toUpperCase();
   let iterationField = document.getElementById("iteration") as HTMLInputElement;
   let playerSelect = document.getElementById("player") as HTMLSelectElement;
-  let playerID = parseInt(playerSelect.options[playerSelect.selectedIndex].value);
+  let playerID = parseInt(
+    playerSelect.options[playerSelect.selectedIndex].value
+  );
   let totalPlayers = Utils.getPlayersCount();
 
   if (playerID == -1) {
@@ -31,7 +35,11 @@ function startGame() {
     return;
   }
 
-  let randomNumber = Random.getRNG(seed, parseInt(iterationField.value), totalPlayers);
+  let randomNumber = Random.getRNG(
+    seed,
+    parseInt(iterationField.value),
+    totalPlayers
+  );
   Display.setupDisplayForRound(
     randomNumber,
     iterationField,
@@ -48,10 +56,14 @@ function startGame() {
 Display.initSeed();
 Display.buildLocationsList();
 
-const totalPlayersElement = document.getElementById("total-players") as HTMLInputElement;
+const totalPlayersElement = document.getElementById(
+  "total-players"
+) as HTMLInputElement;
 totalPlayersElement.max = Constants.players.length.toString();
 totalPlayersElement.addEventListener("input", (event) =>
-  Display.populatePlayersList(parseInt((event.target as HTMLInputElement).value))
+  Display.populatePlayersList(
+    parseInt((event.target as HTMLInputElement).value)
+  )
 );
 Display.populatePlayersList(parseInt(totalPlayersElement.value));
 

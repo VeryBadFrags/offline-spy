@@ -1,12 +1,12 @@
-$bgBody: #CFD8DC;
-$bgLight: #FAFAFA;
-$bgDark: #1A237E;
+$bgBody: #cfd8dc;
+$bgLight: #fafafa;
+$bgDark: #1a237e;
 
 $textLight: invert($bgDark, 100%);
 $textDark: invert($bgLight, 100%);
 
-$linkColor: #03A9F4;
-$linkColorActive: #0277BD;
+$linkColor: #03a9f4;
+$linkColorActive: #0277bd;
 $linkColorDark: complement($linkColor);
 $linkColorActiveDark: complement($linkColorActive);
 
@@ -22,7 +22,7 @@ $primary4: #e1f5fe;
 $primaryBorder: #124d77;
 
 $secondary1: #90a4ae;
-$secondaryBorder: #546E7A;
+$secondaryBorder: #546e7a;
 
 $danger: #b71c1c;
 

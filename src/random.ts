@@ -46,7 +46,11 @@ export function getLocation(seedNumber: number) {
   return Constants.locationsList[seedNumber % Constants.locationsList.length];
 }
 
-export function isPsy(seedNumber: number, playerId: number, totalPlayers: number) {
+export function isPsy(
+  seedNumber: number,
+  playerId: number,
+  totalPlayers: number
+) {
   let spy = seedNumber % totalPlayers;
   return playerId == spy;
 }

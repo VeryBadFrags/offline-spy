@@ -2,7 +2,9 @@ import * as Constants from "./constants";
 import * as Random from "./random";
 
 export function populatePlayersList(playersCount: number) {
-  const playerListElement = document.getElementById("player") as HTMLSelectElement;
+  const playerListElement = document.getElementById(
+    "player"
+  ) as HTMLSelectElement;
   removeOptions(playerListElement);
 
   let emptyOpt = document.createElement("option") as HTMLOptionElement;
@@ -80,7 +82,11 @@ function setFirstPlayerDisplay(randomNumber: number, totalPlayers: number) {
     Constants.players[firstPlayer];
 }
 
-function setLocationDisplay(randomNumber: number, playerID: number, totalPlayers: number) {
+function setLocationDisplay(
+  randomNumber: number,
+  playerID: number,
+  totalPlayers: number
+) {
   let locationName = "❓";
   let isSpy = Random.isPsy(randomNumber, playerID, totalPlayers);
   if (!isSpy) {
