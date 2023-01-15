@@ -88,7 +88,7 @@ function setLocationDisplay(
   totalPlayers: number
 ) {
   let locationName = "❓";
-  let isSpy = Random.isPsy(randomNumber, playerID, totalPlayers);
+  let isSpy = Random.isSpy(randomNumber, playerID, totalPlayers);
   if (!isSpy) {
     locationName = Random.getLocation(randomNumber);
     document.getElementById("spyBlock")!.style.display = "none";
