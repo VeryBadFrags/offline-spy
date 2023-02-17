@@ -26,18 +26,8 @@ a:hover {
   background-color: #fafafa;
   color: #050505;
 }
-.bg-dark {
-  background-color: #1a237e;
-  color: #e5dc81;
-}
-.bg-dark a {
-  color: #f44e03;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-.bg-dark a:hover {
-  color: #bd4802;
-}
-.navbar {
+
+nav {
   align-items: center;
   box-shadow: 0 1px 3px #0000004d;
   display: flex;
@@ -45,19 +35,28 @@ a:hover {
   justify-content: space-between;
   padding: 8px 16px;
   position: relative;
-}
-.navbar-dark {
+
+  background-color: #1a237e;
   color: #e5dc81;
 }
-.navbar-brand {
+nav > span {
   padding: 5px 0;
   font-size: 1.25rem;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
 }
-.footer {
+nav > a {
+  color: #f44e03;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+nav > a:hover {
+  color: #bd4802;
+}
+
+footer {
   border-top: 1px solid #546e7a;
   padding: 16px 8px;
 }
+
 .flex {
   align-items: flex-start;
   display: flex;
