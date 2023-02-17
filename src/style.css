@@ -18,10 +18,12 @@ a:hover {
   color: #0277bd;
   text-decoration: underline;
 }
-.container {
+
+main {
   margin: 8px;
   padding-bottom: 5rem;
 }
+
 .bg-light {
   background-color: #fafafa;
   color: #050505;
@@ -152,4 +154,8 @@ footer {
 .custom-select {
   width: 100%;
   font-size: 18px;
+}
+
+.yolo {
+  color: blue;
 }
