@@ -5,14 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write .",
     "qrcode": "qrcode -o src/assets/qr.svg https://offline-spy.verybadfrags.com"
   },
   "author": "VeryBadFrags",
   "devDependencies": {
-    "netlify-cli": "^15.6.0",
     "prettier": "2.8.3",
     "qrcode": "^1.5.0"
   },
