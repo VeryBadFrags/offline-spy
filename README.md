@@ -15,17 +15,11 @@ A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-
 Minify and bundle the css and js.
 The output is located in the `build/` folder.
 
-- Get [Node](https://nodejs.org/), install dependencies
+- Run locally
 
-  ```shell
-  npm i
-  ```
-
-- Build
-
-  ```shell
-  npm run build
-  ```
+```shell
+make dev
+```
 
 ## Resources
 
