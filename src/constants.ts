@@ -45,14 +45,14 @@ export const validations = [
 ];
 
 export const players = [
-  "🐱&nbsp;Cat",
-  "🐶&nbsp;Dog",
-  "🦊&nbsp;Fox",
-  "🐭&nbsp;Mouse",
-  "🐼&nbsp;Panda",
-  "🐧&nbsp;Penguin",
-  "🐰&nbsp;Rabbit",
-  "🐯&nbsp;Tiger",
-  "🦖&nbsp;T-Rex",
-  "🦉&nbsp;Owl",
+  "🐱 Cat",
+  "🐶 Dog",
+  "🦊 Fox",
+  "🐭 Mouse",
+  "🐼 Panda",
+  "🐧 Penguin",
+  "🐰 Rabbit",
+  "🐯 Tiger",
+  "🦖 T-Rex",
+  "🦉 Owl",
 ];

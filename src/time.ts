@@ -2,7 +2,7 @@ let intervalId: number;
 
 export function startTimer(duration: number, timerElement: HTMLElement) {
   clearInterval(intervalId);
-  var timer = duration;
+  let timer = duration;
   setTimerDisplay(timer, timerElement);
   intervalId = setInterval(function () {
     timer--;
@@ -15,11 +15,11 @@ export function startTimer(duration: number, timerElement: HTMLElement) {
 }
 
 function setTimerDisplay(timer: number, timerElement: HTMLElement) {
-  let minutes = Math.floor(timer / 60);
-  let seconds = timer % 60;
+  const minutes = Math.floor(timer / 60);
+  const seconds = timer % 60;
 
-  let minutesStr = minutes < 10 ? "0" + minutes : minutes;
-  let secondsStr = seconds < 10 ? "0" + seconds : seconds;
+  const minutesStr = minutes < 10 ? "0" + minutes : minutes;
+  const secondsStr = seconds < 10 ? "0" + seconds : seconds;
 
   timerElement.textContent = `⏱ ${minutesStr}:${secondsStr}`;
 }

@@ -12,12 +12,12 @@ function startGame() {
   let seed = (
     document.getElementById("seed") as HTMLInputElement
   ).value.toUpperCase();
-  let iterationField = document.getElementById("iteration") as HTMLInputElement;
-  let playerSelect = document.getElementById("player") as HTMLSelectElement;
-  let playerID = parseInt(
+  const iterationField = document.getElementById("iteration") as HTMLInputElement;
+  const playerSelect = document.getElementById("player") as HTMLSelectElement;
+  const playerID = parseInt(
     playerSelect.options[playerSelect.selectedIndex].value
   );
-  let totalPlayers = Utils.getPlayersCount();
+  const totalPlayers = Utils.getPlayersCount();
 
   if (playerID == -1) {
     Utils.printError(`Please select an 👤 Avatar`);
@@ -35,7 +35,7 @@ function startGame() {
     return;
   }
 
-  let randomNumber = Random.getRNG(
+  const randomNumber = Random.getRNG(
     seed,
     parseInt(iterationField.value),
     totalPlayers
@@ -47,7 +47,7 @@ function startGame() {
     playerID
   );
 
-  let timer = document.getElementById("timer")!;
+  const timer = document.getElementById("timer")!;
   Time.startTimer(60 * 5, timer);
 }
 

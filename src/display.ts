@@ -7,15 +7,15 @@ export function populatePlayersList(playersCount: number) {
   ) as HTMLSelectElement;
   removeOptions(playerListElement);
 
-  let emptyOpt = document.createElement("option") as HTMLOptionElement;
+  const emptyOpt = document.createElement("option") as HTMLOptionElement;
   emptyOpt.value = "-1";
   playerListElement.append(emptyOpt);
 
   [...Array(Math.min(Constants.players.length, playersCount)).keys()]
     .map((i) => {
-      let opt = document.createElement("option");
+      const opt = document.createElement("option");
       opt.value = i.toString();
-      opt.innerHTML = Constants.players[i];
+      opt.innerText = Constants.players[i];
       return opt;
     })
     .forEach((node) => playerListElement.append(node));
@@ -29,18 +29,18 @@ function removeOptions(selectElement: HTMLSelectElement) {
 }
 
 export function buildLocationsList() {
-  let locationsListElement = document.getElementById("locations-list")!;
+  const locationsListElement = document.getElementById("locations-list")!;
   Constants.locationsList
     .map((locationName) => {
-      let li = document.createElement("li");
-      li.innerHTML = locationName;
+      const li = document.createElement("li");
+      li.innerText = locationName;
       return li;
     })
     .forEach((lineElement) => locationsListElement.append(lineElement));
 }
 
 export function initSeed() {
-  let newSeed = Random.generateNewSeed();
+  const newSeed = Random.generateNewSeed();
   (document.getElementById("seed") as HTMLInputElement).value = newSeed;
 }
 
@@ -55,7 +55,7 @@ export function setupDisplayForRound(
 }
 
 function initGameUI() {
-  document.getElementById("startButton")!.innerHTML = "🏁 Start Next Round";
+  document.getElementById("startButton")!.innerText = "🏁 Start Next Round";
   document.getElementById("secretBlock")!.style.display = "block";
   document.getElementById("gameWindow")!.style.display = "inline-block";
 }
@@ -72,13 +72,13 @@ function initRoundSpecificUI(
 
   setFirstPlayerDisplay(randomNumber, totalPlayers);
 
-  document.getElementById("playerid")!.innerHTML = Constants.players[playerID];
+  document.getElementById("playerid")!.innerText = Constants.players[playerID];
   iterationField.value = (parseInt(iterationField.value) + 1).toString();
 }
 
 function setFirstPlayerDisplay(randomNumber: number, totalPlayers: number) {
-  let firstPlayer = Random.getFirstPlayer(randomNumber, totalPlayers);
-  document.getElementById("firstPlayer")!.innerHTML =
+  const firstPlayer = Random.getFirstPlayer(randomNumber, totalPlayers);
+  document.getElementById("firstPlayer")!.innerText =
     Constants.players[firstPlayer];
 }
 
@@ -88,7 +88,7 @@ function setLocationDisplay(
   totalPlayers: number
 ) {
   let locationName = "❓";
-  let isSpy = Random.isSpy(randomNumber, playerID, totalPlayers);
+  const isSpy = Random.isSpy(randomNumber, playerID, totalPlayers);
   if (!isSpy) {
     locationName = Random.getLocation(randomNumber);
     document.getElementById("spyBlock")!.style.display = "none";
@@ -97,10 +97,10 @@ function setLocationDisplay(
     document.getElementById("spyBlock")!.style.display = "block";
     document.getElementById("innocentBlock")!.style.display = "none";
   }
-  document.getElementById("location")!.innerHTML = locationName;
+  document.getElementById("location")!.innerText = locationName;
 }
 
 function setFingerprintDisplay(randomNumber: number) {
-  let fingerprint = Random.getFingerprintString(randomNumber);
-  document.getElementById("fingerprint")!.innerHTML = fingerprint;
+  const fingerprint = Random.getFingerprintString(randomNumber);
+  document.getElementById("fingerprint")!.innerText = fingerprint;
 }

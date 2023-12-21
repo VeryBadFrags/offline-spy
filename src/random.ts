@@ -32,9 +32,9 @@ export function getRNG(seed: string, iteration: number, totalPlayers: number) {
 
 /* Generate a 3-emoji fingerprint to confirm that players are on the same game */
 export function getFingerprintString(seedNumber: number) {
-  let seed1 = seedNumber + 1;
-  let seed2 = Math.floor(seedNumber / 10);
-  let seed3 = seedNumber ^ (seedNumber >> 2);
+  const seed1 = seedNumber + 1;
+  const seed2 = Math.floor(seedNumber / 10);
+  const seed3 = seedNumber ^ (seedNumber >> 2);
   return (
     Constants.validations[seed1 % Constants.validations.length] +
     Constants.validations[seed2 % Constants.validations.length] +
@@ -51,7 +51,7 @@ export function isSpy(
   playerId: number,
   totalPlayers: number
 ) {
-  let spy = seedNumber % totalPlayers;
+  const spy = seedNumber % totalPlayers;
   return playerId == spy;
 }
 
