@@ -12,7 +12,9 @@ function startGame() {
   let seed = (
     document.getElementById("seed") as HTMLInputElement
   ).value.toUpperCase();
-  const iterationField = document.getElementById("iteration") as HTMLInputElement;
+  const iterationField = document.getElementById(
+    "iteration"
+  ) as HTMLInputElement;
   const playerSelect = document.getElementById("player") as HTMLSelectElement;
   const playerID = parseInt(
     playerSelect.options[playerSelect.selectedIndex].value
