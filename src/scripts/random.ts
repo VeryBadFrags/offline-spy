@@ -5,11 +5,9 @@ const charactersLength = characters.length;
 
 /* Pseudo-LFSR, it just needs to be fast and unpredictable */
 export function getRNG(seed: string, iteration: number, totalPlayers: number) {
-  let startDate = [...seed].reduce(
-    (acc, _, i) =>
-      acc + (seed.charCodeAt(i) + iteration + totalPlayers) * (i + 1),
-    0,
-  );
+  let startDate = [...seed].reduce((acc, currentChar, index) => {
+    return acc + (currentChar.charCodeAt(0) + iteration + totalPlayers) * (index + 1);
+  }, 0);
 
   const modulo = 65536;
   startDate %= modulo;
