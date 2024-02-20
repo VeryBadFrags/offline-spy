@@ -8,7 +8,7 @@ export function getRNG(seed: string, iteration: number, totalPlayers: number) {
   let startDate = [...seed].reduce(
     (acc, _, i) =>
       acc + (seed.charCodeAt(i) + iteration + totalPlayers) * (i + 1),
-    0
+    0,
   );
 
   const modulo = 65536;
@@ -49,7 +49,7 @@ export function getLocation(seedNumber: number) {
 export function isSpy(
   seedNumber: number,
   playerId: number,
-  totalPlayers: number
+  totalPlayers: number,
 ) {
   const spy = seedNumber % totalPlayers;
   return playerId == spy;

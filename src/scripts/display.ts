@@ -3,7 +3,7 @@ import * as Random from "./random";
 
 export function populatePlayersList(playersCount: number) {
   const playerListElement = document.getElementById(
-    "player"
+    "player",
   ) as HTMLSelectElement;
   removeOptions(playerListElement);
 
@@ -48,7 +48,7 @@ export function setupDisplayForRound(
   randomNumber: number,
   iterationField: HTMLInputElement,
   totalPlayers: number,
-  playerID: number
+  playerID: number,
 ) {
   initRoundSpecificUI(randomNumber, iterationField, totalPlayers, playerID);
   initGameUI();
@@ -64,7 +64,7 @@ function initRoundSpecificUI(
   randomNumber: number,
   iterationField: HTMLInputElement,
   totalPlayers: number,
-  playerID: number
+  playerID: number,
 ) {
   setLocationDisplay(randomNumber, playerID, totalPlayers);
 
@@ -85,7 +85,7 @@ function setFirstPlayerDisplay(randomNumber: number, totalPlayers: number) {
 function setLocationDisplay(
   randomNumber: number,
   playerID: number,
-  totalPlayers: number
+  totalPlayers: number,
 ) {
   let locationName = "❓";
   const isSpy = Random.isSpy(randomNumber, playerID, totalPlayers);

@@ -22,7 +22,7 @@ export function showHide(elementId: string) {
 
 export function getPlayersCount(): number {
   const totalPlayers = document.getElementById(
-    "total-players"
+    "total-players",
   ) as HTMLInputElement;
   return parseInt(totalPlayers.value);
 }
