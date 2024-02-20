@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Play Spyfall anywhere with your friends, even without an internet connection. Offline Spy is a free social deduction multiplayer game."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <meta
+      name="keywords"
+      content="Spyfall, Spy game, Game, Open source, Offline"
+    />
+    <link
+      rel="alternate icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕵️</text></svg>"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  body {
+    background-color: #cfd8dc;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+import RulesContent from "../components/RulesContent.md";
+---
+
+<div class="card bg-light">
+  <h3 class="card-title">📖 Rules</h3>
+  <button id="rules-button" class="btn btn-outline"> 👓 Show/Hide</button>
+  <div id="instructions" style="display: none">
+    <RulesContent />
+  </div>
+</div>
+
+<script>
+  import { showHide } from "../scripts/utils";
+
+  const instructionsContainer = document.getElementById("instructions") as HTMLElement;
+  document
+    .getElementById("rules-button")!
+    .addEventListener("click", () => showHide(instructionsContainer));
+</script>

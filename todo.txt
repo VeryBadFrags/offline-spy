@@ -1,0 +1,2 @@
+Move CSS colors to variables
+Use extended locations

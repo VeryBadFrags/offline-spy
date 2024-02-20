@@ -1,0 +1,10 @@
+---
+import { locationsList } from "../scripts/constants";
+---
+
+<div class="card bg-light">
+  <h3 class="card-title">Locations</h3>
+  <ul id="locations-list" class="list">
+    {locationsList.data.map((loc: string) => <li>{loc}</li>)}
+  </ul>
+</div>
