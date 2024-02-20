@@ -1,1 +1,2 @@
 Move `constants.ts` to content json
+Move CSS colors to variables
