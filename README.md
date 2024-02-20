@@ -10,12 +10,7 @@ A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-
 - [▶️ Play the game](https://offline-spy.verybadfrags.com)
 - [📵 Download the game](https://github.com/VeryBadFrags/offline-spy/releases) to play offline
 
-## Build
-
-Minify and bundle the css and js.
-The output is located in the `build/` folder.
-
-- Run locally
+## Local development
 
 ```shell
 make dev
