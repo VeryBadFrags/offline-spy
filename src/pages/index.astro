@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import GameWindow from "../components/GameWindow.astro";
 import Locations from "../components/Locations.astro";
 import Settings from "../components/Settings.astro";
-import Rules from "../components/Rules.md";
+import Rules from "../components/Rules.astro";
 import Footer from "../components/Footer.md";
 import Error from "../components/Error.astro";
 
@@ -28,76 +28,14 @@ import "../styles/style.css";
     </div>
 
     <div class="flex">
-      <div class="card bg-light">
-        <h3 class="card-title">📖 Rules</h3>
-        <button id="rules-button" class="btn btn-outline"> 👓 Show/Hide</button>
-        <div id="instructions" style="display: none">
-          <Rules />
-        </div>
-      </div>
+      <Rules />
     </div>
   </main>
 
   <Footer />
 
   <script>
-    import * as Display from "../scripts/display";
-    import * as Random from "../scripts/random";
-    import * as Time from "../scripts/time";
-    import * as Utils from "../scripts/utils";
-
-    function startGame() {
-      window.scrollTo(0, 0);
-      Utils.resetErrors();
-
-      // Get the Game params
-      let seed = (
-        document.getElementById("seed") as HTMLInputElement
-      ).value.toUpperCase();
-      const iterationField = document.getElementById(
-        "iteration"
-      ) as HTMLInputElement;
-      const playerSelect = document.getElementById(
-        "player"
-      ) as HTMLSelectElement;
-      const playerID = parseInt(
-        playerSelect.options[playerSelect.selectedIndex].value
-      );
-      const totalPlayers = Utils.getPlayersCount();
-
-      if (playerID == -1) {
-        Utils.printError(`Please select an 👤 Avatar`);
-        return;
-      }
-
-      // Validate the params
-      while (seed.length < 4) {
-        seed += "A";
-      }
-      if (playerID > totalPlayers) {
-        Utils.printError(
-          "Error: 👤 > 👥 <br> Player # greater than total number of players"
-        );
-        return;
-      }
-
-      const randomNumber = Random.getRNG(
-        seed,
-        parseInt(iterationField.value),
-        totalPlayers
-      );
-      Display.setupDisplayForRound(
-        randomNumber,
-        iterationField,
-        totalPlayers,
-        playerID
-      );
-
-      const timer = document.getElementById("timer")!;
-      Time.startTimer(60 * 5, timer);
-    }
-
-    /* Events */
+    import { startGame } from "../scripts/gameController";
 
     document
       .getElementById("start-form")!
@@ -105,10 +43,6 @@ import "../styles/style.css";
         event.preventDefault();
         startGame();
       });
-
-    document
-      .getElementById("rules-button")!
-      .addEventListener("click", () => Utils.showHide("instructions"));
   </script>
 </Layout>
 

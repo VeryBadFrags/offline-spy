@@ -29,9 +29,9 @@
 </div>
 
 <script>
-  import * as Utils from "../scripts/utils";
-  
+  import { showHide } from "../scripts/utils";
+
   document
     .getElementById("secret-block-button")!
-    .addEventListener("click", () => Utils.showHide("secretBlock"));
+    .addEventListener("click", () => showHide("secretBlock"));
 </script>

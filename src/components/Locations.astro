@@ -1,12 +1,10 @@
 ---
-import * as Constants from "../scripts/constants";
-
-const locations = Constants.locationsList;
+import { locationsList } from "../scripts/constants";
 ---
 
 <div class="card bg-light">
   <h3 class="card-title">Locations</h3>
   <ul id="locations-list" class="list">
-    {locations.data.map((loc: string) => <li>{loc}</li>)}
+    {locationsList.data.map((loc: string) => <li>{loc}</li>)}
   </ul>
 </div>

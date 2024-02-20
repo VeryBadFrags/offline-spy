@@ -19,7 +19,7 @@ export const locationsList = {
   ],
 };
 
-export const validations = {
+export const fingerprintTokens = {
   data: [
     "😀",
     "⭐️",
@@ -41,15 +41,17 @@ export const validations = {
   ],
 };
 
-export const players = [
-  "🐱 Cat",
-  "🐶 Dog",
-  "🦊 Fox",
-  "🐭 Mouse",
-  "🐼 Panda",
-  "🐧 Penguin",
-  "🐰 Rabbit",
-  "🐯 Tiger",
-  "🦖 T-Rex",
-  "🦉 Owl",
-];
+export const playersList = {
+  data: [
+    "🐱 Cat",
+    "🐶 Dog",
+    "🦊 Fox",
+    "🐭 Mouse",
+    "🐼 Panda",
+    "🐧 Penguin",
+    "🐰 Rabbit",
+    "🐯 Tiger",
+    "🦖 T-Rex",
+    "🦉 Owl",
+  ],
+};

@@ -1,6 +1,6 @@
 ---
-import * as Random from "../scripts/random";
-import * as Constants from "../scripts/constants";
+import { generateNewSeed } from "../scripts/random";
+import { playersList } from "../scripts/constants";
 ---
 
 <div id="settings" class="card bg-light">
@@ -18,7 +18,7 @@ import * as Constants from "../scripts/constants";
         name="totalPlayers"
         value="3"
         min="3"
-        max={Constants.players.length.toString()}
+        max={playersList.data.length.toString()}
         autocomplete="off"
       />
     </div>
@@ -36,7 +36,7 @@ import * as Constants from "../scripts/constants";
         id="seed"
         class="form-control"
         name="code"
-        value={Random.generateNewSeed()}
+        value={generateNewSeed()}
         pattern="[A-Za-z0-9]{4}"
         title="4 Characters Code"
         maxlength="4"
@@ -61,7 +61,7 @@ import * as Constants from "../scripts/constants";
 </div>
 
 <script>
-  import * as Constants from "../scripts/constants";
+  import { playersList } from "../scripts/constants";
 
   const totalPlayersElement = document.getElementById(
     "total-players"
@@ -81,11 +81,11 @@ import * as Constants from "../scripts/constants";
     emptyOpt.value = "-1";
     playerListElement.append(emptyOpt);
 
-    [...Array(Math.min(Constants.players.length, playersCount)).keys()]
+    [...Array(Math.min(playersList.data.length, playersCount)).keys()]
       .map((i) => {
         const opt = document.createElement("option");
         opt.value = i.toString();
-        opt.innerText = Constants.players[i];
+        opt.innerText = playersList.data[i];
         return opt;
       })
       .forEach((node) => playerListElement.append(node));
