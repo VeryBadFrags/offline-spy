@@ -1,5 +1,3 @@
-import * as Constants from "./constants";
-
 const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const charactersLength = characters.length;
 
@@ -31,19 +29,19 @@ export function getRNG(seed: string, iteration: number, totalPlayers: number) {
 }
 
 /* Generate a 3-emoji fingerprint to confirm that players are on the same game */
-export function getFingerprintString(seedNumber: number) {
+export function getFingerprintString(seedNumber: number, fingerprintTokens: Array<string>) {
   const seed1 = seedNumber + 1;
   const seed2 = Math.floor(seedNumber / 10);
   const seed3 = seedNumber ^ (seedNumber >> 2);
   return (
-    Constants.validations[seed1 % Constants.validations.length] +
-    Constants.validations[seed2 % Constants.validations.length] +
-    Constants.validations[seed3 % Constants.validations.length]
+    fingerprintTokens[seed1 % fingerprintTokens.length] +
+    fingerprintTokens[seed2 % fingerprintTokens.length] +
+    fingerprintTokens[seed3 % fingerprintTokens.length]
   );
 }
 
-export function getLocation(seedNumber: number) {
-  return Constants.locationsList[seedNumber % Constants.locationsList.length];
+export function getLocationIndex(seedNumber: number, locationsLength: number) {
+  return seedNumber % locationsLength;
 }
 
 export function isSpy(

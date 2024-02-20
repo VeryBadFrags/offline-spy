@@ -1,49 +1,6 @@
 import * as Constants from "./constants";
 import * as Random from "./random";
 
-export function populatePlayersList(playersCount: number) {
-  const playerListElement = document.getElementById(
-    "player",
-  ) as HTMLSelectElement;
-  removeOptions(playerListElement);
-
-  const emptyOpt = document.createElement("option") as HTMLOptionElement;
-  emptyOpt.value = "-1";
-  playerListElement.append(emptyOpt);
-
-  [...Array(Math.min(Constants.players.length, playersCount)).keys()]
-    .map((i) => {
-      const opt = document.createElement("option");
-      opt.value = i.toString();
-      opt.innerText = Constants.players[i];
-      return opt;
-    })
-    .forEach((node) => playerListElement.append(node));
-}
-
-// Remove the Options from a Select
-function removeOptions(selectElement: HTMLSelectElement) {
-  for (let i = selectElement.options.length - 1; i >= 0; i--) {
-    selectElement.remove(i);
-  }
-}
-
-export function buildLocationsList() {
-  const locationsListElement = document.getElementById("locations-list")!;
-  Constants.locationsList
-    .map((locationName) => {
-      const li = document.createElement("li");
-      li.innerText = locationName;
-      return li;
-    })
-    .forEach((lineElement) => locationsListElement.append(lineElement));
-}
-
-export function initSeed() {
-  const newSeed = Random.generateNewSeed();
-  (document.getElementById("seed") as HTMLInputElement).value = newSeed;
-}
-
 export function setupDisplayForRound(
   randomNumber: number,
   iterationField: HTMLInputElement,
@@ -90,7 +47,13 @@ function setLocationDisplay(
   let locationName = "❓";
   const isSpy = Random.isSpy(randomNumber, playerID, totalPlayers);
   if (!isSpy) {
-    locationName = Random.getLocation(randomNumber);
+    locationName =
+      Constants.locationsList.data[
+        Random.getLocationIndex(
+          randomNumber,
+          Constants.locationsList.data.length,
+        )
+      ];
     document.getElementById("spyBlock")!.style.display = "none";
     document.getElementById("innocentBlock")!.style.display = "block";
   } else {
@@ -100,7 +63,13 @@ function setLocationDisplay(
   document.getElementById("location")!.innerText = locationName;
 }
 
+const fingerPrintContainer = document.getElementById(
+  "fingerprint-container",
+) as HTMLElement;
 function setFingerprintDisplay(randomNumber: number) {
-  const fingerprint = Random.getFingerprintString(randomNumber);
-  document.getElementById("fingerprint")!.innerText = fingerprint;
+  const fingerprint = Random.getFingerprintString(
+    randomNumber,
+    Constants.validations.data,
+  );
+  fingerPrintContainer.innerText = fingerprint;
 }

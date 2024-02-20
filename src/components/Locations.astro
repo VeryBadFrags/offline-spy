@@ -1,8 +1,12 @@
 ---
+import * as Constants from "../scripts/constants";
 
+const locations = Constants.locationsList;
 ---
 
 <div class="card bg-light">
   <h3 class="card-title">Locations</h3>
-  <ul id="locations-list" class="list"></ul>
+  <ul id="locations-list" class="list">
+    {locations.data.map((loc: string) => <li>{loc}</li>)}
+  </ul>
 </div>

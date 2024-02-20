@@ -4,7 +4,7 @@
 
 <div id="gameWindow" class="card bg-light" style="display: none">
   <div>
-    Game Fingerprint <span id="fingerprint" class="large"></span>
+    Game Fingerprint <span id="fingerprint-container" class="large"></span>
   </div>
   <br />
   <div>
@@ -27,3 +27,11 @@
     <div>Location: <strong id="location"></strong></div>
   </div>
 </div>
+
+<script>
+  import * as Utils from "../scripts/utils";
+  
+  document
+    .getElementById("secret-block-button")!
+    .addEventListener("click", () => Utils.showHide("secretBlock"));
+</script>

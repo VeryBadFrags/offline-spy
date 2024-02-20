@@ -1,12 +1,17 @@
-// Print an error box at the top of the page
+const errorBox = document.getElementById("error-container") as HTMLElement;
+
+/**
+ * Print an error box at the top of the page
+ */
 export function printError(content: string) {
-  const errorBox: HTMLElement = document.getElementById("error")!;
   errorBox.innerText = content;
   errorBox.style.display = "block";
 }
 
+/**
+ * Remove the error box
+ */
 export function resetErrors() {
-  const errorBox = document.getElementById("error")!;
   errorBox.style.display = "none";
   errorBox.innerText = "";
 }

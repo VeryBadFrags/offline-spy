@@ -1,5 +1,6 @@
 ---
-
+import * as Random from "../scripts/random";
+import * as Constants from "../scripts/constants";
 ---
 
 <div id="settings" class="card bg-light">
@@ -17,6 +18,7 @@
         name="totalPlayers"
         value="3"
         min="3"
+        max={Constants.players.length.toString()}
         autocomplete="off"
       />
     </div>
@@ -34,7 +36,7 @@
         id="seed"
         class="form-control"
         name="code"
-        value="ABCD"
+        value={Random.generateNewSeed()}
         pattern="[A-Za-z0-9]{4}"
         title="4 Characters Code"
         maxlength="4"
@@ -57,3 +59,44 @@
     <button id="startButton" class="btn btn-primary"> 🏁 Start New Game</button>
   </form>
 </div>
+
+<script>
+  import * as Constants from "../scripts/constants";
+
+  const totalPlayersElement = document.getElementById(
+    "total-players"
+  ) as HTMLInputElement;
+  totalPlayersElement.addEventListener("input", (event) =>
+    populatePlayersList(parseInt((event.target as HTMLInputElement).value))
+  );
+  populatePlayersList(parseInt(totalPlayersElement.value));
+
+  function populatePlayersList(playersCount: number) {
+    const playerListElement = document.getElementById(
+      "player"
+    ) as HTMLSelectElement;
+    removeOptions(playerListElement);
+
+    const emptyOpt = document.createElement("option") as HTMLOptionElement;
+    emptyOpt.value = "-1";
+    playerListElement.append(emptyOpt);
+
+    [...Array(Math.min(Constants.players.length, playersCount)).keys()]
+      .map((i) => {
+        const opt = document.createElement("option");
+        opt.value = i.toString();
+        opt.innerText = Constants.players[i];
+        return opt;
+      })
+      .forEach((node) => playerListElement.append(node));
+  }
+
+  /**
+   * Remove the Options from a Select
+   */
+  function removeOptions(selectElement: HTMLSelectElement) {
+    for (let i = selectElement.options.length - 1; i >= 0; i--) {
+      selectElement.remove(i);
+    }
+  }
+</script>

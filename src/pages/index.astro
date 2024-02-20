@@ -4,7 +4,8 @@ import GameWindow from "../components/GameWindow.astro";
 import Locations from "../components/Locations.astro";
 import Settings from "../components/Settings.astro";
 import Rules from "../components/Rules.md";
-import Footer from "../components/Footer.astro";
+import Footer from "../components/Footer.md";
+import Error from "../components/Error.astro";
 
 import "../styles/style.css";
 ---
@@ -16,7 +17,7 @@ import "../styles/style.css";
   </nav>
 
   <main>
-    <div id="error" class="card alert" style="display: none"></div>
+    <Error />
 
     <div class="flex">
       <GameWindow />
@@ -40,7 +41,6 @@ import "../styles/style.css";
   <Footer />
 
   <script>
-    import * as Constants from "../scripts/constants";
     import * as Display from "../scripts/display";
     import * as Random from "../scripts/random";
     import * as Time from "../scripts/time";
@@ -97,21 +97,7 @@ import "../styles/style.css";
       Time.startTimer(60 * 5, timer);
     }
 
-    /* onload */
-
-    Display.initSeed();
-    Display.buildLocationsList();
-
-    const totalPlayersElement = document.getElementById(
-      "total-players"
-    ) as HTMLInputElement;
-    totalPlayersElement.max = Constants.players.length.toString();
-    totalPlayersElement.addEventListener("input", (event) =>
-      Display.populatePlayersList(
-        parseInt((event.target as HTMLInputElement).value)
-      )
-    );
-    Display.populatePlayersList(parseInt(totalPlayersElement.value));
+    /* Events */
 
     document
       .getElementById("start-form")!
@@ -119,10 +105,6 @@ import "../styles/style.css";
         event.preventDefault();
         startGame();
       });
-
-    document
-      .getElementById("secret-block-button")!
-      .addEventListener("click", () => Utils.showHide("secretBlock"));
 
     document
       .getElementById("rules-button")!

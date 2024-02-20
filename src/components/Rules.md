@@ -1,3 +1,6 @@
+---
+---
+
 - 👥 3-10 Players
 - ⏱ 5 Minutes Rounds
 - 📱 1 Device per player
@@ -19,8 +22,7 @@
 #### When the timer ends
 
 - Players vote to designate the spy
-  - If the players have voted for the spy, the spy has one chance to
-    guess the location and win the game
+  - If the players have voted for the spy, the spy has one chance to guess the location and win the game
   - If the players have voted for an innocent, the spy wins
 
 #### At any time
