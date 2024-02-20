@@ -1,4 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {}
+  "compilerOptions": {
+    "target": "ES6"
+  }
 }

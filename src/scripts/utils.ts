@@ -1,26 +1,27 @@
 const errorBox = document.getElementById("error-container") as HTMLElement;
 
 /**
- * Print an error box at the top of the page
+ * Print an error box at the top of the page with the provided content
+ * @param content
  */
 export function printError(content: string) {
   errorBox.innerText = content;
-  errorBox.style.display = "block";
+  show(errorBox);
 }
 
 /**
  * Remove the error box
  */
 export function resetErrors() {
-  errorBox.style.display = "none";
+  hide(errorBox);
   errorBox.innerText = "";
 }
 
 export function showHide(elem: HTMLElement) {
   if (elem.style.display === "none") {
-    elem.style.display = "block";
+    show(elem);
   } else {
-    elem.style.display = "none";
+    hide(elem);
   }
 }
 
@@ -29,4 +30,20 @@ export function getPlayersCount(): number {
     "total-players",
   ) as HTMLInputElement;
   return parseInt(totalPlayers.value);
+}
+
+/**
+ * Set the element's display to 'block'
+ * @param element
+ */
+export function show(element: HTMLElement) {
+  element.style.display = "block";
+}
+
+/**
+ * Set the element's display to 'none'
+ * @param element
+ */
+export function hide(element: HTMLElement) {
+  element.style.display = "none";
 }

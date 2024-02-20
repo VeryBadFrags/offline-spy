@@ -1,5 +1,7 @@
 let intervalId: number;
 
+const timeIsUpMessage = "🔔 Time's up! Who is the Spy?";
+
 export function startTimer(duration: number, timerElement: HTMLElement) {
   clearInterval(intervalId);
   let timer = duration;
@@ -8,7 +10,7 @@ export function startTimer(duration: number, timerElement: HTMLElement) {
     timer--;
     setTimerDisplay(timer, timerElement);
     if (timer < 0) {
-      timerElement.textContent = "🔔 Time's up! Who is the Spy?";
+      timerElement.textContent = timeIsUpMessage;
       clearInterval(intervalId);
     }
   }, 1000);

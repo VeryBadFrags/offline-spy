@@ -29,7 +29,10 @@ export function getRNG(seed: string, iteration: number, totalPlayers: number) {
 }
 
 /* Generate a 3-emoji fingerprint to confirm that players are on the same game */
-export function getFingerprintString(seedNumber: number, fingerprintTokens: Array<string>) {
+export function getFingerprintString(
+  seedNumber: number,
+  fingerprintTokens: Array<string>,
+) {
   const seed1 = seedNumber + 1;
   const seed2 = Math.floor(seedNumber / 10);
   const seed3 = seedNumber ^ (seedNumber >> 2);
@@ -58,7 +61,7 @@ export function getFirstPlayer(seedNumber: number, totalPlayers: number) {
 }
 
 export function generateNewSeed() {
-  return [...Array(4).keys()]
+  return [...Array(4)]
     .map(() => characters.charAt(Math.floor(Math.random() * charactersLength)))
     .join("");
 }

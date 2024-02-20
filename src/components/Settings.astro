@@ -1,5 +1,4 @@
 ---
-import { generateNewSeed } from "../scripts/random";
 import { playersList } from "../scripts/constants";
 ---
 
@@ -36,7 +35,6 @@ import { playersList } from "../scripts/constants";
         id="seed"
         class="form-control"
         name="code"
-        value={generateNewSeed()}
         pattern="[A-Za-z0-9]{4}"
         title="4 Characters Code"
         maxlength="4"
@@ -56,12 +54,16 @@ import { playersList } from "../scripts/constants";
         autocomplete="off"
       />
     </div>
-    <button id="startButton" class="btn btn-primary"> 🏁 Start New Game</button>
+    <button id="start-button" class="btn btn-primary"> 🏁 Start New Game</button>
   </form>
 </div>
 
 <script>
   import { playersList } from "../scripts/constants";
+  import { generateNewSeed } from "../scripts/random";
+
+  (document.getElementById("seed") as HTMLInputElement).value =
+    generateNewSeed();
 
   const totalPlayersElement = document.getElementById(
     "total-players"

@@ -3,6 +3,10 @@ import { getRNG } from "../scripts/random";
 import { startTimer } from "../scripts/time";
 import { resetErrors, getPlayersCount, printError } from "../scripts/utils";
 
+const selectAvatarError = "Please select an 👤 Avatar";
+const playerCountError =
+  "Error: 👤 > 👥 <br> Player # greater than total number of players";
+
 export function startGame() {
   window.scrollTo(0, 0);
   resetErrors();
@@ -14,14 +18,16 @@ export function startGame() {
   const iterationField = document.getElementById(
     "iteration",
   ) as HTMLInputElement;
-  const playerSelect = document.getElementById("player-select") as HTMLSelectElement;
+  const playerSelect = document.getElementById(
+    "player-select",
+  ) as HTMLSelectElement;
   const playerID = parseInt(
     playerSelect.options[playerSelect.selectedIndex].value,
   );
   const totalPlayers = getPlayersCount();
 
   if (playerID == -1) {
-    printError(`Please select an 👤 Avatar`);
+    printError(selectAvatarError);
     return;
   }
 
@@ -30,9 +36,7 @@ export function startGame() {
     seed += "A";
   }
   if (playerID > totalPlayers) {
-    printError(
-      "Error: 👤 > 👥 <br> Player # greater than total number of players",
-    );
+    printError(playerCountError);
     return;
   }
 
@@ -43,6 +47,6 @@ export function startGame() {
   );
   setupDisplayForRound(randomNumber, iterationField, totalPlayers, playerID);
 
-  const timer = document.getElementById("timer")!;
-  startTimer(60 * 5, timer);
+  const timerElement = document.getElementById("timer") as HTMLElement;
+  startTimer(60 * 5, timerElement);
 }

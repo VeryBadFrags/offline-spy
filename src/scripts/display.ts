@@ -5,6 +5,7 @@ import {
   getLocationIndex,
   getFingerprintString,
 } from "../scripts/random";
+import { hide, show } from "./utils";
 
 export function setupDisplayForRound(
   randomNumber: number,
@@ -16,9 +17,11 @@ export function setupDisplayForRound(
   initGameUI();
 }
 
+const startButton = document.getElementById("start-button") as HTMLElement;
+const secretBlock = document.getElementById("secretBlock") as HTMLElement;
 function initGameUI() {
-  document.getElementById("startButton")!.innerText = "🏁 Start Next Round";
-  document.getElementById("secretBlock")!.style.display = "block";
+  startButton.innerText = "🏁 Start Next Round";
+  show(secretBlock);
   document.getElementById("gameWindow")!.style.display = "inline-block";
 }
 
@@ -44,6 +47,8 @@ function setFirstPlayerDisplay(randomNumber: number, totalPlayers: number) {
     playersList.data[firstPlayer];
 }
 
+const spyBlock = document.getElementById("spy-block") as HTMLElement;
+const innocentBlock = document.getElementById("innocent-block") as HTMLElement;
 function setLocationDisplay(
   randomNumber: number,
   playerID: number,
@@ -56,11 +61,11 @@ function setLocationDisplay(
       locationsList.data[
         getLocationIndex(randomNumber, locationsList.data.length)
       ];
-    document.getElementById("spyBlock")!.style.display = "none";
-    document.getElementById("innocentBlock")!.style.display = "block";
+    hide(spyBlock);
+    show(innocentBlock);
   } else {
-    document.getElementById("spyBlock")!.style.display = "block";
-    document.getElementById("innocentBlock")!.style.display = "none";
+    show(spyBlock);
+    hide(innocentBlock);
   }
   document.getElementById("location")!.innerText = locationName;
 }
