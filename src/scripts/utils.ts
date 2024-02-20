@@ -16,8 +16,7 @@ export function resetErrors() {
   errorBox.innerText = "";
 }
 
-export function showHide(elementId: string) {
-  const elem = document.getElementById(elementId)!;
+export function showHide(elem: HTMLElement) {
   if (elem.style.display === "none") {
     elem.style.display = "block";
   } else {

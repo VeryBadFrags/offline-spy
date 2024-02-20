@@ -8,7 +8,7 @@
   </div>
   <br />
   <div>
-    <strong id="playerid"></strong>
+    You are <strong id="playerid"></strong>
   </div>
   <br />
   <div>🔍 First question: <span id="firstPlayer"></span></div>
@@ -31,7 +31,8 @@
 <script>
   import { showHide } from "../scripts/utils";
 
+  const secretBlock = document.getElementById("secretBlock") as HTMLElement;
   document
     .getElementById("secret-block-button")!
-    .addEventListener("click", () => showHide("secretBlock"));
+    .addEventListener("click", () => showHide(secretBlock));
 </script>

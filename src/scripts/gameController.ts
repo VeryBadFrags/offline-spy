@@ -14,7 +14,7 @@ export function startGame() {
   const iterationField = document.getElementById(
     "iteration",
   ) as HTMLInputElement;
-  const playerSelect = document.getElementById("player") as HTMLSelectElement;
+  const playerSelect = document.getElementById("player-select") as HTMLSelectElement;
   const playerID = parseInt(
     playerSelect.options[playerSelect.selectedIndex].value,
   );

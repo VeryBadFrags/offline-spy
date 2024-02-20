@@ -13,7 +13,8 @@ import RulesContent from "../components/RulesContent.md";
 <script>
   import { showHide } from "../scripts/utils";
 
+  const instructionsContainer = document.getElementById("instructions") as HTMLElement;
   document
     .getElementById("rules-button")!
-    .addEventListener("click", () => showHide("instructions"));
+    .addEventListener("click", () => showHide(instructionsContainer));
 </script>

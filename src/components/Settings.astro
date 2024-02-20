@@ -23,9 +23,9 @@ import { playersList } from "../scripts/constants";
       />
     </div>
     <div>
-      <label for="player">👤 Avatar (must be unique)</label>
+      <label for="player-select">👤 Avatar (must be unique)</label>
       <div class="custom-select">
-        <select name="player" id="player" class="form-control" required
+        <select name="player" id="player-select" class="form-control" required
         ></select>
       </div>
     </div>
@@ -72,14 +72,14 @@ import { playersList } from "../scripts/constants";
   populatePlayersList(parseInt(totalPlayersElement.value));
 
   function populatePlayersList(playersCount: number) {
-    const playerListElement = document.getElementById(
-      "player"
+    const playerSelect = document.getElementById(
+      "player-select"
     ) as HTMLSelectElement;
-    removeOptions(playerListElement);
+    removeOptions(playerSelect);
 
     const emptyOpt = document.createElement("option") as HTMLOptionElement;
     emptyOpt.value = "-1";
-    playerListElement.append(emptyOpt);
+    playerSelect.append(emptyOpt);
 
     [...Array(Math.min(playersList.data.length, playersCount)).keys()]
       .map((i) => {
@@ -88,7 +88,7 @@ import { playersList } from "../scripts/constants";
         opt.innerText = playersList.data[i];
         return opt;
       })
-      .forEach((node) => playerListElement.append(node));
+      .forEach((node) => playerSelect.append(node));
   }
 
   /**
