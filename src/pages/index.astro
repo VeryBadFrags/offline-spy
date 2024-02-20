@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import GameWindow from "../components/GameWindow.astro";
 import Locations from "../components/Locations.astro";
 import Settings from "../components/Settings.astro";
-import Rules from "../components/Rules.astro";
+import Rules from "../components/Rules.md";
 import Footer from "../components/Footer.astro";
 
 import "../styles/style.css";
@@ -27,8 +27,13 @@ import "../styles/style.css";
     </div>
 
     <div class="flex">
-      <!-- Rules -->
-      <Rules />
+      <div class="card bg-light">
+        <h3 class="card-title">📖 Rules</h3>
+        <button id="rules-button" class="btn btn-outline"> 👓 Show/Hide</button>
+        <div id="instructions" style="display: none">
+          <Rules />
+        </div>
+      </div>
     </div>
   </main>
 
