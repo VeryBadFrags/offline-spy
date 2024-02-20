@@ -1,0 +1,59 @@
+---
+
+---
+
+<div id="settings" class="card bg-light">
+  <div>
+    <h3 class="card-title">⚙️ Game Settings</h3>
+  </div>
+  <form id="start-form">
+    <div>
+      <label for="total-players">👥 Total players</label>
+      <input
+        type="number"
+        inputmode="numeric"
+        id="total-players"
+        class="form-control"
+        name="totalPlayers"
+        value="3"
+        min="3"
+        autocomplete="off"
+      />
+    </div>
+    <div>
+      <label for="player">👤 Avatar (must be unique)</label>
+      <div class="custom-select">
+        <select name="player" id="player" class="form-control" required
+        ></select>
+      </div>
+    </div>
+    <div>
+      <label for="seed">🎲 Code</label>
+      <input
+        type="text"
+        id="seed"
+        class="form-control"
+        name="code"
+        value="ABCD"
+        pattern="[A-Za-z0-9]{4}"
+        title="4 Characters Code"
+        maxlength="4"
+        autocomplete="off"
+      />
+    </div>
+    <div>
+      <label for="iteration">🔢 Round</label>
+      <input
+        type="number"
+        inputmode="numeric"
+        id="iteration"
+        class="form-control"
+        name="round"
+        value="1"
+        min="1"
+        autocomplete="off"
+      />
+    </div>
+    <button id="startButton" class="btn btn-primary"> 🏁 Start New Game</button>
+  </form>
+</div>

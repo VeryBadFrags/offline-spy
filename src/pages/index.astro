@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GameWindow from "../components/GameWindow.astro";
+import Locations from "../components/Locations.astro";
+import Settings from "../components/Settings.astro";
+import Rules from "../components/Rules.astro";
+import Footer from "../components/Footer.astro";
+
+import "../styles/style.css";
+---
+
+<Layout title="Offline Spyfall">
+  <nav>
+    <span>📵🕵️ Offline Spyfall</span>
+    <a href="https://games.verybadfrags.com" target="_blank">🎮 More games</a>
+  </nav>
+
+  <main>
+    <div id="error" class="card alert" style="display: none"></div>
+
+    <div class="flex">
+      <GameWindow />
+
+      <Locations />
+
+      <Settings />
+    </div>
+
+    <div class="flex">
+      <!-- Rules -->
+      <Rules />
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    import * as Constants from "../scripts/constants";
+    import * as Display from "../scripts/display";
+    import * as Random from "../scripts/random";
+    import * as Time from "../scripts/time";
+    import * as Utils from "../scripts/utils";
+
+    function startGame() {
+      window.scrollTo(0, 0);
+      Utils.resetErrors();
+
+      // Get the Game params
+      let seed = (
+        document.getElementById("seed") as HTMLInputElement
+      ).value.toUpperCase();
+      const iterationField = document.getElementById(
+        "iteration"
+      ) as HTMLInputElement;
+      const playerSelect = document.getElementById(
+        "player"
+      ) as HTMLSelectElement;
+      const playerID = parseInt(
+        playerSelect.options[playerSelect.selectedIndex].value
+      );
+      const totalPlayers = Utils.getPlayersCount();
+
+      if (playerID == -1) {
+        Utils.printError(`Please select an 👤 Avatar`);
+        return;
+      }
+
+      // Validate the params
+      while (seed.length < 4) {
+        seed += "A";
+      }
+      if (playerID > totalPlayers) {
+        Utils.printError(
+          "Error: 👤 > 👥 <br> Player # greater than total number of players"
+        );
+        return;
+      }
+
+      const randomNumber = Random.getRNG(
+        seed,
+        parseInt(iterationField.value),
+        totalPlayers
+      );
+      Display.setupDisplayForRound(
+        randomNumber,
+        iterationField,
+        totalPlayers,
+        playerID
+      );
+
+      const timer = document.getElementById("timer")!;
+      Time.startTimer(60 * 5, timer);
+    }
+
+    /* onload */
+
+    Display.initSeed();
+    Display.buildLocationsList();
+
+    const totalPlayersElement = document.getElementById(
+      "total-players"
+    ) as HTMLInputElement;
+    totalPlayersElement.max = Constants.players.length.toString();
+    totalPlayersElement.addEventListener("input", (event) =>
+      Display.populatePlayersList(
+        parseInt((event.target as HTMLInputElement).value)
+      )
+    );
+    Display.populatePlayersList(parseInt(totalPlayersElement.value));
+
+    document
+      .getElementById("start-form")!
+      .addEventListener("submit", (event) => {
+        event.preventDefault();
+        startGame();
+      });
+
+    document
+      .getElementById("secret-block-button")!
+      .addEventListener("click", () => Utils.showHide("secretBlock"));
+
+    document
+      .getElementById("rules-button")!
+      .addEventListener("click", () => Utils.showHide("instructions"));
+  </script>
+</Layout>
