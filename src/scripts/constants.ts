@@ -19,6 +19,13 @@ export const locationsList = {
   ],
 };
 
+const extendedLocations = [
+  "🏝🥥 Desert Island",
+  "⛰🥾 Mountain Hike",
+  "🏤📮 Post Office",
+  "🍽👩‍🍳 Restaurant",
+];
+
 export const fingerprintTokens = {
   data: [
     "😀",
