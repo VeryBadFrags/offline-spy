@@ -3,10 +3,6 @@
 
 <footer class="bg-light">
 
-Download this page and play anywhere!
-
-<img src="qr.svg" alt="QR Code to this site" width="200" />
-  
 Suggestions, Feedback? <offlinespy@verybadfrags.com>
 
 <a href="https://github.com/VeryBadFrags/offline-spy" target="_blank">💾 Source code on GitHub</a>
