@@ -16,15 +16,12 @@ export const locationsList = {
     "🏟🎸 Rock Concert",
     "🚄🛤 Train Station",
     "🏫🎓 University",
+    "🏝🥥 Desert Island",
+    "⛰🥾 Mountain Hike",
+    "🏤📮 Post Office",
+    "🍽👩‍🍳 Restaurant",
   ],
 };
-
-const extendedLocations = [
-  "🏝🥥 Desert Island",
-  "⛰🥾 Mountain Hike",
-  "🏤📮 Post Office",
-  "🍽👩‍🍳 Restaurant",
-];
 
 export const fingerprintTokens = {
   data: [
