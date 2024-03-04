@@ -7,17 +7,16 @@ export const locationsList = {
     "🦸🦹 Cosplay Convention",
     "🛳🌊 Cruise Ship",
     "⚽️🏟 Football Stadium",
-    "🌳🏕 Forest Camp",
     "🏪🛒 Grocery Store",
     "🏥🧑‍⚕️ Hospital",
     "🏨🛏 Hotel",
     "🌕🧑‍🚀 Moon Colony",
+    "⛰🥾 Mountain Hike",
     "🏛🖼 Museum",
     "🏟🎸 Rock Concert",
     "🚄🛤 Train Station",
     "🏫🎓 University",
     "🏝🥥 Desert Island",
-    "⛰🥾 Mountain Hike",
     "🏤📮 Post Office",
     "🍽👩‍🍳 Restaurant",
   ],
@@ -25,7 +24,6 @@ export const locationsList = {
 
 export const fingerprintTokens = {
   data: [
-    "😀",
     "⭐️",
     "🍪",
     "🍕",
