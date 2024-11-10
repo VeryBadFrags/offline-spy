@@ -3,6 +3,8 @@
 
 <footer class="bg-light">
 
+<a href="https://spyfall.verybadfrags.com" target="_blank">🕵 Play Online</a>
+
 Suggestions, Feedback? <offlinespy@verybadfrags.com>
 
 <a href="https://github.com/VeryBadFrags/offline-spy" target="_blank">💾 Source code on GitHub</a>
