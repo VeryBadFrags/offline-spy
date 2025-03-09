@@ -13,12 +13,10 @@
 
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "make node_modules",
-  
+
   "customizations": {
     "vscode": {
-      "extensions": [
-        "astro-build.astro-vscode"
-      ]
+      "extensions": ["astro-build.astro-vscode"]
     }
   }
 

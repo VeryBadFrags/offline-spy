@@ -28,10 +28,12 @@ hr {
   height: 2px;
   margin: 24px 0;
 }
+
 a {
   color: $blue;
   text-decoration: none;
 }
+
 a:hover {
   color: $blue2;
   text-decoration: underline;
@@ -53,6 +55,7 @@ footer {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
 .card {
   border: 1px solid $gray3;
   border-radius: 4px;
@@ -64,26 +67,37 @@ footer {
   vertical-align: top;
   flex-grow: 1;
 }
+
 .card-title {
   margin-top: 0;
 }
+
 .secret-card {
   border: 1px dashed $black-transparent;
   border-radius: 4px;
   padding: 4px 8px;
 }
+
 .list {
   list-style-type: none;
   font-size: 17px;
   padding-left: 20px;
   margin-bottom: 0;
 }
+
 .alert {
   border: 1px solid $red;
   border-radius: 4px;
   box-shadow: 1px 1px 5px $red-transparent;
   color: $red;
 }
+
+.info {
+  border: 1px solid $blue;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px $blue2-transparent;
+}
+
 .btn {
   border-radius: 4px;
   box-shadow: 1px 1px 5px $black-transparent;
@@ -94,10 +108,12 @@ footer {
   margin-top: 15px;
   width: 100%;
 }
+
 .btn:active {
   position: relative;
   top: 1px;
 }
+
 .btn-primary {
   box-shadow:
     1px 1px 5px $black-transparent,
@@ -109,14 +125,17 @@ footer {
   text-decoration: none;
   text-shadow: 1px 1px 0px $black;
 }
+
 .btn-primary:hover {
   background: linear-gradient(to bottom, $blue2 5%, $blue3 100%);
 }
+
 .btn-primary:active {
   box-shadow:
     1px 1px 2px $black-transparent,
     inset 0 1px $blue;
 }
+
 .btn-outline {
   background: linear-gradient(to bottom, $white 5%, $white2 100%);
   border: 1px solid $blue4;
@@ -124,15 +143,19 @@ footer {
   padding: 6px 24px;
   text-decoration: none;
 }
+
 .btn-outline:hover {
   background: linear-gradient(to bottom, $white2 5%, $white 100%);
 }
+
 .btn-outline:active {
   box-shadow: 1px 1px 2px $black-transparent;
 }
+
 .large {
   font-size: 24px;
 }
+
 .form-control {
   border: 2px solid $blue2-transparent;
   border-radius: 4px;
@@ -143,6 +166,7 @@ footer {
   font-size: 16px;
   width: 100%;
 }
+
 .custom-select {
   width: 100%;
   font-size: 18px;
