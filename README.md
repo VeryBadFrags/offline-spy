@@ -11,7 +11,19 @@ A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-
 
 ## Local development
 
-```shell
+### Setup
+
+Get Node: <https://nodejs.org/en/download>
+
+Enable Corepack:
+
+```sh
+corepack enable
+```
+
+## Run
+
+```sh
 make dev
 ```
 
