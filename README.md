@@ -9,19 +9,24 @@ A server-free, standalone game inspired by [Spyfall](https://hwint.ru/portfolio-
 - [▶️ Play the game](https://offline-spy.verybadfrags.com)
 - [📵 Download the game](https://github.com/VeryBadFrags/offline-spy/releases) to play offline
 
-## Local development
+## Setup
 
-### Setup
-
-Get Node: <https://nodejs.org/en/download>
-
-Enable Corepack:
+- Get Node: <https://nodejs.org/en/download>
+- Enable Corepack:
 
 ```sh
 corepack enable
 ```
 
-## Run
+## Build
+
+Build the static site:
+
+```sh
+make build
+```
+
+## Local development
 
 ```sh
 make dev
