@@ -1,0 +1,7 @@
+[env]
+# Use Corepack to install pnpm
+MISE_NODE_COREPACK = true
+
+[settings]
+# Use the Node version from .nvmrc
+idiomatic_version_file_enable_tools = ['node']
